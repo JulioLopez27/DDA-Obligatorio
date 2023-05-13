@@ -9,5 +9,7 @@ package dominio;
  * @author Julio Cesar
  */
 public class Bonificacion {
+    private String nombre;
+    
     
 }

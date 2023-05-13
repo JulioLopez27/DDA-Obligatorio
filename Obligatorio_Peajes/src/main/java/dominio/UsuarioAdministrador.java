@@ -8,6 +8,10 @@ package dominio;
  *
  * @author Julio Cesar
  */
-public class UsuarioAdministrador {
+public class UsuarioAdministrador extends Usuario {
+
+    public UsuarioAdministrador(int cedula, String password, String nombre) {
+        super(cedula, password, nombre);
+    }
     
 }
