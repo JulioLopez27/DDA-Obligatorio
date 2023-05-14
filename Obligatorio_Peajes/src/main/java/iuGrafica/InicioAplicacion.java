@@ -74,7 +74,7 @@ public class InicioAplicacion extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuLoginPropietarioActionPerformed
 
     private void jMenuLoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLoginAdministradorActionPerformed
-       //new LoginUsuarioAministrador(null,false).setVisible(true);
+       new LoginUsuarioAdministrador(null,false).setVisible(true);
     }//GEN-LAST:event_jMenuLoginAdministradorActionPerformed
 
    

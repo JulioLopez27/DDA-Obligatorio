@@ -5,7 +5,6 @@
 package iuGrafica;
 
 import Servicios.Fachada;
-import dominio.Sesion;
 import dominio.Usuario;
 import java.awt.Frame;
 
@@ -13,20 +12,14 @@ import java.awt.Frame;
  *
  * @author sebita
  */
-public class LoginUsuarioPropietario extends LoginAbstracto {
-    
-    public LoginUsuarioPropietario(Frame parent, boolean modal){
-        super(parent,modal, "Aplicación para propietarios");
-        
-    }
+public class LoginUsuarioAdministrador extends LoginAbstracto {
+       public LoginUsuarioAdministrador(Frame parent, boolean modal){
+        super(parent,modal, "Aplicación para administradores");
+       }
 
     @Override
     protected Usuario validarUsuario(String cedula, String password) {
-          Sesion sesion = Fachada.getInstancia().loginUsuarioPorpietario(cedula, password);
-        return sesion != null
-                ? sesion.getUsuarioPropietario()
-                : null;
-       
+        return Fachada.getInstancia().loginUsuarioAdministrador(cedula, password);
     }
 
     @Override
@@ -34,4 +27,6 @@ public class LoginUsuarioPropietario extends LoginAbstracto {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+
+       
 }
