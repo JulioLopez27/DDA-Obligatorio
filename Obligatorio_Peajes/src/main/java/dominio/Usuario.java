@@ -42,6 +42,10 @@ public abstract class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
+  
+     public boolean esPasswordValida(String password) {
+        return this.password.equals(password);
+    }
     
 }
