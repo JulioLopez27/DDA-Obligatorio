@@ -8,7 +8,7 @@ package iuGrafica;
  *
  * @author Digital
  */
-public class RecargaSaldo extends javax.swing.JFrame {
+public class RecargaSaldo extends javax.swing.JDialog {
 
     /**
      * Creates new form RecargaSaldo
@@ -35,7 +35,7 @@ public class RecargaSaldo extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Recarga de saldo");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N

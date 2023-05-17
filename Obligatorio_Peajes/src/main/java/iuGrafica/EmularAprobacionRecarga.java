@@ -8,7 +8,7 @@ package iuGrafica;
  *
  * @author Digital
  */
-public class EmularAprobacionRecarga extends javax.swing.JFrame {
+public class EmularAprobacionRecarga extends javax.swing.JDialog {
 
     /**
      * Creates new form EmularAprobacionRecarga
@@ -32,7 +32,7 @@ public class EmularAprobacionRecarga extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Aprobación de recargas");
         setFocusable(false);
 

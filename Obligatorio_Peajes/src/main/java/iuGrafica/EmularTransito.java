@@ -8,7 +8,7 @@ package iuGrafica;
  *
  * @author Digital
  */
-public class EmularTransito extends javax.swing.JFrame {
+public class EmularTransito extends javax.swing.JDialog {
 
     /**
      * Creates new form EmularTransito
@@ -36,7 +36,7 @@ public class EmularTransito extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Emular transito");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -79,7 +79,6 @@ public class EmularTransito extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setText("Cerrar");
-        jButton2.setActionCommand("Cerrar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

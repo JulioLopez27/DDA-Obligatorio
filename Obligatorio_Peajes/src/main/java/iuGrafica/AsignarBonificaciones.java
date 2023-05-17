@@ -8,7 +8,7 @@ package iuGrafica;
  *
  * @author Digital
  */
-public class AsignarBonificaciones extends javax.swing.JFrame {
+public class AsignarBonificaciones extends javax.swing.JDialog {
 
     /**
      * Creates new form AsignarBonificaciones
@@ -56,7 +56,7 @@ public class AsignarBonificaciones extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asignar bonificaciones");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));

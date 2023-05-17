@@ -8,7 +8,7 @@ package iuGrafica;
  *
  * @author Digital
  */
-public class TableroDeControl extends javax.swing.JFrame {
+public class TableroDeControl extends javax.swing.JDialog {
 
     /**
      * Creates new form TablerDeControl
@@ -56,7 +56,7 @@ public class TableroDeControl extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tablero de control de propietario");
 
         jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
