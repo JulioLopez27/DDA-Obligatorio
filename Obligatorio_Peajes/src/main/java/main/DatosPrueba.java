@@ -23,11 +23,12 @@ public class DatosPrueba {
         Cuenta cuenta2 = new Cuenta(100);
         Cuenta cuenta3 = new Cuenta(2000);
         
-        //Usuarios 
+        //Usuarios Propietarios
         UsuarioPropietario usuarioProp1 = new UsuarioPropietario(200, cuenta1, 41234567, "pass123", "Juan Perez");
         UsuarioPropietario usuarioProp2 = new UsuarioPropietario(50, cuenta2, 51234567, "pass123", "Ana Lopez");
         UsuarioPropietario usuarioProp3 = new UsuarioPropietario(500, cuenta3, 11234567, "pass123", "Alberto Rodriguez");
         
+        //Usuarios Admin
         UsuarioAdministrador usuarioAdmin1 = new UsuarioAdministrador(41234567, "pass123", "Carlos Gonzalez");
         
         fachada.agregar(usuarioProp1);
