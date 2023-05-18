@@ -4,6 +4,7 @@
  */
 package iuGrafica;
 
+import Exceptions.LoginException;
 import dominio.Usuario;
 import javax.swing.JOptionPane;
 
@@ -89,7 +90,7 @@ public abstract class LoginAbstracto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIngresarActionPerformed
-        // TODO add your handling code here:
+        login();
     }//GEN-LAST:event_jBtnIngresarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -101,17 +102,17 @@ public abstract class LoginAbstracto extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void login(){
-        
-        Usuario usuario = this.validarUsuario(jCedula.getText(), new String(jPassword.getPassword()));
-        if (usuario == null) {
-            JOptionPane.showMessageDialog(this, "Acceso denegado", "Login incorrecto", JOptionPane.ERROR_MESSAGE);
-        } else {
+        try{
+            Usuario usuario = this.validarUsuario(jCedula.getText(), new String(jPassword.getPassword()));
             this.ejecutarProximoCasoDeUso(usuario);
             this.dispose();
-        }
+        } catch(LoginException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Login incorrecto", JOptionPane.ERROR_MESSAGE);
+        } 
+
     }
     
-    protected abstract Usuario validarUsuario(String cedula, String password);
+    protected abstract Usuario validarUsuario(String cedula, String password) throws LoginException;
     protected abstract void ejecutarProximoCasoDeUso(Usuario usuario);
     
 }

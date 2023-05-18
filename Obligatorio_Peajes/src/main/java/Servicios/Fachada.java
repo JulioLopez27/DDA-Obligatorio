@@ -4,6 +4,7 @@
  */
 package Servicios;
 
+import Exceptions.LoginException;
 import dominio.Sesion;
 import dominio.UsuarioPropietario;
 import dominio.UsuarioAdministrador;
@@ -31,12 +32,19 @@ public class Fachada {
         return instancia;
     }
 
-    public Sesion loginUsuarioPorpietario(String cedula, String password) {
+    public Sesion loginUsuarioPorpietario(String cedula, String password) throws LoginException {
         return servicioUsuarios.loginUsuarioPropietario(cedula, password);
     }
 
-    public UsuarioAdministrador loginUsuarioAdministrador(String cedula, String password) {
+    public UsuarioAdministrador loginUsuarioAdministrador(String cedula, String password) throws LoginException {
         return servicioUsuarios.loginUsuarioAdministrador(cedula, password);
     }
 
+    public boolean agregar(UsuarioPropietario usuarioPropietario){
+        return servicioUsuarios.agregar(usuarioPropietario);
+    }
+    
+    public boolean agregar(UsuarioAdministrador usuarioAdministrador){
+        return servicioUsuarios.agregar(usuarioAdministrador);
+    }
 }

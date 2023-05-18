@@ -4,6 +4,7 @@
  */
 package iuGrafica;
 
+import Exceptions.LoginException;
 import Servicios.Fachada;
 import dominio.Sesion;
 import dominio.Usuario;
@@ -21,9 +22,9 @@ public class LoginUsuarioPropietario extends LoginAbstracto {
     }
 
     @Override
-    protected Usuario validarUsuario(String cedula, String password) {
-          Sesion sesion = Fachada.getInstancia().loginUsuarioPorpietario(cedula, password);
-        return sesion != null
+    protected Usuario validarUsuario(String cedula, String password) throws LoginException {
+        Sesion sesion = Fachada.getInstancia().loginUsuarioPorpietario(cedula, password);
+          return sesion != null
                 ? sesion.getUsuarioPropietario()
                 : null;
        
@@ -31,7 +32,7 @@ public class LoginUsuarioPropietario extends LoginAbstracto {
 
     @Override
     protected void ejecutarProximoCasoDeUso(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        new TableroDeControl().setVisible(true);
     }
     
 }

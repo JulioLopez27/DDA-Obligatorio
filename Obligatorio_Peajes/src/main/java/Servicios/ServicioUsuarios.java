@@ -4,6 +4,7 @@
  */
 package Servicios;
 
+import Exceptions.LoginException;
 import dominio.Sesion;
 import dominio.Usuario;
 import dominio.UsuarioAdministrador;
@@ -27,7 +28,7 @@ public class ServicioUsuarios {
         sesiones = new ArrayList<>();
     }
 
-    public Sesion loginUsuarioPropietario(String cedula, String password) {
+    public Sesion loginUsuarioPropietario(String cedula, String password) throws LoginException {
        UsuarioPropietario usuarioLogueado=(UsuarioPropietario)this.loginUsuario(cedula, password, (ArrayList)usuariosPropietario);
        if(usuarioLogueado!=null){
            Sesion sesion= new Sesion(usuarioLogueado);
@@ -38,25 +39,31 @@ public class ServicioUsuarios {
     
     }
 
-    public UsuarioAdministrador loginUsuarioAdministrador(String cedula, String password) {
-       return (UsuarioAdministrador)this.loginUsuario(cedula, password,(ArrayList)usuariosAdministrador);
-    }
-
-    private Usuario loginUsuario(String cedula, String password, List<Usuario> usuarios) {
-        for (Usuario u : usuarios) {
-            int cedulaNro = Integer.parseInt(cedula);
-            if (u.getCedula() == cedulaNro && u.esPasswordValida(password)) {
-                return u;
-            }
-        }
-        return null;
-    }
-
-    
-    
-    
-    
     private void agregar(Sesion sesion) {
         sesiones.add(sesion);
     }
+        
+    public UsuarioAdministrador loginUsuarioAdministrador(String cedula, String password) throws LoginException {
+       return (UsuarioAdministrador)this.loginUsuario(cedula, password,(ArrayList)usuariosAdministrador);
+    }
+
+    private Usuario loginUsuario(String cedula, String password, List<Usuario> usuarios) throws LoginException {
+        for (Usuario u : usuarios) {
+            int cedulaNro = Integer.parseInt(cedula); //ToDo validar que sea numero antes de castear
+            if (u.validarCredenciales(cedulaNro, password)) {
+                return u;
+            }
+        }
+        throw new LoginException("Acceso denegado");
+    }
+    
+    public boolean agregar(UsuarioPropietario usuarioPropietario){
+        return usuariosPropietario.add(usuarioPropietario);
+    } 
+    
+    public boolean agregar(UsuarioAdministrador usuarioAdministrador){
+        return usuariosAdministrador.add(usuarioAdministrador);
+    } 
+    
+
 }

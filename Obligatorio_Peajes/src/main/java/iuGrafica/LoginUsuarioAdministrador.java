@@ -4,6 +4,7 @@
  */
 package iuGrafica;
 
+import Exceptions.LoginException;
 import Servicios.Fachada;
 import dominio.Usuario;
 import java.awt.Frame;
@@ -18,7 +19,7 @@ public class LoginUsuarioAdministrador extends LoginAbstracto {
        }
 
     @Override
-    protected Usuario validarUsuario(String cedula, String password) {
+    protected Usuario validarUsuario(String cedula, String password) throws LoginException {
         return Fachada.getInstancia().loginUsuarioAdministrador(cedula, password);
     }
 

@@ -13,6 +13,7 @@ import iuGrafica.InicioAplicacion;
 public class SistemaPeajes {
 
     public static void main(String[] args) {
+       DatosPrueba.cargar();
        InicioAplicacion sistema = new InicioAplicacion();
        sistema.setVisible(true);
     }
