@@ -4,16 +4,19 @@
  */
 package iuGrafica;
 
+import Observer.Observable;
+import Observer.Observer;
+
 /**
  *
  * @author Digital
  */
-public class TableroDeControl extends javax.swing.JDialog {
+public class UITableroDeControl extends javax.swing.JDialog implements Observer {
 
     /**
      * Creates new form TablerDeControl
      */
-    public TableroDeControl() {
+    public UITableroDeControl() {
         initComponents();
     }
 
@@ -360,4 +363,10 @@ public class TableroDeControl extends javax.swing.JDialog {
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        //ToDo ACTUALIZAR LA PANTALLA
+        
+    }
 }

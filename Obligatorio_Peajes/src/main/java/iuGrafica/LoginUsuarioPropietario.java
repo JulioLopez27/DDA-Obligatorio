@@ -32,7 +32,7 @@ public class LoginUsuarioPropietario extends LoginAbstracto {
 
     @Override
     protected void ejecutarProximoCasoDeUso(Usuario usuario) {
-        new TableroDeControl().setVisible(true);
+        new UITableroDeControl().setVisible(true);
     }
     
 }

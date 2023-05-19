@@ -4,16 +4,19 @@
  */
 package iuGrafica;
 
+import Observer.Observable;
+import Observer.Observer;
+
 /**
  *
  * @author Digital
  */
-public class RecargaSaldo extends javax.swing.JDialog {
+public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
 
     /**
      * Creates new form RecargaSaldo
      */
-    public RecargaSaldo() {
+    public UIRecargaSaldo() {
         initComponents();
     }
 
@@ -123,4 +126,9 @@ public class RecargaSaldo extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        //ToDo ACTUALIZAR SALDO
+    }
 }

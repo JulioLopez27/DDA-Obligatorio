@@ -5,6 +5,7 @@
 package Servicios;
 
 import Exceptions.LoginException;
+import Observer.Observable;
 import dominio.Sesion;
 import dominio.UsuarioPropietario;
 import dominio.UsuarioAdministrador;
@@ -13,7 +14,7 @@ import dominio.UsuarioAdministrador;
  *
  * @author sebita
  */
-public class Fachada {
+public class Fachada extends Observable {
 
     private static Fachada instancia = null;
 

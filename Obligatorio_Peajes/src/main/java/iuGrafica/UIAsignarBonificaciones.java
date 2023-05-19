@@ -4,16 +4,21 @@
  */
 package iuGrafica;
 
+import Observer.Observable;
+import Observer.Observer;
+import java.awt.Frame;
+
 /**
  *
  * @author Digital
  */
-public class AsignarBonificaciones extends javax.swing.JDialog {
+public class UIAsignarBonificaciones extends javax.swing.JDialog implements Observer {
 
     /**
      * Creates new form AsignarBonificaciones
      */
-    public AsignarBonificaciones() {
+    public UIAsignarBonificaciones(Frame parent, boolean modal) {
+        super(parent,modal);
         initComponents();
     }
 
@@ -219,4 +224,9 @@ public class AsignarBonificaciones extends javax.swing.JDialog {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        //ToDo ACTUALIZAR BONIFICACION PUESTO
+    }
 }

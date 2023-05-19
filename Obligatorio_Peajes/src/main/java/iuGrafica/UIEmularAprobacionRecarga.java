@@ -4,16 +4,21 @@
  */
 package iuGrafica;
 
+import Observer.Observable;
+import Observer.Observer;
+import java.awt.Frame;
+
 /**
  *
  * @author Digital
  */
-public class EmularAprobacionRecarga extends javax.swing.JDialog {
+public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Observer {
 
     /**
      * Creates new form EmularAprobacionRecarga
      */
-    public EmularAprobacionRecarga() {
+    public UIEmularAprobacionRecarga(Frame parent, boolean modal){
+        super(parent,modal);
         initComponents();
     }
 
@@ -108,4 +113,9 @@ public class EmularAprobacionRecarga extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void notificar(Observable origen, Object evento) {
+        //ToDo ACTUALIZAR RECARGA PENDIENTE
+    }
 }

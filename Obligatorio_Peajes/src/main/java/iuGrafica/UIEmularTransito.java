@@ -4,16 +4,19 @@
  */
 package iuGrafica;
 
+import java.awt.Frame;
+
 /**
  *
  * @author Digital
  */
-public class EmularTransito extends javax.swing.JDialog {
+public class UIEmularTransito extends javax.swing.JDialog {
 
     /**
      * Creates new form EmularTransito
      */
-    public EmularTransito() {
+    public UIEmularTransito(Frame parent, boolean modal) {
+        super(parent,modal);
         initComponents();
     }
 
