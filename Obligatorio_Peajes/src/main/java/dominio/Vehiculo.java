@@ -76,5 +76,15 @@ public class Vehiculo {
         this.transitos = transitos;
     }
     
+    public int getCantidadTransitos(){
+        return this.getTransitos().size();
+    }
     
+    public double getMontoTotal(){
+        double montoTotal = 0;
+        for(Transito t : this.transitos){
+            //ToDo FALTA CALCULAR EL MONTO
+        }
+        return montoTotal;
+    }
 }

@@ -35,6 +35,11 @@ public class UsuarioPropietario extends Usuario {
         return vehiculos;
     }
 
+    public void setVehiculos(List<Vehiculo> vehiculos) {
+        this.vehiculos = vehiculos;
+    }    
+    
+
     public Cuenta getCuenta() {
         return cuenta;
     }
@@ -55,5 +60,11 @@ public class UsuarioPropietario extends Usuario {
         return bonificaciones;
     }
     
-    
+    public int getCantidadTransitos(){
+        int cantidadTransitos = 0;
+        for(Vehiculo v : this.getVehiculos()){
+            cantidadTransitos += v.getCantidadTransitos();
+        }
+        return cantidadTransitos;
+    }
 }

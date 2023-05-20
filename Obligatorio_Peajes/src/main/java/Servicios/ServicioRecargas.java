@@ -4,10 +4,39 @@
  */
 package Servicios;
 
+import Exceptions.RecargaException;
+import dominio.Recarga;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Julio Cesar
  */
 public class ServicioRecargas {
+    
+    private List<Recarga> recargas = new ArrayList();
+
+    public ServicioRecargas() {
+        
+    }
+
+    public List<Recarga> getRecargas() {
+        return recargas;
+    }
+
+    public void setRecargas(List<Recarga> recargas) {
+        this.recargas = recargas;
+    }
+
+    //ToDo
+    ToDo TENEMOS DOS LISTAS DE RECARGAS
+    public void agregar(Recarga recarga) throws RecargaException {
+        if(recarga != null && recarga.getMonto() > 0){
+            this.recargas.add(recarga);
+        } else {
+            throw new RecargaException("Monto inválido");
+        }
+    }
     
 }

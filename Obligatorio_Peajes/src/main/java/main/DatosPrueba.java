@@ -5,9 +5,15 @@
 package main;
 import Servicios.Fachada;
 import Servicios.ServicioUsuarios;
+import dominio.Categoria;
 import dominio.Cuenta;
+import dominio.Tarifa;
 import dominio.UsuarioAdministrador;
 import dominio.UsuarioPropietario;
+import dominio.Vehiculo;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -19,7 +25,7 @@ public class DatosPrueba {
         Fachada fachada = Fachada.getInstancia();
         
         //Cuentas
-        Cuenta cuenta1 = new Cuenta(0);
+        Cuenta cuenta1 = new Cuenta(3500);
         Cuenta cuenta2 = new Cuenta(100);
         Cuenta cuenta3 = new Cuenta(2000);
         
@@ -31,6 +37,31 @@ public class DatosPrueba {
         //Usuarios Admin
         UsuarioAdministrador usuarioAdmin1 = new UsuarioAdministrador(41234567, "pass123", "Carlos Gonzalez");
         
+        //Categorias
+        Categoria cat1 = new Categoria("Automóvil");
+        Categoria cat2 = new Categoria("Moto");
+        Categoria cat3 = new Categoria("Camión");
+        Categoria cat4 = new Categoria("Ómnibus");
+        
+        //Tarifas
+        Tarifa tarifa1 = new Tarifa(100, cat1);
+        Tarifa tarifa2 = new Tarifa(20, cat2);
+        Tarifa tarifa3 = new Tarifa(180, cat3);
+        Tarifa tarifa4 = new Tarifa(240, cat4);
+        
+        //Vehiculos
+        Vehiculo vehiculo1 = new Vehiculo(usuarioProp1, cat1, "SDX 8547", "Celerio", "Plateado");
+        Vehiculo vehiculo2 = new Vehiculo(usuarioProp1, cat3, "STR 2357", "Scania", "Rojo");
+        Vehiculo vehiculo3 = new Vehiculo(usuarioProp2, cat1, "AXT 4978", "Gol", "Verde");
+        Vehiculo vehiculo4 = new Vehiculo(usuarioProp3, cat4, "STX 1225", "Marcopolo", "Marrón");
+        Vehiculo vehiculo5 = new Vehiculo(usuarioProp1, cat2, "LED 4512", "Jumbo", "Negro");
+        Vehiculo vehiculo6 = new Vehiculo(usuarioProp3, cat1, "BMN 5423", "Lancer", "Blanco");
+        
+        List<Vehiculo> vehiculosProp1 = new ArrayList<>(Arrays.asList(vehiculo1,vehiculo2,vehiculo5));
+        
+        usuarioProp1.setVehiculos(vehiculosProp1);
+        
+        //Agregar Usuarios
         fachada.agregar(usuarioProp1);
         fachada.agregar(usuarioProp2);
         fachada.agregar(usuarioProp3);

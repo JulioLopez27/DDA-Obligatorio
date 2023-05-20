@@ -8,6 +8,7 @@ import Exceptions.LoginException;
 import Servicios.Fachada;
 import dominio.Sesion;
 import dominio.Usuario;
+import dominio.UsuarioPropietario;
 import java.awt.Frame;
 
 /**
@@ -32,7 +33,7 @@ public class LoginUsuarioPropietario extends LoginAbstracto {
 
     @Override
     protected void ejecutarProximoCasoDeUso(Usuario usuario) {
-        new UITableroDeControl().setVisible(true);
+        new UITableroDeControl((UsuarioPropietario) usuario).setVisible(true);
     }
     
 }

@@ -5,7 +5,9 @@
 package Servicios;
 
 import Exceptions.LoginException;
+import Exceptions.RecargaException;
 import Observer.Observable;
+import dominio.Recarga;
 import dominio.Sesion;
 import dominio.UsuarioPropietario;
 import dominio.UsuarioAdministrador;
@@ -47,5 +49,9 @@ public class Fachada extends Observable {
     
     public boolean agregar(UsuarioAdministrador usuarioAdministrador){
         return servicioUsuarios.agregar(usuarioAdministrador);
+    }
+
+    public void agregar(Recarga recarga) throws RecargaException {
+        servicioRecargas.agregar(recarga);
     }
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dominio;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public class Cuenta {
     private double saldo;
-    private List<Recarga> recargas;
+    private List<Recarga> recargas = new ArrayList();
 
     public Cuenta(double saldo) {
         this.saldo = saldo;
@@ -29,5 +30,7 @@ public class Cuenta {
         return recargas;
     }
     
-    
+    public String getSaldoFormateado(){
+        return "$ " + this.saldo;
+    }
 }
