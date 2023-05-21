@@ -31,6 +31,7 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
      */
     public UIEmularAprobacionRecarga(Frame parent, boolean modal, UsuarioAdministrador usuarioAdministrador){
         super(parent,modal);
+        this.usuarioAdministrador = usuarioAdministrador;
         setLocationRelativeTo(null);
         initComponents();
         jListRecargas.setCellRenderer(new DetalleRecargaRenderer());
@@ -139,13 +140,16 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
     private void jButtonAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAprobarActionPerformed
         if(Fachada.getInstancia().aprobar((Recarga)jListRecargas.getSelectedValue(), usuarioAdministrador)){
             JOptionPane.showMessageDialog(this, "La recarga se aprobó correctamente.", "OK", JOptionPane.INFORMATION_MESSAGE);
+            cargarListaRecargas();
         } else {
             JOptionPane.showMessageDialog(this, "No se pudo aprobar la recarga", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        //ToDo SOLO PARA PROBAR - Pasar a Observer
+        
     }//GEN-LAST:event_jButtonAprobarActionPerformed
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
 

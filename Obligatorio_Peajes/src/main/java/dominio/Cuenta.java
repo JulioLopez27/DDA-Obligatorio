@@ -57,6 +57,7 @@ public class Cuenta {
         for(Recarga r : this.recargas){
             if(r.equals(recarga)){
                 r.setAprobador(usuarioAdministrador);
+                this.saldo += r.getMonto();
                 return true;
             }
         }
