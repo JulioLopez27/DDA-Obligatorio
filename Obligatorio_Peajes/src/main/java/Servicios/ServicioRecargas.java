@@ -30,7 +30,6 @@ public class ServicioRecargas {
         this.recargas = recargas;
     }
 
-    //ToDo TENEMOS DOS LISTAS DE RECARGAS
     public void agregar(Recarga recarga) throws RecargaException {
         if(recarga != null && recarga.getMonto() > 0){
             this.recargas.add(recarga);

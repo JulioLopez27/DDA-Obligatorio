@@ -446,7 +446,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         
     }
     
-    //ToDo NO LO PUDIMOS APLICAR: PREGUNTAR AL PROFE
+    //ToDo APLICAR EN LUGAR DE TABLAS
     public class VehiculoDetalleRenderer implements ListCellRenderer<Vehiculo> {
 
         @Override
