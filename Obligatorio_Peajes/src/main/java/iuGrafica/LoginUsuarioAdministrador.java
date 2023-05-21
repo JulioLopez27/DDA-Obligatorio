@@ -7,6 +7,7 @@ package iuGrafica;
 import Exceptions.LoginException;
 import Servicios.Fachada;
 import dominio.Usuario;
+import dominio.UsuarioAdministrador;
 import java.awt.Frame;
 
 /**
@@ -25,7 +26,7 @@ public class LoginUsuarioAdministrador extends LoginAbstracto {
 
     @Override
     protected void ejecutarProximoCasoDeUso(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        new UIMenuAdministrador(null,false,(UsuarioAdministrador) usuario).setVisible(true);
     }
     
 

@@ -72,4 +72,12 @@ public class UsuarioPropietario extends Usuario {
     public void agregarRecarga(Recarga recarga) throws RecargaException {
         this.cuenta.agreagar(recarga);
     }
+
+    public List<Recarga> getRecargasPendientes() {
+        return this.cuenta.getRecargasPendientes();
+    }
+
+    public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
+        return this.getCuenta().aprobar(recarga, usuarioAdministrador);
+    }
 }

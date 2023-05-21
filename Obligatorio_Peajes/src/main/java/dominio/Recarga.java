@@ -15,10 +15,12 @@ public class Recarga {
     private LocalDate fecha;
     private UsuarioAdministrador aprobador;
     private Cuenta cuenta;
+    private UsuarioPropietario usuarioPropietario;
 
-    public Recarga(double monto, Cuenta cuenta) {
+    public Recarga(double monto, Cuenta cuenta, UsuarioPropietario usuarioPropietario) {
         this.monto = monto;
         this.cuenta = cuenta;
+        this.usuarioPropietario = usuarioPropietario;
         this.fecha = LocalDate.now();
     }
 
@@ -32,6 +34,10 @@ public class Recarga {
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public UsuarioPropietario getUsuarioPropietario() {
+        return usuarioPropietario;
     }
     
     public LocalDate getFecha() {

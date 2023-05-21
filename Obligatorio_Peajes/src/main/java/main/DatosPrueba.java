@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package main;
+import Exceptions.RecargaException;
 import Servicios.Fachada;
 import Servicios.ServicioUsuarios;
 import dominio.Categoria;
 import dominio.Cuenta;
+import dominio.Recarga;
 import dominio.Tarifa;
 import dominio.UsuarioAdministrador;
 import dominio.UsuarioPropietario;
@@ -66,6 +68,24 @@ public class DatosPrueba {
         fachada.agregar(usuarioProp2);
         fachada.agregar(usuarioProp3);
         fachada.agregar(usuarioAdmin1);
+        
+        //Recargas
+        Recarga rec1 = new Recarga(128.8, cuenta1, usuarioProp1);
+        Recarga rec2 = new Recarga(250, cuenta1, usuarioProp1);
+        Recarga rec3 = new Recarga(350, cuenta1, usuarioProp1);
+        Recarga rec4 = new Recarga(350, cuenta2, usuarioProp2);
+        Recarga rec5 = new Recarga(1000, cuenta3, usuarioProp3);
+        Recarga rec6 = new Recarga(200, cuenta3, usuarioProp3);
+        try{
+            fachada.agregar(rec1);
+            fachada.agregar(rec2);
+            fachada.agregar(rec3);
+            fachada.agregar(rec4);
+            fachada.agregar(rec5);
+            fachada.agregar(rec6);
+        } catch(RecargaException re){
+            
+        }
                 
     }
 }

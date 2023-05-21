@@ -4,17 +4,23 @@
  */
 package iuGrafica;
 
+import dominio.UsuarioAdministrador;
+
 /**
  *
  * @author gonzalobazzi
  */
 public class UIMenuAdministrador extends javax.swing.JDialog {
+    
+    private UsuarioAdministrador usuarioAdministrador;
 
     /**
      * Creates new form UIMenuAdministrador
      */
-    public UIMenuAdministrador(java.awt.Frame parent, boolean modal) {
+    public UIMenuAdministrador(java.awt.Frame parent, boolean modal, UsuarioAdministrador usuarioAdministrador) {
         super(parent, modal);
+        this.usuarioAdministrador = usuarioAdministrador;
+        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -101,7 +107,7 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jEmularAprobacionRecargasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmularAprobacionRecargasActionPerformed
-        new UIEmularAprobacionRecarga(null,false).setVisible(true);
+        new UIEmularAprobacionRecarga(null,false, usuarioAdministrador).setVisible(true);
     }//GEN-LAST:event_jEmularAprobacionRecargasActionPerformed
 
     private void jAsignarBonificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAsignarBonificacionesActionPerformed

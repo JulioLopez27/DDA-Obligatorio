@@ -42,4 +42,24 @@ public class Cuenta {
             throw new RecargaException("Monto inválido");
         }
     }
+
+    public List<Recarga> getRecargasPendientes() {
+        List<Recarga> recargasPendientes = new ArrayList();
+        for(Recarga r :this.recargas){
+            if(r.getAprobador() == null){
+                recargasPendientes.add(r);
+            }
+        }
+        return recargasPendientes;
+    }
+
+    public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
+        for(Recarga r : this.recargas){
+            if(r.equals(recarga)){
+                r.setAprobador(usuarioAdministrador);
+                return true;
+            }
+        }
+        return false;
+    }
 }

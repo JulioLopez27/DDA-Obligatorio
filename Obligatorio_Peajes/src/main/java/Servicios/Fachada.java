@@ -11,6 +11,7 @@ import dominio.Recarga;
 import dominio.Sesion;
 import dominio.UsuarioPropietario;
 import dominio.UsuarioAdministrador;
+import java.util.List;
 
 /**
  *
@@ -51,7 +52,15 @@ public class Fachada extends Observable {
         return servicioUsuarios.agregar(usuarioAdministrador);
     }
 
-    public void agregar(Recarga recarga, UsuarioPropietario usuarioPropietario) throws RecargaException {
-        servicioUsuarios.agregar(recarga, usuarioPropietario);
+    public void agregar(Recarga recarga) throws RecargaException {
+        servicioUsuarios.agregar(recarga);
+    }
+
+    public List<List<Recarga>> getRecargasPendientes() {
+        return servicioUsuarios.getRecargasPendientes();
+    }
+
+    public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
+        return servicioUsuarios.aprobar(recarga, usuarioAdministrador);
     }
 }

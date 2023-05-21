@@ -67,13 +67,31 @@ public class ServicioUsuarios {
         return usuariosAdministrador.add(usuarioAdministrador);
     } 
     
-    public void agregar(Recarga recarga, UsuarioPropietario usuarioPropietario) throws RecargaException {
+    public void agregar(Recarga recarga) throws RecargaException {
         for(UsuarioPropietario up : this.usuariosPropietario){
-            if(up.equals(usuarioPropietario)){
+            if(up.equals(recarga.getUsuarioPropietario())){
                 up.agregarRecarga(recarga);
                 return;
             }
         }
+    }
+
+    //ToDo VALIDAR SI ESTA OK ESTO
+    public List<List<Recarga>> getRecargasPendientes() {
+        List<List<Recarga>> recargasPendientes = new ArrayList(); 
+        for(UsuarioPropietario up : this.usuariosPropietario){
+            recargasPendientes.add(up.getRecargasPendientes());
+        }
+        return recargasPendientes;
+    }
+
+    public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
+        for(UsuarioPropietario up : this.usuariosPropietario){
+            if(up.equals(recarga.getUsuarioPropietario())){
+                return up.aprobar(recarga, usuarioAdministrador);
+            }
+        }
+        return false;
     }
 
 }

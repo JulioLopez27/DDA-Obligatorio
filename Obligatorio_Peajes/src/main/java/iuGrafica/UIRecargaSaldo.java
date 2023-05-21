@@ -118,8 +118,8 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         String montoARecargar = jTextFieldMontoRecarga.getText();
         try{
-            Recarga nuevaRecarga = new Recarga(parseDouble(montoARecargar), usuarioPropietario.getCuenta());
-            Fachada.getInstancia().agregar(nuevaRecarga, usuarioPropietario);
+            Recarga nuevaRecarga = new Recarga(parseDouble(montoARecargar), usuarioPropietario.getCuenta(), usuarioPropietario);
+            Fachada.getInstancia().agregar(nuevaRecarga);
             this.dispose();
         } catch (RecargaException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
