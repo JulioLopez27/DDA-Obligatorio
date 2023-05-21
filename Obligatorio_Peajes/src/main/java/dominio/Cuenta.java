@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dominio;
+import Exceptions.RecargaException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,5 +33,13 @@ public class Cuenta {
     
     public String getSaldoFormateado(){
         return "$ " + this.saldo;
+    }
+
+    public void agreagar(Recarga recarga) throws RecargaException {
+        if(recarga != null && recarga.getMonto() > 0){
+            this.recargas.add(recarga);
+        } else {
+            throw new RecargaException("Monto inválido");
+        }
     }
 }

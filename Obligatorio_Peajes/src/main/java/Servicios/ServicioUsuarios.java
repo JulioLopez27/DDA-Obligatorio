@@ -5,6 +5,8 @@
 package Servicios;
 
 import Exceptions.LoginException;
+import Exceptions.RecargaException;
+import dominio.Recarga;
 import dominio.Sesion;
 import dominio.Usuario;
 import dominio.UsuarioAdministrador;
@@ -65,5 +67,13 @@ public class ServicioUsuarios {
         return usuariosAdministrador.add(usuarioAdministrador);
     } 
     
+    public void agregar(Recarga recarga, UsuarioPropietario usuarioPropietario) throws RecargaException {
+        for(UsuarioPropietario up : this.usuariosPropietario){
+            if(up.equals(usuarioPropietario)){
+                up.agregarRecarga(recarga);
+                return;
+            }
+        }
+    }
 
 }

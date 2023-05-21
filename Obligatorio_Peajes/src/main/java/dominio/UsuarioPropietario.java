@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dominio;
+import Exceptions.RecargaException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +67,9 @@ public class UsuarioPropietario extends Usuario {
             cantidadTransitos += v.getCantidadTransitos();
         }
         return cantidadTransitos;
+    }
+
+    public void agregarRecarga(Recarga recarga) throws RecargaException {
+        this.cuenta.agreagar(recarga);
     }
 }

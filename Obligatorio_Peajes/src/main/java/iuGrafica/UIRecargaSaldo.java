@@ -117,12 +117,14 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         String montoARecargar = jTextFieldMontoRecarga.getText();
-        Recarga nuevaRecarga = new Recarga(parseDouble(montoARecargar), usuarioPropietario.getCuenta());
         try{
-            Fachada.getInstancia().agregar(nuevaRecarga);
+            Recarga nuevaRecarga = new Recarga(parseDouble(montoARecargar), usuarioPropietario.getCuenta());
+            Fachada.getInstancia().agregar(nuevaRecarga, usuarioPropietario);
             this.dispose();
         } catch (RecargaException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "El monto debe ser un valor numérico.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         

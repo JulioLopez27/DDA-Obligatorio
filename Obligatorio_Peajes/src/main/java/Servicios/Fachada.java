@@ -51,7 +51,7 @@ public class Fachada extends Observable {
         return servicioUsuarios.agregar(usuarioAdministrador);
     }
 
-    public void agregar(Recarga recarga) throws RecargaException {
-        servicioRecargas.agregar(recarga);
+    public void agregar(Recarga recarga, UsuarioPropietario usuarioPropietario) throws RecargaException {
+        servicioUsuarios.agregar(recarga, usuarioPropietario);
     }
 }

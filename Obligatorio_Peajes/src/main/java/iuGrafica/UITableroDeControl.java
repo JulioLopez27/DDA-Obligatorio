@@ -141,7 +141,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.Double.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -436,7 +436,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                 r.getFecha(),
                 r.getMonto(),
                 r.getEstado(),
-                r.getAprobador().getNombre()
+                (r.getAprobador() != null) ? r.getAprobador() : "No asignado"
             };
             model.addRow(dataRow);
         }

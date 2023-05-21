@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @author Julio Cesar
  */
+@Deprecated
 public class ServicioRecargas {
     
     private List<Recarga> recargas = new ArrayList();
@@ -29,8 +30,7 @@ public class ServicioRecargas {
         this.recargas = recargas;
     }
 
-    //ToDo
-    ToDo TENEMOS DOS LISTAS DE RECARGAS
+    //ToDo TENEMOS DOS LISTAS DE RECARGAS
     public void agregar(Recarga recarga) throws RecargaException {
         if(recarga != null && recarga.getMonto() > 0){
             this.recargas.add(recarga);
