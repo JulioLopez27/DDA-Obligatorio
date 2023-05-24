@@ -27,14 +27,18 @@ public class DatosPrueba {
         Fachada fachada = Fachada.getInstancia();
         
         //Cuentas
-        Cuenta cuenta1 = new Cuenta(3500);
-        Cuenta cuenta2 = new Cuenta(100);
-        Cuenta cuenta3 = new Cuenta(2000);
+        Cuenta cuenta1 = new Cuenta(3500, null);
+        Cuenta cuenta2 = new Cuenta(100, null);
+        Cuenta cuenta3 = new Cuenta(2000, null);
         
         //Usuarios Propietarios
         UsuarioPropietario usuarioProp1 = new UsuarioPropietario(200, cuenta1, 41234567, "pass123", "Juan Perez");
         UsuarioPropietario usuarioProp2 = new UsuarioPropietario(50, cuenta2, 51234567, "pass123", "Ana Lopez");
         UsuarioPropietario usuarioProp3 = new UsuarioPropietario(500, cuenta3, 11234567, "pass123", "Alberto Rodriguez");
+        
+        cuenta1.setUsuarioPropietario(usuarioProp1);
+        cuenta2.setUsuarioPropietario(usuarioProp2);
+        cuenta3.setUsuarioPropietario(usuarioProp3);
         
         //Usuarios Admin
         UsuarioAdministrador usuarioAdmin1 = new UsuarioAdministrador(41234567, "pass123", "Carlos Gonzalez");
@@ -70,12 +74,12 @@ public class DatosPrueba {
         fachada.agregar(usuarioAdmin1);
         
         //Recargas
-        Recarga rec1 = new Recarga(128.8, cuenta1, usuarioProp1);
-        Recarga rec2 = new Recarga(250, cuenta1, usuarioProp1);
-        Recarga rec3 = new Recarga(350, cuenta1, usuarioProp1);
-        Recarga rec4 = new Recarga(350, cuenta2, usuarioProp2);
-        Recarga rec5 = new Recarga(1000, cuenta3, usuarioProp3);
-        Recarga rec6 = new Recarga(200, cuenta3, usuarioProp3);
+        Recarga rec1 = new Recarga(128.8, cuenta1);
+        Recarga rec2 = new Recarga(250, cuenta1);
+        Recarga rec3 = new Recarga(350, cuenta1);
+        Recarga rec4 = new Recarga(350, cuenta2);
+        Recarga rec5 = new Recarga(1000, cuenta3);
+        Recarga rec6 = new Recarga(200, cuenta3);
         try{
             fachada.agregar(rec1);
             fachada.agregar(rec2);

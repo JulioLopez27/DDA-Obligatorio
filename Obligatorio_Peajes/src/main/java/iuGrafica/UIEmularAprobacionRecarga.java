@@ -167,17 +167,8 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
     }
 
     private void cargarListaRecargas() {
-        List<Recarga> recargasAMostrar = new ArrayList();
-        
-        List<List<Recarga>> listaDeRecargas = Fachada.getInstancia().getRecargasPendientes();
-        for(List<Recarga> listaRecargasPropietario : listaDeRecargas){
-            for(Recarga r : listaRecargasPropietario){
-                recargasAMostrar.add(r);
-            }
-        }
-        
-        jListRecargas.setListData(recargasAMostrar.toArray());
-        
+        List<Recarga> recargasPendientes = Fachada.getInstancia().getRecargasPendientes();
+        jListRecargas.setListData(recargasPendientes.toArray());
     }
     
     public class DetalleRecargaRenderer implements ListCellRenderer<Recarga> {
@@ -186,7 +177,7 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
         public Component getListCellRendererComponent(JList<? extends Recarga> list, Recarga recarga, int index, boolean isSelected, boolean cellHasFocus) {
             CeldaRecarga celdaRecarga = new CeldaRecarga();
             celdaRecarga.jFechaRecagra.setText(recarga.getFecha().toString());
-            celdaRecarga.jPropietarioRecarga.setText(recarga.getUsuarioPropietario().getNombre());
+            celdaRecarga.jPropietarioRecarga.setText(recarga.getCuenta().getUsuarioPropietario().getNombre());
             celdaRecarga.jMontoRecarga.setText(recarga.getMonto()+"");
             celdaRecarga.jSelected.setSelected(isSelected);
             return celdaRecarga;

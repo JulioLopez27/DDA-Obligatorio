@@ -13,10 +13,12 @@ import java.util.List;
  */
 public class Cuenta {
     private double saldo;
+    private UsuarioPropietario usuarioPropietario;
     private List<Recarga> recargas = new ArrayList();
 
-    public Cuenta(double saldo) {
+    public Cuenta(double saldo, UsuarioPropietario usuarioPropietario) {
         this.saldo = saldo;
+        this.usuarioPropietario = usuarioPropietario;
     }
 
     public double getSaldo() {
@@ -27,6 +29,14 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
+    public void setUsuarioPropietario(UsuarioPropietario usuarioPropietario) {
+        this.usuarioPropietario = usuarioPropietario;
+    }
+
+    public UsuarioPropietario getUsuarioPropietario() {
+        return usuarioPropietario;
+    }
+    
     public List<Recarga> getRecargas() {
         return recargas;
     }

@@ -15,12 +15,10 @@ public class Recarga {
     private LocalDate fecha;
     private UsuarioAdministrador aprobador;
     private Cuenta cuenta;
-    private UsuarioPropietario usuarioPropietario;
 
-    public Recarga(double monto, Cuenta cuenta, UsuarioPropietario usuarioPropietario) {
+    public Recarga(double monto, Cuenta cuenta) {
         this.monto = monto;
         this.cuenta = cuenta;
-        this.usuarioPropietario = usuarioPropietario;
         this.fecha = LocalDate.now();
     }
 
@@ -35,10 +33,6 @@ public class Recarga {
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
-
-    public UsuarioPropietario getUsuarioPropietario() {
-        return usuarioPropietario;
-    }
     
     public LocalDate getFecha() {
         return fecha;
@@ -52,12 +46,12 @@ public class Recarga {
         this.aprobador = aprobador;
     }
     
+    public UsuarioPropietario getUsuarioPropietario(){
+        return this.cuenta.getUsuarioPropietario();
+    } 
+    
     public String getEstado(){
-        if(this.aprobador != null){
-            return "Aprobada";
-        } else {
-            return "Pendiente";
-        }
+        return (this.aprobador != null) ? "Aprobada" : "Pendiente";
     }
     
 }

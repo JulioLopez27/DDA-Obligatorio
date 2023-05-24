@@ -76,8 +76,6 @@ public class ServicioUsuarios {
         }
     }
 
-    //ToDo VALIDAR SI ESTA OK ESTO
-    //TODO PROBAR, CAMBIADO CON EL DOCENTE
     public List<Recarga>getRecargasPendientes() {
        List<Recarga> recargasPendientes = new ArrayList(); 
         for(UsuarioPropietario up : this.usuariosPropietario){
@@ -88,7 +86,7 @@ public class ServicioUsuarios {
 
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         for(UsuarioPropietario up : this.usuariosPropietario){
-            if(up.equals(recarga.getUsuarioPropietario())){
+            if(up.equals(recarga.getUsuarioPropietario())){ //ToDo Validar si es necesario pasar por cuenta
                 return up.aprobar(recarga, usuarioAdministrador);
             }
         }

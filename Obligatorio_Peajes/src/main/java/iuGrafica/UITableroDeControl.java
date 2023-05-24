@@ -32,8 +32,10 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         initComponents();
         this.usuarioPropietario = usuario;
 
-        // ToDo Preguntar por que esto no funciona
+        // ToDo hacer idem recargar saldo
         //jListaVehiculos.setCellRenderer(new VehiculoDetalleRenderer());
+        
+        //ToDo hay que suscribir a la fachada y desuscribir cuando cierra la pantalla
         
         inicializar();
     }
