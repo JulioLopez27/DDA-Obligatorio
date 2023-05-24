@@ -389,7 +389,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        //ToDo ACTUALIZAR LA PANTALLA
+        //ToDo MANDAR EVENTO ACTUALIZAR PANTALLA
         
     }
 
