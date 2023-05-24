@@ -77,10 +77,11 @@ public class ServicioUsuarios {
     }
 
     //ToDo VALIDAR SI ESTA OK ESTO
-    public List<List<Recarga>> getRecargasPendientes() {
-        List<List<Recarga>> recargasPendientes = new ArrayList(); 
+    //TODO PROBAR, CAMBIADO CON EL DOCENTE
+    public List<Recarga>getRecargasPendientes() {
+       List<Recarga> recargasPendientes = new ArrayList(); 
         for(UsuarioPropietario up : this.usuariosPropietario){
-            recargasPendientes.add(up.getRecargasPendientes());
+            recargasPendientes.addAll(up.getRecargasPendientes());
         }
         return recargasPendientes;
     }
