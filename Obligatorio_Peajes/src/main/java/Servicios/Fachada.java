@@ -56,7 +56,7 @@ public class Fachada extends Observable {
         servicioUsuarios.agregar(recarga);
     }
 
-    public List<List<Recarga>> getRecargasPendientes() {
+    public List<Recarga> getRecargasPendientes() {
         return servicioUsuarios.getRecargasPendientes();
     }
 
