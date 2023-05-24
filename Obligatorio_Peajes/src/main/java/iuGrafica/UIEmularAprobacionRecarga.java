@@ -4,6 +4,7 @@
  */
 package iuGrafica;
 
+import iuGrafica.celdas.CeldaRecarga;
 import Observer.Observable;
 import Observer.Observer;
 import Servicios.Fachada;
