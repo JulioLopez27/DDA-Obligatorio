@@ -79,6 +79,10 @@ public class UsuarioPropietario extends Usuario {
     public List<Recarga> getRecargasPendientes() {
         return this.cuenta.getRecargasPendientes();
     }
+    
+    public List<Recarga> getRecargas() {
+        return this.cuenta.getRecargas();
+    }
 
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         return this.getCuenta().aprobar(recarga, usuarioAdministrador);

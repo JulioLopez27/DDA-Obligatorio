@@ -77,4 +77,8 @@ public class Fachada extends Observable {
     public List<Vehiculo> getVehiculos() {
         return servicioUsuarios.getVehiculos();
     }
+    
+    public List<Recarga> getRecargas() {
+        return servicioUsuarios.getRecargas();
+    }
 }

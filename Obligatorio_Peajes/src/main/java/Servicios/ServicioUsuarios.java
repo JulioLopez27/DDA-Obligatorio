@@ -102,4 +102,14 @@ public class ServicioUsuarios {
         return vehiculos;
     }
 
+    List<Recarga> getRecargas() {
+              List<Recarga> recargas = new ArrayList(); 
+        for(UsuarioPropietario up : this.usuariosPropietario){
+            recargas.addAll(up.getRecargas());
+        }
+        return recargas;
+    }
+    
+    
+
 }
