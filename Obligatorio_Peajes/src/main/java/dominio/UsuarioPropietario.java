@@ -24,6 +24,9 @@ public class UsuarioPropietario extends Usuario {
         this.cuenta = cuenta;
     }
 
+    public void agregar(Bonificacion bonificacion) {
+    this.bonificaciones.add(bonificacion);
+    }
     public double getSaldoMinimoAlerta() {
         return saldoMinimoAlerta;
     }
@@ -80,4 +83,6 @@ public class UsuarioPropietario extends Usuario {
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         return this.getCuenta().aprobar(recarga, usuarioAdministrador);
     }
+
+    
 }
