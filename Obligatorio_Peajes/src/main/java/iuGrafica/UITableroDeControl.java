@@ -7,17 +7,21 @@ package iuGrafica;
 import Observer.Observable;
 import Observer.Observer;
 import Servicios.Fachada;
+import dominio.Bonificacion;
 import dominio.Recarga;
 import dominio.Transito;
 import dominio.UsuarioPropietario;
 import dominio.Vehiculo;
+import iuGrafica.celdas.CeldaBonificacion;
 import iuGrafica.celdas.CeldaTransito;
 import iuGrafica.celdas.CeldaVehiculo;
 import java.awt.Component;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
 public class UITableroDeControl extends javax.swing.JDialog implements Observer {
 
     private UsuarioPropietario usuarioPropietario;
-    
+
     /**
      * Creates new form TablerDeControl
      */
@@ -38,9 +42,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
         jListVehiculos.setCellRenderer(new VehiculoDetalleRenderer());
         jListTransitos.setCellRenderer(new TransitoDetalleRenderer());
-        
+        jListBonificaciones.setCellRenderer(new BonificacionesDetallesRenderer());
         //ToDo hay que suscribir a la fachada y desuscribir cuando cierra la pantalla
-        
+
         inicializar();
     }
 
@@ -53,8 +57,6 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTablaBonificaciones = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTablaRecargas = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -88,22 +90,18 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         jListTransitos = new javax.swing.JList();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListVehiculos = new javax.swing.JList();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListBonificaciones = new javax.swing.JList();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tablero de control de propietario");
+        setFocusTraversalPolicyProvider(true);
 
-        jTablaBonificaciones.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Nombre bonificación", "Puesto", "Fecha assignada"
-            }
-        ));
-        jScrollPane2.setViewportView(jTablaBonificaciones);
+        jScrollPane4.setAutoscrolls(true);
+        jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTablaRecargas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,6 +128,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         });
         jScrollPane4.setViewportView(jTablaRecargas);
 
+        jScrollPane5.setAutoscrolls(true);
+        jScrollPane5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         jTablaNotificaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -145,6 +146,8 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
         jButtonRecargar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonRecargar.setText("Rercargar");
+        jButtonRecargar.setAutoscrolls(true);
+        jButtonRecargar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonRecargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRecargarActionPerformed(evt);
@@ -153,6 +156,8 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
         jButtonBorrarNotificaciones.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButtonBorrarNotificaciones.setText("Borrar");
+        jButtonBorrarNotificaciones.setAutoscrolls(true);
+        jButtonBorrarNotificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonBorrarNotificaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBorrarNotificacionesActionPerformed(evt);
@@ -161,68 +166,152 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
         jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton3.setText("Cerrar");
+        jButton3.setAutoscrolls(true);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jSeparator1.setAutoscrolls(true);
+        jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setText("jLabel1");
+        jLabel1.setAutoscrolls(true);
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel2.setText("jLabel2");
+        jLabel2.setAutoscrolls(true);
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel3.setText("jLabel3");
+        jLabel3.setAutoscrolls(true);
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantVehiculos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCantVehiculos.setText("jLabel4");
+        jCantVehiculos.setAutoscrolls(true);
+        jCantVehiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantBonificaciones.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCantBonificaciones.setText("jLabel5");
+        jCantBonificaciones.setAutoscrolls(true);
+        jCantBonificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantTransitos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCantTransitos.setText("jLabel6");
+        jCantTransitos.setAutoscrolls(true);
+        jCantTransitos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel7.setText("jLabel7");
+        jLabel7.setAutoscrolls(true);
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantRecargas.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCantRecargas.setText("jLabel8");
+        jCantRecargas.setAutoscrolls(true);
+        jCantRecargas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel9.setText("jLabel9");
+        jLabel9.setAutoscrolls(true);
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantNotificaciones.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCantNotificaciones.setText("jLabel10");
+        jCantNotificaciones.setAutoscrolls(true);
+        jCantNotificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel11.setText("jLabel11");
+        jLabel11.setAutoscrolls(true);
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTextSaldo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextSaldo.setForeground(new java.awt.Color(0, 153, 0));
         jTextSaldo.setText("jLabel12");
+        jTextSaldo.setAutoscrolls(true);
+        jTextSaldo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTextNombreUsuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextNombreUsuario.setText("jLabel14");
+        jTextNombreUsuario.setAutoscrolls(true);
+        jTextNombreUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabelPuestoTransito.setText("Puesto");
+        jLabelPuestoTransito.setAutoscrolls(true);
+        jLabelPuestoTransito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabelMatriculaTransito.setText("Matricula");
+        jLabelMatriculaTransito.setAutoscrolls(true);
+        jLabelMatriculaTransito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabelTarifa.setText("Tarifa");
+        jLabelTarifa.setAutoscrolls(true);
+        jLabelTarifa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabelTarifaMonto.setText("Tarifa (Monto)");
+        jLabelTarifaMonto.setAutoscrolls(true);
+        jLabelTarifaMonto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabelBonificacionTransito.setText("Bonif.");
+        jLabelBonificacionTransito.setAutoscrolls(true);
+        jLabelBonificacionTransito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabelMontoBonifTransito.setText("Monto Bonif.");
+        jLabelMontoBonifTransito.setAutoscrolls(true);
+        jLabelMontoBonifTransito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabelMontoPagadoTransito.setText("Monto Pagado");
+        jLabelMontoPagadoTransito.setAutoscrolls(true);
+        jLabelMontoPagadoTransito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabelFechaTransito.setText("Fecha");
+        jLabelFechaTransito.setAutoscrolls(true);
+        jLabelFechaTransito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jScrollPane6.setAutoscrolls(true);
+        jScrollPane6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jScrollPane6.setViewportView(jListTransitos);
 
+        jScrollPane3.setAutoscrolls(true);
+        jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         jScrollPane3.setViewportView(jListVehiculos);
+
+        jScrollPane1.setAutoscrolls(true);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jScrollPane1.setViewportView(jListBonificaciones);
+
+        jLabel4.setText("Nombre Bonificacion");
+        jLabel4.setAutoscrolls(true);
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel5.setText("Puesto");
+        jLabel5.setAutoscrolls(true);
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel6.setText("Fecha Asignada");
+        jLabel6.setAutoscrolls(true);
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonBorrarNotificaciones)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(82, 82, 82))
+                            .addComponent(jCantNotificaciones))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(361, 361, 361))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jLabel11)
                         .addGap(26, 26, 26)
@@ -230,69 +319,70 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextNombreUsuario)
                         .addGap(91, 91, 91))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
                                 .addComponent(jCantRecargas))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCantVehiculos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCantBonificaciones))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
                                 .addComponent(jCantTransitos))
                             .addComponent(jButtonRecargar)
-                            .addComponent(jButtonBorrarNotificaciones)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCantNotificaciones)))
-                        .addGap(18, 18, 18)
+                                .addComponent(jCantVehiculos)
+                                .addGap(6, 6, 6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCantBonificaciones)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabelPuestoTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabelMatriculaTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabelTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabelTarifaMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabelBonificacionTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelMontoBonifTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabelMontoPagadoTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabelFechaTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane4)
-                            .addComponent(jScrollPane5)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(308, 308, 308)))
-                                    .addComponent(jScrollPane2)))
-                            .addComponent(jScrollPane3))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabelPuestoTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(41, 41, 41)
+                                        .addComponent(jLabelMatriculaTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(jLabelTarifa, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jLabelTarifaMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(32, 32, 32)
+                                        .addComponent(jLabelBonificacionTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabelMontoBonifTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabelMontoPagadoTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabelFechaTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane4)
+                                    .addComponent(jScrollPane3)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel4)
+                                .addGap(208, 208, 208)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6)
+                                .addGap(50, 50, 50)))))
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jTextSaldo)
@@ -301,52 +391,61 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCantVehiculos)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCantBonificaciones)
+                        .addComponent(jLabel2)))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPuestoTransito)
+                    .addComponent(jLabelMatriculaTransito)
+                    .addComponent(jLabelTarifa)
+                    .addComponent(jLabelTarifaMonto)
+                    .addComponent(jLabelBonificacionTransito)
+                    .addComponent(jLabelMontoBonifTransito)
+                    .addComponent(jLabelMontoPagadoTransito)
+                    .addComponent(jLabelFechaTransito))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCantVehiculos)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jCantBonificaciones)
-                                .addComponent(jLabel2))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCantTransitos)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabelPuestoTransito)
-                            .addComponent(jLabelMatriculaTransito)
-                            .addComponent(jLabelTarifa)
-                            .addComponent(jLabelTarifaMonto)
-                            .addComponent(jLabelBonificacionTransito)
-                            .addComponent(jLabelMontoBonifTransito)
-                            .addComponent(jLabelMontoPagadoTransito)
-                            .addComponent(jLabelFechaTransito))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jCantRecargas)
                                     .addComponent(jLabel7))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonRecargar)))
+                                .addComponent(jButtonRecargar))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jCantTransitos)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(1, 1, 1)
+                        .addComponent(jCantNotificaciones)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCantNotificaciones)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonBorrarNotificaciones))
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addComponent(jButtonBorrarNotificaciones)
+                        .addGap(73, 73, 73))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)))
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -373,6 +472,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBonificacionTransito;
@@ -383,15 +485,15 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     private javax.swing.JLabel jLabelPuestoTransito;
     private javax.swing.JLabel jLabelTarifa;
     private javax.swing.JLabel jLabelTarifaMonto;
+    private javax.swing.JList jListBonificaciones;
     private javax.swing.JList jListTransitos;
     private javax.swing.JList jListVehiculos;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTablaBonificaciones;
     private javax.swing.JTable jTablaNotificaciones;
     private javax.swing.JTable jTablaRecargas;
     private javax.swing.JLabel jTextNombreUsuario;
@@ -401,17 +503,17 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     @Override
     public void notificar(Observable origen, Object evento) {
         //ToDo MANDAR EVENTO ACTUALIZAR PANTALLA
-        
+
     }
 
     private void inicializar() {
         jTextNombreUsuario.setText(usuarioPropietario.getNombre());
         jTextSaldo.setText(usuarioPropietario.getCuenta().getSaldoFormateado());
-        jCantVehiculos.setText(usuarioPropietario.getVehiculos().size()+"");
-        jCantBonificaciones.setText(usuarioPropietario.getBonificaciones().size()+"");
-        jCantTransitos.setText(usuarioPropietario.getCantidadTransitos()+"");
-        jCantRecargas.setText(usuarioPropietario.getCuenta().getRecargas().size()+"");
-        jCantNotificaciones.setText(usuarioPropietario.getNotificaciones().size()+"");
+        jCantVehiculos.setText(usuarioPropietario.getVehiculos().size() + "");
+        jCantBonificaciones.setText(usuarioPropietario.getBonificaciones().size() + "");
+        jCantTransitos.setText(usuarioPropietario.getCantidadTransitos() + "");
+        jCantRecargas.setText(usuarioPropietario.getCuenta().getRecargas().size() + "");
+        jCantNotificaciones.setText(usuarioPropietario.getNotificaciones().size() + "");
         cargarListaDeVehiculos();
         cargarListaDeBonificaciones();
         cargarListaDeTransitos();
@@ -425,7 +527,8 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }
 
     private void cargarListaDeBonificaciones() {
-        //
+        List<Bonificacion> bonificaciones = usuarioPropietario.getBonificaciones();
+        jListBonificaciones.setListData(bonificaciones.toArray());
     }
 
     private void cargarListaDeTransitos() {
@@ -434,8 +537,8 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }
 
     private void cargarListaDeRecargas() {
-        DefaultTableModel model = (DefaultTableModel)jTablaRecargas.getModel();
-        for(Recarga r : usuarioPropietario.getCuenta().getRecargas()){
+        DefaultTableModel model = (DefaultTableModel) jTablaRecargas.getModel();
+        for (Recarga r : usuarioPropietario.getCuenta().getRecargas()) {
             Object[] dataRow = new Object[]{
                 r.getFecha(),
                 r.getMonto(),
@@ -447,9 +550,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }
 
     private void cargarListaDeNotificaciones() {
-        
+
     }
-    
+
     public class TransitoDetalleRenderer implements ListCellRenderer<Transito> {
 
         @Override
@@ -463,25 +566,38 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaTransito.jLabelMontoBonif.setText("TEST 50");
             celdaTransito.jLabelMontoPagado.setText("TEST 50");
             celdaTransito.jLabelFecha.setText(transito.getFecha().toString());
-            
+
             return celdaTransito;
         }
-        
+
     }
-    
+
     public class VehiculoDetalleRenderer implements ListCellRenderer<Vehiculo> {
 
-    @Override
-    public Component getListCellRendererComponent(JList<? extends Vehiculo> list, Vehiculo vehiculo, int index, boolean isSelected, boolean cellHasFocus) {
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Vehiculo> list, Vehiculo vehiculo, int index, boolean isSelected, boolean cellHasFocus) {
             CeldaVehiculo celdaVehiculo = new CeldaVehiculo();
             celdaVehiculo.jMatricula.setText(vehiculo.getMatricula());
             celdaVehiculo.jModelo.setText(vehiculo.getModelo());
             celdaVehiculo.jColor.setText(vehiculo.getColor());
             celdaVehiculo.jTransitos.setText("a");
             celdaVehiculo.jMontoTotal.setText("a");
-            
+
             return celdaVehiculo;
         }
-        
+
+    }
+
+    public class BonificacionesDetallesRenderer implements ListCellRenderer<Bonificacion> {
+
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Bonificacion> list, Bonificacion bonificacion, int index, boolean isSelected, boolean cellHasFocus) {
+            CeldaBonificacion celdaBonificacion = new CeldaBonificacion();
+            celdaBonificacion.jNombreBonificacion.setText(bonificacion.getNombre());
+            celdaBonificacion.jPuesto.setText("Puesto Solis");
+            celdaBonificacion.jFechaAsignada.setText(LocalDate.now().toString());
+            return celdaBonificacion;
+        }
+
     }
 }
