@@ -10,6 +10,10 @@ package dominio;
  */
 public class Bonificacion {
     private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
     
     
 }
