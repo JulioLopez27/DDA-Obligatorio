@@ -9,6 +9,7 @@ import Exceptions.RecargaException;
 import Observer.Observable;
 import dominio.Recarga;
 import dominio.Sesion;
+import dominio.Transito;
 import dominio.UsuarioPropietario;
 import dominio.UsuarioAdministrador;
 import java.util.List;
@@ -62,5 +63,13 @@ public class Fachada extends Observable {
 
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         return servicioUsuarios.aprobar(recarga, usuarioAdministrador);
+    }
+
+    public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {
+        return servicioTransitos.getTransitos(usuarioPropietario);
+    }
+
+    public void agregar(Transito transito) {
+        servicioTransitos.agregar(transito);
     }
 }

@@ -25,9 +25,28 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="jTextSaldo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jTextNombreUsuario" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jSeparator1" alignment="1" min="-2" pref="806" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jButton3" min="-2" pref="159" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -59,39 +78,33 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="726" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" pref="726" max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" alignment="0" min="-2" pref="726" max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" min="-2" pref="726" max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" alignment="0" min="-2" pref="726" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="jTextSaldo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jTextNombreUsuario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jSeparator1" alignment="1" min="-2" pref="806" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton3" min="-2" pref="159" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jLabelPuestoTransito" min="-2" pref="60" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="jLabelMatriculaTransito" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="jLabelTarifa" min="-2" pref="57" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="jLabelTarifaMonto" min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="jLabelBonificacionTransito" min="-2" pref="69" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabelMontoBonifTransito" min="-2" pref="87" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jLabelMontoPagadoTransito" min="-2" pref="93" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabelFechaTransito" min="-2" pref="75" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jScrollPane1" pref="825" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="825" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" pref="825" max="32767" attributes="0"/>
+                          <Component id="jScrollPane5" alignment="0" pref="825" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jScrollPane6" min="-2" pref="564" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,14 +136,21 @@
                   <Component id="jScrollPane2" min="-2" pref="84" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane3" min="-2" pref="86" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="jCantTransitos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jCantTransitos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelPuestoTransito" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelMatriculaTransito" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelTarifa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelTarifaMonto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelBonificacionTransito" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelMontoBonifTransito" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelMontoPagadoTransito" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelFechaTransito" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane6" min="-2" pref="106" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane4" min="-2" pref="74" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -156,9 +176,7 @@
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Component id="jButton3" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="61" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -239,78 +257,6 @@
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-              </TableColumnModel>
-            </Property>
-            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="jTablaTransitos">
-          <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="8" rowCount="4">
-                <Column editable="true" title="Puesto" type="java.lang.Object"/>
-                <Column editable="true" title="Matricula" type="java.lang.Object"/>
-                <Column editable="true" title="Tarifa" type="java.lang.Object"/>
-                <Column editable="true" title="Tarifa (monto)" type="java.lang.Object"/>
-                <Column editable="true" title="Bonific. " type="java.lang.Object"/>
-                <Column editable="true" title="Bonific. (monto)" type="java.lang.Object"/>
-                <Column editable="true" title="Monto pagado" type="java.lang.Object"/>
-                <Column editable="true" title="Fecha" type="java.lang.Object"/>
-              </Table>
-            </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -540,6 +486,46 @@
         <Property name="text" type="java.lang.String" value="jLabel14"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="jLabelPuestoTransito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Puesto"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelMatriculaTransito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Matricula"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTarifa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarifa"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTarifaMonto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tarifa (Monto)"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelBonificacionTransito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bonif."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelMontoBonifTransito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Monto Bonif."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelMontoPagadoTransito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Monto Pagado"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelFechaTransito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha"/>
+      </Properties>
+    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane6">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -547,20 +533,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JList" name="jListaVehiculos">
+        <Component class="javax.swing.JList" name="jListTransitos">
           <Properties>
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-                <StringItem index="4" value="Item 5"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
           </AuxValues>
         </Component>
       </SubComponents>

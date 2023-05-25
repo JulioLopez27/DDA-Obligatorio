@@ -40,6 +40,10 @@ public class Transito {
     public LocalDate getFecha() {
         return fecha;
     }
+
+    public UsuarioPropietario getUsuarioPropietario() {
+        return this.vehiculo.getUsuarioPropietario();
+    }
     
     
 }

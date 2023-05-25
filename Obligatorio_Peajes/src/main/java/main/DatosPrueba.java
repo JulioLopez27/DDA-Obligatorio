@@ -8,8 +8,10 @@ import Servicios.Fachada;
 import Servicios.ServicioUsuarios;
 import dominio.Categoria;
 import dominio.Cuenta;
+import dominio.Puesto;
 import dominio.Recarga;
 import dominio.Tarifa;
+import dominio.Transito;
 import dominio.UsuarioAdministrador;
 import dominio.UsuarioPropietario;
 import dominio.Vehiculo;
@@ -64,7 +66,6 @@ public class DatosPrueba {
         Vehiculo vehiculo6 = new Vehiculo(usuarioProp3, cat1, "BMN 5423", "Lancer", "Blanco");
         
         List<Vehiculo> vehiculosProp1 = new ArrayList<>(Arrays.asList(vehiculo1,vehiculo2,vehiculo5));
-        
         usuarioProp1.setVehiculos(vehiculosProp1);
         
         //Agregar Usuarios
@@ -72,6 +73,21 @@ public class DatosPrueba {
         fachada.agregar(usuarioProp2);
         fachada.agregar(usuarioProp3);
         fachada.agregar(usuarioAdmin1);
+        
+        //Puestos
+        Puesto puesto1 = new Puesto("Peaje Solis", "Rta Interbalnearia KM 48");
+        Puesto puesto2 = new Puesto("Peaje Pando", "Rta Interbalnearia KM 28");
+        Puesto puesto3 = new Puesto("Peaje Garzón", "Rta 9 KM 225");
+        
+        //Transitos
+        Transito transito1 = new Transito(vehiculo1, puesto1);
+        Transito transito2 = new Transito(vehiculo1, puesto2);
+        Transito transito3 = new Transito(vehiculo1, puesto3);
+        
+        //Agregar Transitos
+        fachada.agregar(transito1);
+        fachada.agregar(transito2);
+        fachada.agregar(transito3);
         
         //Recargas
         Recarga rec1 = new Recarga(128.8, cuenta1);
