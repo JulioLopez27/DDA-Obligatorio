@@ -6,6 +6,7 @@ package main;
 import Exceptions.RecargaException;
 import Servicios.Fachada;
 import Servicios.ServicioUsuarios;
+import dominio.Bonificacion;
 import dominio.Categoria;
 import dominio.Cuenta;
 import dominio.Puesto;
@@ -106,6 +107,9 @@ public class DatosPrueba {
         } catch(RecargaException re){
             
         }
-                
+              Bonificacion b1= new Bonificacion("Exonerado");
+              Bonificacion b2= new Bonificacion("Trabajador");
+              usuarioProp1.agregar(b1);
+              usuarioProp1.agregar(b2);
     }
 }
