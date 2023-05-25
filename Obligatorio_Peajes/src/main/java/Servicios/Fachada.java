@@ -12,6 +12,7 @@ import dominio.Sesion;
 import dominio.Transito;
 import dominio.UsuarioPropietario;
 import dominio.UsuarioAdministrador;
+import dominio.Vehiculo;
 import java.util.List;
 
 /**
@@ -71,5 +72,9 @@ public class Fachada extends Observable {
 
     public void agregar(Transito transito) {
         servicioTransitos.agregar(transito);
+    }
+    
+    public List<Vehiculo> getVehiculos() {
+        return servicioUsuarios.getVehiculos();
     }
 }
