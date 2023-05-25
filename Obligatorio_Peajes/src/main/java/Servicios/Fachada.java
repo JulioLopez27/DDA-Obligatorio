@@ -11,6 +11,7 @@ import dominio.Recarga;
 import dominio.Sesion;
 import dominio.UsuarioPropietario;
 import dominio.UsuarioAdministrador;
+import dominio.Vehiculo;
 import java.util.List;
 
 /**
@@ -62,5 +63,9 @@ public class Fachada extends Observable {
 
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         return servicioUsuarios.aprobar(recarga, usuarioAdministrador);
+    }
+
+    public List<Vehiculo> getVehiculos() {
+        return servicioUsuarios.getVehiculos();
     }
 }

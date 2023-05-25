@@ -6,9 +6,11 @@ package iuGrafica;
 
 import Observer.Observable;
 import Observer.Observer;
+import Servicios.Fachada;
 import dominio.Recarga;
 import dominio.UsuarioPropietario;
 import dominio.Vehiculo;
+import iuGrafica.celdas.CeldaVehiculo;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +33,8 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     public UITableroDeControl(UsuarioPropietario usuario) {
         initComponents();
         this.usuarioPropietario = usuario;
-
-        // ToDo hacer idem recargar saldo
-        //jListaVehiculos.setCellRenderer(new VehiculoDetalleRenderer());
-        
+        jListVehiculos.setCellRenderer(new VehiculoDetalleRenderer());
+        cargarVehiculos();
         //ToDo hay que suscribir a la fachada y desuscribir cuando cierra la pantalla
         
         inicializar();
@@ -49,8 +49,6 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTablaVehiculos = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablaBonificaciones = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -78,35 +76,16 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         jTextNombreUsuario = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jListaVehiculos = new javax.swing.JList<>();
+        jMatricula = new javax.swing.JLabel();
+        jModelo = new javax.swing.JLabel();
+        jColor = new javax.swing.JLabel();
+        jTransitos = new javax.swing.JLabel();
+        jMontoTotal = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListVehiculos = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tablero de control de propietario");
-
-        jTablaVehiculos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTablaVehiculos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Matricula", "Modelo", "Color", "#Transitos", "Monto total"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTablaVehiculos);
 
         jTablaBonificaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -232,64 +211,90 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         });
         jScrollPane6.setViewportView(jListaVehiculos);
 
+        jMatricula.setText("Matricula");
+
+        jModelo.setText("Modelo");
+
+        jColor.setText("Color");
+
+        jTransitos.setText("#Transitos");
+
+        jMontoTotal.setText("Monto total");
+
+        jScrollPane1.setViewportView(jListVehiculos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCantRecargas))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCantVehiculos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCantBonificaciones))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCantTransitos))
-                            .addComponent(jButtonRecargar)
-                            .addComponent(jButtonBorrarNotificaciones)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCantNotificaciones)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
-                        .addGap(26, 26, 26)
-                        .addComponent(jTextSaldo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextNombreUsuario)
-                        .addGap(91, 91, 91))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(308, 308, 308)))))
-                .addGap(32, 32, 32))
+                .addGap(41, 41, 41)
+                .addComponent(jLabel11)
+                .addGap(26, 26, 26)
+                .addComponent(jTextSaldo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextNombreUsuario)
+                .addGap(123, 123, 123))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(153, 153, 153))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(340, 340, 340))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(153, 153, 153))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCantRecargas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCantVehiculos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCantBonificaciones))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCantTransitos))
+                    .addComponent(jButtonRecargar)
+                    .addComponent(jButtonBorrarNotificaciones)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCantNotificaciones)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(747, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jMatricula)
+                        .addGap(67, 67, 67)
+                        .addComponent(jModelo)
+                        .addGap(99, 99, 99)
+                        .addComponent(jColor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addComponent(jTransitos)
+                        .addGap(188, 188, 188)
+                        .addComponent(jMontoTotal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,21 +304,28 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                     .addComponent(jLabel11)
                     .addComponent(jTextSaldo)
                     .addComponent(jTextNombreUsuario))
-                .addGap(27, 27, 27)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jMontoTotal)
+                        .addComponent(jTransitos)
+                        .addComponent(jColor)
+                        .addComponent(jMatricula)
+                        .addComponent(jModelo)))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jCantVehiculos)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jCantBonificaciones)
                         .addComponent(jLabel2))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -364,13 +376,18 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     private javax.swing.JLabel jCantRecargas;
     private javax.swing.JLabel jCantTransitos;
     private javax.swing.JLabel jCantVehiculos;
+    private javax.swing.JLabel jColor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList jListVehiculos;
     private javax.swing.JList<String> jListaVehiculos;
+    private javax.swing.JLabel jMatricula;
+    private javax.swing.JLabel jModelo;
+    private javax.swing.JLabel jMontoTotal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -382,9 +399,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     private javax.swing.JTable jTablaNotificaciones;
     private javax.swing.JTable jTablaRecargas;
     private javax.swing.JTable jTablaTransitos;
-    private javax.swing.JTable jTablaVehiculos;
     private javax.swing.JLabel jTextNombreUsuario;
     private javax.swing.JLabel jTextSaldo;
+    private javax.swing.JLabel jTransitos;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -401,24 +418,32 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         jCantTransitos.setText(usuarioPropietario.getCantidadTransitos()+"");
         jCantRecargas.setText(usuarioPropietario.getCuenta().getRecargas().size()+"");
         jCantNotificaciones.setText(usuarioPropietario.getNotificaciones().size()+"");
-        cargarListaDeVehiculos();
+        cargarVehiculos();
         cargarListaDeBonificaciones();
         cargarListaDeTransitos();
         cargarListaDeRecargas();
         cargarListaDeNotificaciones();
     }
 
-    private void cargarListaDeVehiculos() {
-        DefaultTableModel model = (DefaultTableModel)jTablaVehiculos.getModel();
-        for(Vehiculo v : usuarioPropietario.getVehiculos()){
-            Object[] dataRow = new Object[]{
-                v.getMatricula(),
-                v.getModelo(),
-                v.getColor(),
-                v.getCantidadTransitos(),
-                v.getMontoTotal()
-            };
-            model.addRow(dataRow);
+    private void cargarVehiculos() {
+      List<Vehiculo> vehiculos = Fachada.getInstancia().getVehiculos();
+      jListVehiculos.setListData(vehiculos.toArray());
+        
+    }
+    
+    
+    public class VehiculoDetalleRenderer implements ListCellRenderer<Vehiculo> {
+
+    @Override
+    public Component getListCellRendererComponent(JList<? extends Vehiculo> list, Vehiculo vehiculo, int index, boolean isSelected, boolean cellHasFocus) {
+            CeldaVehiculo celdaVehiculo = new CeldaVehiculo();
+            celdaVehiculo.jMatricula.setText(vehiculo.getMatricula());
+            celdaVehiculo.jModelo.setText(vehiculo.getModelo());
+            celdaVehiculo.jColor.setText(vehiculo.getColor());
+            celdaVehiculo.jTransitos.setText("a");
+            celdaVehiculo.jMontoTotal.setText("a");
+            
+            return celdaVehiculo;
         }
         
     }
@@ -447,16 +472,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     private void cargarListaDeNotificaciones() {
         
     }
-    
-    //ToDo APLICAR EN LUGAR DE TABLAS
-    public class VehiculoDetalleRenderer implements ListCellRenderer<Vehiculo> {
 
-        @Override
-        public Component getListCellRendererComponent(JList<? extends Vehiculo> list, Vehiculo vehiculo, int index, boolean isSelected, boolean cellHasFocus) {
-            JLabel label = new JLabel();
-            label.setText(vehiculo.getMatricula());
-            return label;
-        }
-        
-    }
+    
+
+    
+
 }

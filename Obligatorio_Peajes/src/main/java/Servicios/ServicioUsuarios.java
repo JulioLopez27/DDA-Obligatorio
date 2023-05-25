@@ -11,6 +11,7 @@ import dominio.Sesion;
 import dominio.Usuario;
 import dominio.UsuarioAdministrador;
 import dominio.UsuarioPropietario;
+import dominio.Vehiculo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,6 +92,14 @@ public class ServicioUsuarios {
             }
         }
         return false;
+    }
+
+    List<Vehiculo> getVehiculos() {
+        List<Vehiculo> vehiculos = new ArrayList(); 
+        for(UsuarioPropietario up : this.usuariosPropietario){
+            vehiculos.addAll(up.getVehiculos());
+        }
+        return vehiculos;
     }
 
 }
