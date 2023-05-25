@@ -57,7 +57,7 @@ public class CeldaBonificacion extends javax.swing.JPanel {
                     .addComponent(jNombreBonificacion)
                     .addComponent(jPuesto)
                     .addComponent(jFechaAsignada))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
