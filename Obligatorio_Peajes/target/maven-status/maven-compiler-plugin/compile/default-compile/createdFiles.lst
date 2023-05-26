@@ -42,6 +42,7 @@ dominio\Sesion.class
 Observer\Observer.class
 dominio\Frecuente.class
 iuGrafica\UITableroDeControl$RecargasDetalleRenderer.class
+iuGrafica\celdas\CeldaEmularTransito.class
 iuGrafica\UIMenuAdministrador$4.class
 iuGrafica\InicioAplicacion$2.class
 iuGrafica\InicioAplicacion.class
@@ -63,4 +64,5 @@ Servicios\ServicioRecargas.class
 dominio\Notificacion.class
 iuGrafica\UIMenuAdministrador.class
 iuGrafica\UIEmularAprobacionRecarga$2.class
+iuGrafica\UIEmularTransito$DetalleTarifasRenderer.class
 iuGrafica\UIRecargaSaldo.class
