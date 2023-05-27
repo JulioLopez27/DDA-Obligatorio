@@ -623,7 +623,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaVehiculo.jMatricula.setText(vehiculo.getMatricula());
             celdaVehiculo.jModelo.setText(vehiculo.getModelo());
             celdaVehiculo.jColor.setText(vehiculo.getColor());
-            celdaVehiculo.jTransitos.setText("a");
+            celdaVehiculo.jTransitos.setText("" + vehiculo.getTransitos().size());
             celdaVehiculo.jMontoTotal.setText("a");
 
             return celdaVehiculo;
@@ -652,10 +652,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaRecarga.jFechaRecarga.setText(recarga.getFecha().toString());
             celdaRecarga.jMonto.setText(""+recarga.getMonto());
             celdaRecarga.jEstado.setText(recarga.getEstado());
-            if(recarga.getAprobador() != null){
-            celdaRecarga.jAdministrador.setText(recarga.getAprobador().toString());
-            }else{celdaRecarga.jAdministrador.setText("-");}//ToDo  ver el caso que no tenga aprobador recarga.getAprobador().toString()
-   
+            celdaRecarga.jAdministrador.setText((recarga.getAprobador() != null) ? recarga.getAprobador().getNombre() : "-");
 
             return celdaRecarga;
         }

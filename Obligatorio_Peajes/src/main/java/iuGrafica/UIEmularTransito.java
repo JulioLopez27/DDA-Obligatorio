@@ -4,6 +4,8 @@
  */
 package iuGrafica;
 
+import Servicios.Fachada;
+import dominio.Puesto;
 import dominio.Tarifa;
 import iuGrafica.celdas.CeldaEmularTransito;
 import iuGrafica.celdas.CeldaRecarga;
@@ -26,7 +28,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
         super(parent,modal);
         initComponents();
         jListTarifas.setCellRenderer(new DetalleTarifasRenderer());
-        cargarListaTarifas();
+        inicializar();
     }
 
     /**
@@ -38,7 +40,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboPuestos = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -53,7 +55,11 @@ public class UIEmularTransito extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Emular transito");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboPuestos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboPuestosItemStateChanged(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Puestos:");
@@ -105,7 +111,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
                                     .addComponent(jLabel1))
                                 .addGap(38, 38, 38)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, 375, Short.MAX_VALUE)
+                            .addComponent(jComboPuestos, 0, 375, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -127,7 +133,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,11 +167,15 @@ public class UIEmularTransito extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboPuestosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboPuestosItemStateChanged
+       cargarTarifasDePuesto(); 
+    }//GEN-LAST:event_jComboPuestosItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox jComboPuestos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -176,9 +186,23 @@ public class UIEmularTransito extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-        private void cargarListaTarifas() {
-        List<Tarifa> tarifas = null;//TODO Fachada.getInstancia().getTarifas();
-        jListTarifas.setListData(tarifas.toArray());
+
+    private void inicializar() {
+       cargarComboPuestos(); 
+       
+    }
+
+    private void cargarComboPuestos() {
+        List<Puesto> puestos = Fachada.getInstancia().getPuestos();
+        for(Puesto p : puestos){
+            jComboPuestos.addItem(p);
+            //todo poner nombre del puesto
+        }
+    }
+
+    private void cargarTarifasDePuesto() {
+        Puesto puestoSeleccionado = (Puesto)jComboPuestos.getSelectedItem();
+        jListTarifas.setListData(puestoSeleccionado.getTarifas().toArray());
     }
         
         public class DetalleTarifasRenderer implements ListCellRenderer<Tarifa> {

@@ -7,8 +7,10 @@ package Servicios;
 import Exceptions.LoginException;
 import Exceptions.RecargaException;
 import Observer.Observable;
+import dominio.Puesto;
 import dominio.Recarga;
 import dominio.Sesion;
+import dominio.Tarifa;
 import dominio.Transito;
 import dominio.UsuarioPropietario;
 import dominio.UsuarioAdministrador;
@@ -25,8 +27,9 @@ public class Fachada extends Observable {
 
     private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
     private ServicioTransitos servicioTransitos = new ServicioTransitos();
-    private ServicioRecargas servicioRecargas = new ServicioRecargas();
     private ServicioNotificaciones servicioNotificaciones = new ServicioNotificaciones();
+    private ServicioPeajes servicioPeajes = new ServicioPeajes();
+    
 
     private Fachada() {
     }
@@ -74,6 +77,10 @@ public class Fachada extends Observable {
         servicioTransitos.agregar(transito);
     }
     
+    public void agregar(Puesto puesto) {
+        servicioPeajes.agregar(puesto);
+    }
+    
     public List<Vehiculo> getVehiculos() {
         return servicioUsuarios.getVehiculos();
     }
@@ -81,4 +88,13 @@ public class Fachada extends Observable {
     public List<Recarga> getRecargas() {
         return servicioUsuarios.getRecargas();
     }
+
+    public List<Puesto> getPuestos() {
+        return servicioPeajes.getPuestos();
+    }
+
+    public void agregar(Tarifa tarifa, Puesto puesto) {
+        servicioPeajes.agregar(tarifa, puesto);
+    }
+
 }

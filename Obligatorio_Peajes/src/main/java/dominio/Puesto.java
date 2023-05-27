@@ -53,6 +53,10 @@ public class Puesto {
     public void setBonificaciones(List<Bonificacion> bonificaciones) {
         this.bonificaciones = bonificaciones;
     }
+
+    public void agregar(Tarifa tarifa) {
+        this.tarifas.add(tarifa);
+    }
     
     
 }
