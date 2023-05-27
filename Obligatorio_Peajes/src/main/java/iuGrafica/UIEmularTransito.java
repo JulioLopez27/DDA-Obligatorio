@@ -4,6 +4,8 @@
  */
 package iuGrafica;
 
+import Interfaces.ComboBasicoRenderer;
+import Interfaces.Renderizable;
 import Servicios.Fachada;
 import dominio.Puesto;
 import dominio.Tarifa;
@@ -12,6 +14,7 @@ import iuGrafica.celdas.CeldaRecarga;
 import java.awt.Component;
 import java.awt.Frame;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
@@ -25,9 +28,10 @@ public class UIEmularTransito extends javax.swing.JDialog {
      * Creates new form EmularTransito
      */
     public UIEmularTransito(Frame parent, boolean modal) {
-        super(parent,modal);
+        super(parent, modal);
         initComponents();
         jListTarifas.setCellRenderer(new DetalleTarifasRenderer());
+        jComboPuestos.setRenderer(new ComboBasicoRenderer());
         inicializar();
     }
 
@@ -168,7 +172,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboPuestosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboPuestosItemStateChanged
-       cargarTarifasDePuesto(); 
+        cargarTarifasDePuesto();
     }//GEN-LAST:event_jComboPuestosItemStateChanged
 
 
@@ -186,26 +190,24 @@ public class UIEmularTransito extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-
     private void inicializar() {
-       cargarComboPuestos(); 
-       
+        cargarComboPuestos();
+
     }
 
     private void cargarComboPuestos() {
         List<Puesto> puestos = Fachada.getInstancia().getPuestos();
-        for(Puesto p : puestos){
+        for (Puesto p : puestos) {
             jComboPuestos.addItem(p);
-            //todo poner nombre del puesto
         }
     }
 
     private void cargarTarifasDePuesto() {
-        Puesto puestoSeleccionado = (Puesto)jComboPuestos.getSelectedItem();
+        Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
         jListTarifas.setListData(puestoSeleccionado.getTarifas().toArray());
     }
-        
-        public class DetalleTarifasRenderer implements ListCellRenderer<Tarifa> {
+
+    public class DetalleTarifasRenderer implements ListCellRenderer<Tarifa> {
 
         @Override
         public Component getListCellRendererComponent(JList<? extends Tarifa> list, Tarifa tarifa, int index, boolean isSelected, boolean cellHasFocus) {
@@ -214,6 +216,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
             celdaEmularTransito.jMonto.setText("" + tarifa.getMonto());
             return celdaEmularTransito;
         }
-        
+
     }
+    
 }

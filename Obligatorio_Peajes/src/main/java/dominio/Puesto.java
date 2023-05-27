@@ -4,6 +4,7 @@
  */
 package dominio;
 
+import Interfaces.Renderizable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  *
  * @author Julio Cesar
  */
-public class Puesto {
+public class Puesto implements Renderizable {
     private String nombre;
     private String direccion;
     private List<Tarifa> tarifas = new ArrayList<>();
@@ -56,6 +57,11 @@ public class Puesto {
 
     public void agregar(Tarifa tarifa) {
         this.tarifas.add(tarifa);
+    }
+
+    @Override
+    public String getDescription() {
+        return this.getNombre();
     }
     
     
