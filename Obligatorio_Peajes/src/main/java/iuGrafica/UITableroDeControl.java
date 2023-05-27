@@ -16,6 +16,7 @@ import iuGrafica.celdas.CeldaBonificacion;
 import iuGrafica.celdas.CeldaTransito;
 import iuGrafica.celdas.CeldaVehiculo;
 import iuGrafica.celdas.CeldaRecargasss;
+import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -653,7 +654,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaRecarga.jMonto.setText(""+recarga.getMonto());
             celdaRecarga.jEstado.setText(recarga.getEstado());
             celdaRecarga.jAdministrador.setText((recarga.getAprobador() != null) ? recarga.getAprobador().getNombre() : "-");
-
+            celdaRecarga.setBackground((cellHasFocus) ? Color.blue : Color.white);
             return celdaRecarga;
         }
 

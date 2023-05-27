@@ -63,6 +63,6 @@ public class Puesto implements Renderizable {
     public String getDescription() {
         return this.getNombre();
     }
-    
+
     
 }
