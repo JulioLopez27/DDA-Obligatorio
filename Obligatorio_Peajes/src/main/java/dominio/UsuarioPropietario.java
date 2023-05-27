@@ -5,6 +5,7 @@
 package dominio;
 import Exceptions.RecargaException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -86,6 +87,31 @@ public class UsuarioPropietario extends Usuario {
 
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         return this.getCuenta().aprobar(recarga, usuarioAdministrador);
+    }
+
+    public boolean existe(Vehiculo vehiculo) {
+        for(Vehiculo v : this.vehiculos){
+            if(v.equals(vehiculo))
+                return true;
+        }
+        return false;
+    }
+
+    public void agregar(Transito transito) {
+        for (Vehiculo vehiculo : vehiculos) {
+            if(vehiculo.equals(transito.getVehiculo())){
+                vehiculo.agregar(transito);
+                return;
+            }
+        }
+    }
+
+    public List<Transito> getTransitos() {
+        List<Transito> transitosUsuario = new ArrayList();
+        for (Vehiculo v : vehiculos) {
+            transitosUsuario.addAll(v.getTransitos());
+        }
+        return transitosUsuario;
     }
 
     

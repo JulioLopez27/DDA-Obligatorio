@@ -30,10 +30,13 @@ public class CeldaBonificacion extends javax.swing.JPanel {
         jPuesto = new javax.swing.JLabel();
         jFechaAsignada = new javax.swing.JLabel();
 
+        jNombreBonificacion.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jNombreBonificacion.setText("Nombre Bonificacion");
 
+        jPuesto.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jPuesto.setText("Puesto");
 
+        jFechaAsignada.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jFechaAsignada.setText("Fecha Asignada");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -45,7 +48,7 @@ public class CeldaBonificacion extends javax.swing.JPanel {
                 .addComponent(jNombreBonificacion)
                 .addGap(233, 233, 233)
                 .addComponent(jPuesto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 353, Short.MAX_VALUE)
                 .addComponent(jFechaAsignada)
                 .addGap(42, 42, 42))
         );

@@ -8,6 +8,7 @@ import Exceptions.LoginException;
 import Exceptions.RecargaException;
 import dominio.Recarga;
 import dominio.Sesion;
+import dominio.Transito;
 import dominio.Usuario;
 import dominio.UsuarioAdministrador;
 import dominio.UsuarioPropietario;
@@ -102,12 +103,32 @@ public class ServicioUsuarios {
         return vehiculos;
     }
 
-    List<Recarga> getRecargas() {
-              List<Recarga> recargas = new ArrayList(); 
+    public List<Recarga> getRecargas() {
+        List<Recarga> recargas = new ArrayList(); 
         for(UsuarioPropietario up : this.usuariosPropietario){
             recargas.addAll(up.getRecargas());
         }
         return recargas;
+    }
+
+    public void agregar(Transito transito) {
+        for(UsuarioPropietario up : this.usuariosPropietario){
+            if(up.existe(transito.getVehiculo())){
+                up.agregar(transito);
+                break;
+            }
+        }
+    }
+
+    public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {
+        List<Transito> transitosUsuario = new ArrayList();
+        for (UsuarioPropietario up : usuariosPropietario) {
+            if(up.equals(usuarioPropietario)){
+                transitosUsuario.addAll(up.getTransitos());
+                return transitosUsuario;
+            }
+        }
+        return null;
     }
     
     

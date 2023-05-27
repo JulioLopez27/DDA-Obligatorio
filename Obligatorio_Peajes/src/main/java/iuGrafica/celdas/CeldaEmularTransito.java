@@ -29,8 +29,10 @@ public class CeldaEmularTransito extends javax.swing.JPanel {
         jCategoria = new javax.swing.JLabel();
         jMonto = new javax.swing.JLabel();
 
+        jCategoria.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jCategoria.setText("jLabel1");
 
+        jMonto.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jMonto.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -40,7 +42,7 @@ public class CeldaEmularTransito extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jCategoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
                 .addComponent(jMonto)
                 .addGap(125, 125, 125))
         );

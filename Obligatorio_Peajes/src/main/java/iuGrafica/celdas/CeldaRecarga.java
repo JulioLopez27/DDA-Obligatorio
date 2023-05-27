@@ -31,10 +31,13 @@ public class CeldaRecarga extends javax.swing.JPanel {
         jMontoRecarga = new javax.swing.JLabel();
         jSelected = new javax.swing.JCheckBox();
 
+        jFechaRecagra.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jFechaRecagra.setText("jLabel1");
 
+        jPropietarioRecarga.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jPropietarioRecarga.setText("jLabel1");
 
+        jMontoRecarga.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jMontoRecarga.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

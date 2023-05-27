@@ -58,7 +58,7 @@ public class DatosPrueba {
         Tarifa tarifa2 = new Tarifa(20, cat2);
         Tarifa tarifa3 = new Tarifa(180, cat3);
         Tarifa tarifa4 = new Tarifa(240, cat4);
-  Tarifa tarifa5 = new Tarifa(200, cat1);
+        Tarifa tarifa5 = new Tarifa(200, cat1);
         Tarifa tarifa6 = new Tarifa(40, cat2);
         Tarifa tarifa7 = new Tarifa(360, cat3);
         Tarifa tarifa8 = new Tarifa(480, cat4);
@@ -93,11 +93,11 @@ public class DatosPrueba {
         fachada.agregar(tarifa2, puesto1);
         fachada.agregar(tarifa3, puesto1);
         fachada.agregar(tarifa4, puesto1);
-         fachada.agregar(tarifa1, puesto2);
+        fachada.agregar(tarifa1, puesto2);
         fachada.agregar(tarifa2, puesto2);
         fachada.agregar(tarifa3, puesto2);
         fachada.agregar(tarifa4, puesto2);
-         fachada.agregar(tarifa5, puesto3);
+        fachada.agregar(tarifa5, puesto3);
         fachada.agregar(tarifa6, puesto3);
         fachada.agregar(tarifa7, puesto3);
         fachada.agregar(tarifa8, puesto3);

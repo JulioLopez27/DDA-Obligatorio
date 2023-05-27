@@ -26,7 +26,6 @@ public class Fachada extends Observable {
     private static Fachada instancia = null;
 
     private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
-    private ServicioTransitos servicioTransitos = new ServicioTransitos();
     private ServicioNotificaciones servicioNotificaciones = new ServicioNotificaciones();
     private ServicioPeajes servicioPeajes = new ServicioPeajes();
     
@@ -70,11 +69,11 @@ public class Fachada extends Observable {
     }
 
     public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {
-        return servicioTransitos.getTransitos(usuarioPropietario);
+        return servicioUsuarios.getTransitos(usuarioPropietario);
     }
 
     public void agregar(Transito transito) {
-        servicioTransitos.agregar(transito);
+        servicioUsuarios.agregar(transito);
     }
     
     public void agregar(Puesto puesto) {

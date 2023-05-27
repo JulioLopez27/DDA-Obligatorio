@@ -32,14 +32,19 @@ public class CeldaVehiculo extends javax.swing.JPanel {
         jMontoTotal = new javax.swing.JLabel();
         jTransitos = new javax.swing.JLabel();
 
+        jColor.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jColor.setText("jLabel1");
 
+        jMatricula.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jMatricula.setText("jLabel1");
 
+        jModelo.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jModelo.setText("jLabel1");
 
+        jMontoTotal.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jMontoTotal.setText("jLabel1");
 
+        jTransitos.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jTransitos.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -57,7 +62,7 @@ public class CeldaVehiculo extends javax.swing.JPanel {
                 .addComponent(jTransitos)
                 .addGap(18, 18, 18)
                 .addComponent(jMontoTotal)
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,7 +74,7 @@ public class CeldaVehiculo extends javax.swing.JPanel {
                     .addComponent(jModelo)
                     .addComponent(jMontoTotal)
                     .addComponent(jTransitos))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

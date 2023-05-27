@@ -31,12 +31,16 @@ public class CeldaRecargasss extends javax.swing.JPanel {
         jEstado = new javax.swing.JLabel();
         jAdministrador = new javax.swing.JLabel();
 
+        jFechaRecarga.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jFechaRecarga.setText("jLabel1");
 
+        jMonto.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jMonto.setText("jLabel1");
 
+        jEstado.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jEstado.setText("jLabel1");
 
+        jAdministrador.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jAdministrador.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -46,7 +50,7 @@ public class CeldaRecargasss extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jFechaRecarga)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addComponent(jMonto)
                 .addGap(113, 113, 113)
                 .addComponent(jEstado)
@@ -63,7 +67,7 @@ public class CeldaRecargasss extends javax.swing.JPanel {
                     .addComponent(jEstado)
                     .addComponent(jMonto)
                     .addComponent(jFechaRecarga))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

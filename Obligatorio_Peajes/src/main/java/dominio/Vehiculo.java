@@ -72,9 +72,6 @@ public class Vehiculo {
         return transitos;
     }
 
-    public void setTransitos(List<Transito> transitos) {
-        this.transitos = transitos;
-    }
     
     public int getCantidadTransitos(){
         return this.getTransitos().size();
@@ -86,5 +83,9 @@ public class Vehiculo {
             //ToDo FALTA CALCULAR EL MONTO
         }
         return montoTotal;
+    }
+
+    public void agregar(Transito transito) {
+        this.transitos.add(transito);
     }
 }
