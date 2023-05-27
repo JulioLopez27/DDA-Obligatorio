@@ -549,8 +549,8 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             CeldaTransito celdaTransito = new CeldaTransito();
             celdaTransito.jLabelPuesto.setText(transito.getPuesto().getNombre());
             celdaTransito.jLabelMatricula.setText(transito.getVehiculo().getMatricula());
-            celdaTransito.jLabelTarifa.setText("TEST TARIFA");
-            celdaTransito.jLabelTarifaMonto.setText("TEST 108");
+            celdaTransito.jLabelTarifa.setText(transito.getVehiculo().getCategoria().getNombre());
+            celdaTransito.jLabelTarifaMonto.setText(transito.getMonto()+"");
             celdaTransito.jLabelBonificacion.setText("TEST Exonerado");
             celdaTransito.jLabelMontoBonif.setText("TEST 50");
             celdaTransito.jLabelMontoPagado.setText("TEST 50");
@@ -570,7 +570,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaVehiculo.jModelo.setText(vehiculo.getModelo());
             celdaVehiculo.jColor.setText(vehiculo.getColor());
             celdaVehiculo.jTransitos.setText("" + vehiculo.getTransitos().size());
-            celdaVehiculo.jMontoTotal.setText("a");
+            celdaVehiculo.jMontoTotal.setText(vehiculo.getMontoTotal()+"");
 
             return celdaVehiculo;
         }

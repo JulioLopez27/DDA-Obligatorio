@@ -64,5 +64,14 @@ public class Puesto implements Renderizable {
         return this.getNombre();
     }
 
+    public double getMonto(Categoria categoria) {
+        for (Tarifa tarifa : tarifas) {
+            if(tarifa.getCategoria().equals(categoria)){
+                return tarifa.getMonto();
+            }
+        }
+        return 0;
+    }
+
     
 }

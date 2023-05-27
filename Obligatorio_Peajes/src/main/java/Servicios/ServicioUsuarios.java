@@ -130,6 +130,16 @@ public class ServicioUsuarios {
         }
         return null;
     }
+
+    public Vehiculo buscarVehiculo(String matricula) {
+        for (UsuarioPropietario usuarioPropietario : usuariosPropietario) {
+            Vehiculo vehiculoEncontrado = usuarioPropietario.buscarVehiculo(matricula);
+            if(vehiculoEncontrado != null){
+                return vehiculoEncontrado;
+            }
+        }
+        return null;
+    }
     
     
 

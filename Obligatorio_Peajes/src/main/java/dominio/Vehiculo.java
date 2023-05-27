@@ -80,7 +80,7 @@ public class Vehiculo {
     public double getMontoTotal(){
         double montoTotal = 0;
         for(Transito t : this.transitos){
-            //ToDo FALTA CALCULAR EL MONTO
+            montoTotal += t.getMonto();
         }
         return montoTotal;
     }

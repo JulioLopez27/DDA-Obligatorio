@@ -96,4 +96,8 @@ public class Fachada extends Observable {
         servicioPeajes.agregar(tarifa, puesto);
     }
 
+    public Vehiculo buscarVehiculo(String matricula) {
+        return servicioUsuarios.buscarVehiculo(matricula);
+    }
+
 }

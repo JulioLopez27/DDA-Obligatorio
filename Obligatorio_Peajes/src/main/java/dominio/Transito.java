@@ -14,6 +14,7 @@ public class Transito {
     private Vehiculo vehiculo;
     private Puesto puesto;
     private LocalDate fecha;
+    private double monto;
 
     public Transito(Vehiculo vehiculo, Puesto puesto) {
         this.vehiculo = vehiculo;
@@ -39,6 +40,14 @@ public class Transito {
 
     public LocalDate getFecha() {
         return fecha;
+    }
+
+    public double getMonto() {
+        return this.puesto.getMonto(this.vehiculo.getCategoria());
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
     }
 
     public UsuarioPropietario getUsuarioPropietario() {

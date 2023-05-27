@@ -14,6 +14,7 @@ dominio/Notificacion.class
 main/DatosPrueba.class
 dominio/Tarifa.class
 iuGrafica/celdas/CeldaAsignarBonificacion.class
+Interfaces/Renderizable.class
 iuGrafica/UITableroDeControl$BonificacionesDetallesRenderer.class
 iuGrafica/UITableroDeControl$1.class
 iuGrafica/InicioAplicacion$2.class
@@ -68,4 +69,5 @@ Servicios/ServicioTransitos.class
 iuGrafica/celdas/CeldaVehiculo.class
 iuGrafica/UITableroDeControl.class
 iuGrafica/UITableroDeControl$TransitoDetalleRenderer.class
+Interfaces/ComboBasicoRenderer.class
 iuGrafica/UIEmularAprobacionRecarga$2.class

@@ -5,16 +5,15 @@
 package iuGrafica;
 
 import Interfaces.ComboBasicoRenderer;
-import Interfaces.Renderizable;
 import Servicios.Fachada;
 import dominio.Puesto;
 import dominio.Tarifa;
+import dominio.Transito;
+import dominio.Vehiculo;
 import iuGrafica.celdas.CeldaEmularTransito;
-import iuGrafica.celdas.CeldaRecarga;
 import java.awt.Component;
 import java.awt.Frame;
 import java.util.List;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
@@ -48,9 +47,9 @@ public class UIEmularTransito extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jTextMatricula = new javax.swing.JTextField();
+        jButtonRegistrarTransito = new javax.swing.JButton();
+        jButtonCerrar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListTarifas = new javax.swing.JList();
         jLabel4 = new javax.swing.JLabel();
@@ -74,22 +73,21 @@ public class UIEmularTransito extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Ingrese matricula:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegistrarTransito.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonRegistrarTransito.setText("Registrar");
+        jButtonRegistrarTransito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jButtonRegistrarTransitoActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Registrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCerrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonCerrar.setText("Cerrar");
+        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCerrarActionPerformed(evt);
             }
         });
-
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setText("Cerrar");
 
         jScrollPane2.setViewportView(jListTarifas);
 
@@ -123,13 +121,13 @@ public class UIEmularTransito extends javax.swing.JDialog {
                                 .addGap(134, 134, 134))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
+                                .addComponent(jButtonRegistrarTransito))
                             .addComponent(jScrollPane2))
                         .addContainerGap(56, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(jButtonCerrar)
                         .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(
@@ -150,10 +148,10 @@ public class UIEmularTransito extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
+                            .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonRegistrarTransito))
                         .addGap(35, 35, 35)
-                        .addComponent(jButton2)
+                        .addComponent(jButtonCerrar)
                         .addGap(16, 16, 16))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -163,22 +161,25 @@ public class UIEmularTransito extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonRegistrarTransitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarTransitoActionPerformed
+        Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
+        Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
+        Transito transito = new Transito(vehiculoEncontrado, puestoSeleccionado);
+        Fachada.getInstancia().agregar(transito);
+    }//GEN-LAST:event_jButtonRegistrarTransitoActionPerformed
 
     private void jComboPuestosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboPuestosItemStateChanged
         cargarTarifasDePuesto();
     }//GEN-LAST:event_jComboPuestosItemStateChanged
 
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JButton jButtonRegistrarTransito;
     private javax.swing.JComboBox jComboPuestos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -187,7 +188,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList jListTarifas;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextMatricula;
     // End of variables declaration//GEN-END:variables
 
     private void inicializar() {

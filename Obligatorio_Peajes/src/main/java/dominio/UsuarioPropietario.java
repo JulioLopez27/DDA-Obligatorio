@@ -114,5 +114,14 @@ public class UsuarioPropietario extends Usuario {
         return transitosUsuario;
     }
 
+    public Vehiculo buscarVehiculo(String matricula) {
+        for (Vehiculo vehiculo : vehiculos) {
+            if(vehiculo.getMatricula().equals(matricula)){
+                return vehiculo;
+            }
+        }
+        return null;
+    }
+
     
 }
