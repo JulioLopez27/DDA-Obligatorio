@@ -87,9 +87,8 @@ public class Vehiculo {
         return montoTotal;
     }
 
-    public Transito agregar(Transito transito) {
-        transito.setMontoPagado(transito.getMontoAPagar());
-        return (this.transitos.add(transito)) ? transito : null;
+    public boolean agregar(Transito transito) {
+        return this.transitos.add(transito);
     }
 
     public int getCantidadTransitosHoy(Puesto puesto) {

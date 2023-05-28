@@ -19,7 +19,7 @@ public class Frecuente extends TipoBonificacion {
     @Override
     public double getPorcentajeDescuento(Transito transito) {
         int transitosEnElDia = transito.getVehiculo().getCantidadTransitosHoy(transito.getPuesto());
-        return (transitosEnElDia > 1) ? 50 : 0;
+        return (transitosEnElDia >= 1) ? 50 : 0;
     }
     
     

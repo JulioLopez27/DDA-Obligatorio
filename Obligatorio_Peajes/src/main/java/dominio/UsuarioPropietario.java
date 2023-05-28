@@ -101,14 +101,13 @@ public class UsuarioPropietario extends Usuario {
     }
 
     public Transito agregar(Transito transito) { //ToDo VALIDAR ESTE METODO, ESTA LARGO
-        if (this.getCuenta().validarSaldo(transito.getMontoAPagar())) {
+        double montoAPagar = transito.getMontoAPagar();
+        if (this.getCuenta().validarSaldo(montoAPagar)) {
             for (Vehiculo vehiculo : vehiculos) {
-                if (vehiculo.equals(transito.getVehiculo())) {
-                    Transito transitoAgregado = vehiculo.agregar(transito);
-                    if(transitoAgregado != null){
-                        this.getCuenta().actualizarSaldo(transito.getMontoAPagar());
-                        return transitoAgregado;
-                    }
+                transito.setMontoPagado(montoAPagar);
+                if (vehiculo.equals(transito.getVehiculo()) && vehiculo.agregar(transito)) {
+                    this.getCuenta().actualizarSaldo(montoAPagar);
+                    return transito;
                 }
             }
         }
