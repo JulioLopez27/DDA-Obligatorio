@@ -101,18 +101,22 @@ public abstract class LoginAbstracto extends javax.swing.JDialog {
     private javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
 
-    private void login(){
-        try{
-            Usuario usuario = this.validarUsuario(jCedula.getText(), new String(jPassword.getPassword()));
+    private void login() {
+        try {
+            int cedula = Integer.parseInt(jCedula.getText());
+            Usuario usuario = this.validarUsuario(cedula, new String(jPassword.getPassword()));
             this.ejecutarProximoCasoDeUso(usuario);
             this.dispose();
-        } catch(LoginException e) {
+        } catch (LoginException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Login incorrecto", JOptionPane.ERROR_MESSAGE);
-        } 
+        } catch (NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "La cédula debe ser numérica.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
     }
-    
-    protected abstract Usuario validarUsuario(String cedula, String password) throws LoginException;
+
+    protected abstract Usuario validarUsuario(int cedula, String password) throws LoginException;
+
     protected abstract void ejecutarProximoCasoDeUso(Usuario usuario);
-    
+
 }

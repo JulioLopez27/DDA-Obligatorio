@@ -41,11 +41,11 @@ public class Fachada extends Observable {
         return instancia;
     }
 
-    public Sesion loginUsuarioPorpietario(String cedula, String password) throws LoginException {
+    public Sesion loginUsuarioPorpietario(int cedula, String password) throws LoginException {
         return servicioUsuarios.loginUsuarioPropietario(cedula, password);
     }
 
-    public UsuarioAdministrador loginUsuarioAdministrador(String cedula, String password) throws LoginException {
+    public UsuarioAdministrador loginUsuarioAdministrador(int cedula, String password) throws LoginException {
         return servicioUsuarios.loginUsuarioAdministrador(cedula, password);
     }
 

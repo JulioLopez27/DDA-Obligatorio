@@ -33,7 +33,7 @@ public class ServicioUsuarios {
         sesiones = new ArrayList<>();
     }
 
-    public Sesion loginUsuarioPropietario(String cedula, String password) throws LoginException {
+    public Sesion loginUsuarioPropietario(int cedula, String password) throws LoginException {
        UsuarioPropietario usuarioLogueado=(UsuarioPropietario)this.loginUsuario(cedula, password, (ArrayList)usuariosPropietario);
        if(usuarioLogueado!=null){
            Sesion sesion= new Sesion(usuarioLogueado);
@@ -48,14 +48,19 @@ public class ServicioUsuarios {
         sesiones.add(sesion);
     }
         
-    public UsuarioAdministrador loginUsuarioAdministrador(String cedula, String password) throws LoginException {
-       return (UsuarioAdministrador)this.loginUsuario(cedula, password,(ArrayList)usuariosAdministrador);
+    public UsuarioAdministrador loginUsuarioAdministrador(int cedula, String password) throws LoginException {
+        UsuarioAdministrador usuarioAdministrador = (UsuarioAdministrador)this.loginUsuario(cedula, password,(ArrayList)usuariosAdministrador);
+        if(usuarioAdministrador.isLogueado()){
+            throw new LoginException("Ud ya está logueado.");
+        } else {
+            usuarioAdministrador.setLogueado(true);
+            return usuarioAdministrador;
+        }
     }
 
-    private Usuario loginUsuario(String cedula, String password, List<Usuario> usuarios) throws LoginException {
+    private Usuario loginUsuario(int cedula, String password, List<Usuario> usuarios) throws LoginException {
         for (Usuario u : usuarios) {
-            int cedulaNro = Integer.parseInt(cedula); //ToDo validar que sea numero antes de castear
-            if (u.validarCredenciales(cedulaNro, password)) {
+            if (u.validarCredenciales(cedula, password)) {
                 return u;
             }
         }
