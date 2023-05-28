@@ -15,10 +15,9 @@ public class Trabajador extends TipoBonificacion {
     }
 
     @Override
-    public double getDescuento() {
-        
-        //ToDo calcular descuento
-        return 0;
+    public double getPorcentajeDescuento(Transito transito) {
+        int dayOfWeek = transito.getFecha().getDayOfWeek().getValue();
+        return (dayOfWeek >= 1 && dayOfWeek <= 5) ? 80 : 0;
     }
     
 }

@@ -109,17 +109,6 @@ public class DatosPrueba {
         fachada.agregar(tarifa8, puesto3);
         
 
-
-        //Transitos
-        Transito transito1 = new Transito(vehiculo1, puesto1);
-        Transito transito2 = new Transito(vehiculo1, puesto2);
-        Transito transito3 = new Transito(vehiculo1, puesto3);
-
-        //Agregar Transitos
-        fachada.agregar(transito1);
-        fachada.agregar(transito2);
-        fachada.agregar(transito3);
-
         //Recargas
         Recarga rec1 = new Recarga(128.8, cuenta1);
         Recarga rec2 = new Recarga(250, cuenta1);
@@ -151,5 +140,17 @@ public class DatosPrueba {
         fachada.agregar(bExonerado);
         fachada.agregar(bFrecuente);
         fachada.agregar(bTrabajador);
+        
+        //Transitos
+        Transito transito1 = new Transito(vehiculo1, puesto1);
+        Transito transito2 = new Transito(vehiculo1, puesto2);
+        Transito transito3 = new Transito(vehiculo1, puesto3);
+        Transito transito4 = new Transito(vehiculo1, puesto1);
+
+        //Agregar Transitos
+        fachada.agregar(transito1, bFrecuente);
+        fachada.agregar(transito2, null);
+        fachada.agregar(transito3, bExonerado);
+        fachada.agregar(transito4, bFrecuente);
     }
 }

@@ -15,7 +15,7 @@ public class Exonerado extends TipoBonificacion {
     }
 
     @Override
-    public double getDescuento() {
+    public double getPorcentajeDescuento(Transito transito) {
         return 100;
     }
     

@@ -551,9 +551,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaTransito.jLabelMatricula.setText(transito.getVehiculo().getMatricula());
             celdaTransito.jLabelTarifa.setText(transito.getVehiculo().getCategoria().getNombre());
             celdaTransito.jLabelTarifaMonto.setText(transito.getMonto()+"");
-            celdaTransito.jLabelBonificacion.setText("TEST Exonerado");
-            celdaTransito.jLabelMontoBonif.setText("TEST 50");
-            celdaTransito.jLabelMontoPagado.setText("TEST 50");
+            celdaTransito.jLabelBonificacion.setText((transito.getBonificacion() != null) ? transito.getBonificacion().getNombre() : "No tiene.");
+            celdaTransito.jLabelMontoBonif.setText(transito.getMonto() - transito.getMontoPagado() +"");
+            celdaTransito.jLabelMontoPagado.setText(transito.getMontoPagado()+"");
             celdaTransito.jLabelFecha.setText(transito.getFecha().toString());
 
             return celdaTransito;

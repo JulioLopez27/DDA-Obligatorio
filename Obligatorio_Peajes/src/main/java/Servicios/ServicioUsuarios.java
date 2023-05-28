@@ -117,13 +117,14 @@ public class ServicioUsuarios {
         return recargas;
     }
 
-    public void agregar(Transito transito) {
+    public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) {
         for(UsuarioPropietario up : this.usuariosPropietario){
             if(up.existe(transito.getVehiculo())){
-                up.agregar(transito);
-                break;
+                transito.setBonificacion(bonificacionAsignada);
+                return up.agregar(transito);
             }
         }
+        return null;
     }
 
     public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {

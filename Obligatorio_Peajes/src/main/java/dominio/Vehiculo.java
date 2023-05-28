@@ -4,6 +4,8 @@
  */
 package dominio;
 
+import Servicios.Fachada;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +87,18 @@ public class Vehiculo {
         return montoTotal;
     }
 
-    public void agregar(Transito transito) {
-        this.transitos.add(transito);
+    public Transito agregar(Transito transito) {
+        transito.setMontoPagado(transito.getMontoAPagar());
+        return (this.transitos.add(transito)) ? transito : null;
+    }
+
+    public int getCantidadTransitosHoy(Puesto puesto) {
+        int transitosHoy = 0;
+        for (Transito transito : transitos) {
+            if(transito.getFecha().equals(LocalDate.now()) && transito.getPuesto().equals(puesto)){
+                transitosHoy ++;
+            }
+        }
+        return transitosHoy;
     }
 }

@@ -4,6 +4,8 @@
  */
 package dominio;
 
+import Servicios.Fachada;
+
 /**
  *
  * @author Julio Cesar
@@ -15,8 +17,9 @@ public class Frecuente extends TipoBonificacion {
     }
 
     @Override
-    public double getDescuento() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public double getPorcentajeDescuento(Transito transito) {
+        int transitosEnElDia = transito.getVehiculo().getCantidadTransitosHoy(transito.getPuesto());
+        return (transitosEnElDia > 1) ? 50 : 0;
     }
     
     

@@ -24,5 +24,5 @@ public abstract class TipoBonificacion {
         this.nombre = nombre;
     }
     
-    public abstract double getDescuento();
+    public abstract double getPorcentajeDescuento(Transito transito);
 }

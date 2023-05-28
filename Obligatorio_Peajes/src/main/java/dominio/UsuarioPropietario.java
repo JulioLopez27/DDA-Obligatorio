@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dominio;
+
 import Exceptions.RecargaException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.List;
  * @author Julio Cesar
  */
 public class UsuarioPropietario extends Usuario {
+
     private double saldoMinimoAlerta;
     private List<Vehiculo> vehiculos = new ArrayList<>();
     private Cuenta cuenta;
@@ -26,8 +28,9 @@ public class UsuarioPropietario extends Usuario {
     }
 
     public void agregar(Bonificacion bonificacion) {
-    this.bonificaciones.add(bonificacion);
+        this.bonificaciones.add(bonificacion);
     }
+
     public double getSaldoMinimoAlerta() {
         return saldoMinimoAlerta;
     }
@@ -42,8 +45,7 @@ public class UsuarioPropietario extends Usuario {
 
     public void setVehiculos(List<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
-    }    
-    
+    }
 
     public Cuenta getCuenta() {
         return cuenta;
@@ -64,10 +66,10 @@ public class UsuarioPropietario extends Usuario {
     public List<Bonificacion> getBonificaciones() {
         return bonificaciones;
     }
-    
-    public int getCantidadTransitos(){
+
+    public int getCantidadTransitos() {
         int cantidadTransitos = 0;
-        for(Vehiculo v : this.getVehiculos()){
+        for (Vehiculo v : this.getVehiculos()) {
             cantidadTransitos += v.getCantidadTransitos();
         }
         return cantidadTransitos;
@@ -80,7 +82,7 @@ public class UsuarioPropietario extends Usuario {
     public List<Recarga> getRecargasPendientes() {
         return this.cuenta.getRecargasPendientes();
     }
-    
+
     public List<Recarga> getRecargas() {
         return this.cuenta.getRecargas();
     }
@@ -90,20 +92,27 @@ public class UsuarioPropietario extends Usuario {
     }
 
     public boolean existe(Vehiculo vehiculo) {
-        for(Vehiculo v : this.vehiculos){
-            if(v.equals(vehiculo))
+        for (Vehiculo v : this.vehiculos) {
+            if (v.equals(vehiculo)) {
                 return true;
+            }
         }
         return false;
     }
 
-    public void agregar(Transito transito) {
-        for (Vehiculo vehiculo : vehiculos) {
-            if(vehiculo.equals(transito.getVehiculo())){
-                vehiculo.agregar(transito);
-                return;
+    public Transito agregar(Transito transito) { //ToDo VALIDAR ESTE METODO, ESTA LARGO
+        if (this.getCuenta().validarSaldo(transito.getMontoAPagar())) {
+            for (Vehiculo vehiculo : vehiculos) {
+                if (vehiculo.equals(transito.getVehiculo())) {
+                    Transito transitoAgregado = vehiculo.agregar(transito);
+                    if(transitoAgregado != null){
+                        this.getCuenta().actualizarSaldo(transito.getMontoAPagar());
+                        return transitoAgregado;
+                    }
+                }
             }
         }
+        return null;
     }
 
     public List<Transito> getTransitos() {
@@ -116,7 +125,7 @@ public class UsuarioPropietario extends Usuario {
 
     public Vehiculo buscarVehiculo(String matricula) {
         for (Vehiculo vehiculo : vehiculos) {
-            if(vehiculo.getMatricula().equals(matricula)){
+            if (vehiculo.getMatricula().equals(matricula)) {
                 return vehiculo;
             }
         }
@@ -124,14 +133,14 @@ public class UsuarioPropietario extends Usuario {
     }
 
     public void asignarBonificacion(Bonificacion bonificacionSeleccionada) {
-        if(bonificaciones.isEmpty() || !existeBonificacion(bonificacionSeleccionada)){
+        if (bonificaciones.isEmpty() || !existeBonificacion(bonificacionSeleccionada)) {
             this.bonificaciones.add(bonificacionSeleccionada);
         }
     }
 
     private boolean existeBonificacion(Bonificacion bonificacionSeleccionada) {
         for (Bonificacion b : bonificaciones) {
-            if(b.getPuesto().equals(bonificacionSeleccionada.getPuesto())){
+            if (b.getPuesto().equals(bonificacionSeleccionada.getPuesto())) {
                 return true;
             }
         }
@@ -140,12 +149,11 @@ public class UsuarioPropietario extends Usuario {
 
     public Bonificacion getBonificacionPuesto(Puesto puestoSeleccionado) {
         for (Bonificacion b : bonificaciones) {
-            if(b.getPuesto().equals(puestoSeleccionado)){
+            if (b.getPuesto().equals(puestoSeleccionado)) {
                 return b;
             }
         }
         return null;
     }
 
-    
 }

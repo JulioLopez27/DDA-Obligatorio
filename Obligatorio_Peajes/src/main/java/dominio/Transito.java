@@ -15,6 +15,7 @@ public class Transito {
     private Puesto puesto;
     private LocalDate fecha;
     private double monto;
+    private double montoPagado;
     private Bonificacion bonificacion = null;
 
     public Transito(Vehiculo vehiculo, Puesto puesto) {
@@ -55,12 +56,30 @@ public class Transito {
         return this.puesto.getMonto(this.vehiculo.getCategoria());
     }
 
+    public double getMontoPagado() {
+        return montoPagado;
+    }
+
+    public void setMontoPagado(double montoPagado) {
+        this.montoPagado = montoPagado;
+    }
+
     public void setMonto(double monto) {
         this.monto = monto;
     }
 
     public UsuarioPropietario getUsuarioPropietario() {
         return this.vehiculo.getUsuarioPropietario();
+    }
+
+    public double getPorcentajeDescuento() {
+        return (this.bonificacion != null) ? this.bonificacion.getPorcentajeDescuento(this) : 0;
+    }
+
+    public double getMontoAPagar() {
+        double montoTransito = this.getMonto();
+        double porcentajeDescuento = this.getPorcentajeDescuento();
+        return montoTransito * (1 - porcentajeDescuento / 100);
     }
     
     

@@ -17,6 +17,7 @@ import java.awt.Component;
 import java.awt.Frame;
 import java.util.List;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
 
 /**
@@ -56,6 +57,9 @@ public class UIEmularTransito extends javax.swing.JDialog {
         jListTarifas = new javax.swing.JList();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPaneDatosTransito = new javax.swing.JTextPane();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Emular transito");
@@ -97,23 +101,27 @@ public class UIEmularTransito extends javax.swing.JDialog {
 
         jLabel5.setText("Monto");
 
+        jScrollPane1.setViewportView(jTextPaneDatosTransito);
+
+        jLabel6.setText("Datos del tránsito:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jButtonCerrar)
+                .addGap(16, 16, 16))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(38, 38, 38)))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboPuestos, 0, 375, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -121,16 +129,21 @@ public class UIEmularTransito extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
                                 .addGap(134, 134, 134))
+                            .addComponent(jScrollPane2)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
                                 .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButtonRegistrarTransito))
-                            .addComponent(jScrollPane2))
-                        .addContainerGap(56, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonCerrar)
-                        .addGap(16, 16, 16))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,19 +158,20 @@ public class UIEmularTransito extends javax.swing.JDialog {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonRegistrarTransito))
-                        .addGap(35, 35, 35)
-                        .addComponent(jButtonCerrar)
-                        .addGap(16, 16, 16))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonRegistrarTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonCerrar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -185,9 +199,12 @@ public class UIEmularTransito extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JList jListTarifas;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextMatricula;
+    private javax.swing.JTextPane jTextPaneDatosTransito;
     // End of variables declaration//GEN-END:variables
 
     private void inicializar() {
@@ -211,14 +228,24 @@ public class UIEmularTransito extends javax.swing.JDialog {
         Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
         UsuarioPropietario usuario = vehiculoEncontrado.getUsuarioPropietario();
         Bonificacion bonificacionPuesto = usuario.getBonificacionPuesto(puestoSeleccionado);
-        Transito transito = new Transito(vehiculoEncontrado, puestoSeleccionado);
-        if(bonificacionPuesto != null)
-            transito.setBonificacion(bonificacionPuesto);
+        Transito transitoAAgregar = new Transito(vehiculoEncontrado, puestoSeleccionado);
+        Transito transitoAgregado = Fachada.getInstancia().agregar(transitoAAgregar, bonificacionPuesto);
+        if(transitoAgregado != null){
+            mostrarDatosDeTransito(transitoAgregado);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo agregar el tránsito", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         
-        Fachada.getInstancia().agregar(transito);
-        //ToDo Calcular Monto descuento si hay
-        //ToDo Actualizar Saldo en la cuenta
         //ToDo Mandar notificacion
+    }
+
+    private void mostrarDatosDeTransito(Transito transitoAgregado) {
+        String datosTransito = "Nombre de Propietario: " + transitoAgregado.getUsuarioPropietario().getNombre() + "\\r\\n" +
+                "Categoría de vehículo: " + transitoAgregado.getVehiculo().getCategoria() + "\\r\\n" +
+                "Bonificación: " + transitoAgregado.getBonificacion().getNombre() + "\\r\\n" +
+                "Costo del tránsito: " + transitoAgregado.getMontoPagado() + "\\r\\n" +
+                "Saldo disponible: " + transitoAgregado.getUsuarioPropietario().getCuenta().getSaldo();
+        jTextPaneDatosTransito.setText(datosTransito);
     }
 
     public class DetalleTarifasRenderer implements ListCellRenderer<Tarifa> {
