@@ -6,9 +6,11 @@ package iuGrafica;
 
 import Interfaces.ComboBasicoRenderer;
 import Servicios.Fachada;
+import dominio.Bonificacion;
 import dominio.Puesto;
 import dominio.Tarifa;
 import dominio.Transito;
+import dominio.UsuarioPropietario;
 import dominio.Vehiculo;
 import iuGrafica.celdas.CeldaEmularTransito;
 import java.awt.Component;
@@ -207,8 +209,16 @@ public class UIEmularTransito extends javax.swing.JDialog {
     private void registrarTransito() {
         Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
         Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
+        UsuarioPropietario usuario = vehiculoEncontrado.getUsuarioPropietario();
+        Bonificacion bonificacionPuesto = usuario.getBonificacionPuesto(puestoSeleccionado);
         Transito transito = new Transito(vehiculoEncontrado, puestoSeleccionado);
+        if(bonificacionPuesto != null)
+            transito.setBonificacion(bonificacionPuesto);
+        
         Fachada.getInstancia().agregar(transito);
+        //ToDo Calcular Monto descuento si hay
+        //ToDo Actualizar Saldo en la cuenta
+        //ToDo Mandar notificacion
     }
 
     public class DetalleTarifasRenderer implements ListCellRenderer<Tarifa> {

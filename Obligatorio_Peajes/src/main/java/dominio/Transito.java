@@ -15,6 +15,7 @@ public class Transito {
     private Puesto puesto;
     private LocalDate fecha;
     private double monto;
+    private Bonificacion bonificacion = null;
 
     public Transito(Vehiculo vehiculo, Puesto puesto) {
         this.vehiculo = vehiculo;
@@ -36,6 +37,14 @@ public class Transito {
 
     public void setPuesto(Puesto puesto) {
         this.puesto = puesto;
+    }
+
+    public Bonificacion getBonificacion() {
+        return bonificacion;
+    }
+
+    public void setBonificacion(Bonificacion bonificacion) {
+        this.bonificacion = bonificacion;
     }
 
     public LocalDate getFecha() {

@@ -138,5 +138,14 @@ public class UsuarioPropietario extends Usuario {
         return false;
     }
 
+    public Bonificacion getBonificacionPuesto(Puesto puestoSeleccionado) {
+        for (Bonificacion b : bonificaciones) {
+            if(b.getPuesto().equals(puestoSeleccionado)){
+                return b;
+            }
+        }
+        return null;
+    }
+
     
 }
