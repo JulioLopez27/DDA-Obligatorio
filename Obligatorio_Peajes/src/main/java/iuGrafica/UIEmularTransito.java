@@ -101,6 +101,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
 
         jLabel5.setText("Monto");
 
+        jTextPaneDatosTransito.setFont(new java.awt.Font("Helvetica Neue", 2, 12)); // NOI18N
         jScrollPane1.setViewportView(jTextPaneDatosTransito);
 
         jLabel6.setText("Datos del tránsito:");
@@ -240,10 +241,11 @@ public class UIEmularTransito extends javax.swing.JDialog {
     }
 
     private void mostrarDatosDeTransito(Transito transitoAgregado) {
-        String datosTransito = "Nombre de Propietario: " + transitoAgregado.getUsuarioPropietario().getNombre() + "\\r\\n" +
-                "Categoría de vehículo: " + transitoAgregado.getVehiculo().getCategoria() + "\\r\\n" +
-                "Bonificación: " + transitoAgregado.getBonificacion().getNombre() + "\\r\\n" +
-                "Costo del tránsito: " + transitoAgregado.getMontoPagado() + "\\r\\n" +
+        String nombreBonificacion = (transitoAgregado.getBonificacion() != null) ? transitoAgregado.getBonificacion().getNombre() : "No tiene"; 
+        String datosTransito = "Nombre de Propietario: " + transitoAgregado.getUsuarioPropietario().getNombre() + "\r\n" +
+                "Categoría de vehículo: " + transitoAgregado.getVehiculo().getCategoria().getNombre() + "\r\n" +
+                "Bonificación: " + nombreBonificacion + "\r\n" +
+                "Costo del tránsito: " + transitoAgregado.getMontoPagado() + "\r\n" +
                 "Saldo disponible: " + transitoAgregado.getUsuarioPropietario().getCuenta().getSaldo();
         jTextPaneDatosTransito.setText(datosTransito);
     }

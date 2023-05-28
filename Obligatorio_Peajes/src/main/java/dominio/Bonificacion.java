@@ -47,7 +47,7 @@ public class Bonificacion implements Renderizable {
         return this.getNombre();
     }
 
-    double getPorcentajeDescuento(Transito transito) {
+    public double getPorcentajeDescuento(Transito transito) {
         return this.tipoBonificacion.getPorcentajeDescuento(transito);
     }
     

@@ -82,5 +82,4 @@ public class Transito {
         return montoTransito * (1 - porcentajeDescuento / 100);
     }
     
-    
 }
