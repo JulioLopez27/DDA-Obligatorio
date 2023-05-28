@@ -100,7 +100,7 @@ public class UsuarioPropietario extends Usuario {
         return false;
     }
 
-    public Transito agregar(Transito transito) { //ToDo VALIDAR ESTE METODO, ESTA LARGO
+    public Transito agregar(Transito transito) { //ToDo PREGUNTAR AL PROFE: VALIDAR ESTE METODO, ESTA LARGO
         double montoAPagar = transito.getMontoAPagar();
         if (this.getCuenta().validarSaldo(montoAPagar)) {
             for (Vehiculo vehiculo : vehiculos) {

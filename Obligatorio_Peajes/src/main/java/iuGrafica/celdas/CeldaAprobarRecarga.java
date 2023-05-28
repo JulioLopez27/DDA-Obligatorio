@@ -8,12 +8,12 @@ package iuGrafica.celdas;
  *
  * @author gonzalobazzi
  */
-public class CeldaRecarga extends javax.swing.JPanel {
+public class CeldaAprobarRecarga extends javax.swing.JPanel {
 
     /**
      * Creates new form CeldaRecarga
      */
-    public CeldaRecarga() {
+    public CeldaAprobarRecarga() {
         initComponents();
     }
 

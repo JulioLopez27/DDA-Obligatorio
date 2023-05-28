@@ -41,15 +41,15 @@ public class DatosPrueba {
 
         //Usuarios Propietarios
         UsuarioPropietario usuarioProp1 = new UsuarioPropietario(200, cuenta1, 123, "123", "Juan Perez");
-        UsuarioPropietario usuarioProp2 = new UsuarioPropietario(50, cuenta2, 51234567, "pass123", "Ana Lopez");
-        UsuarioPropietario usuarioProp3 = new UsuarioPropietario(500, cuenta3, 11234567, "pass123", "Alberto Rodriguez");
+        UsuarioPropietario usuarioProp2 = new UsuarioPropietario(50, cuenta2, 456, "456", "Ana Lopez");
+        UsuarioPropietario usuarioProp3 = new UsuarioPropietario(500, cuenta3, 789, "789", "Alberto Rodriguez");
 
         cuenta1.setUsuarioPropietario(usuarioProp1);
         cuenta2.setUsuarioPropietario(usuarioProp2);
         cuenta3.setUsuarioPropietario(usuarioProp3);
 
         //Usuarios Admin
-        UsuarioAdministrador usuarioAdmin1 = new UsuarioAdministrador(41234567, "pass123", "Carlos Gonzalez");
+        UsuarioAdministrador usuarioAdmin1 = new UsuarioAdministrador(41234567, "123", "Carlos Gonzalez");
         UsuarioAdministrador usuarioAdmin2 = new UsuarioAdministrador(123, "123", "Admin 123");
 
         //Categorias
@@ -78,6 +78,10 @@ public class DatosPrueba {
 
         List<Vehiculo> vehiculosProp1 = new ArrayList<>(Arrays.asList(vehiculo1, vehiculo2, vehiculo5));
         usuarioProp1.setVehiculos(vehiculosProp1);
+        List<Vehiculo> vehiculosProp2 = new ArrayList<>(Arrays.asList(vehiculo3));
+        usuarioProp2.setVehiculos(vehiculosProp2);
+        List<Vehiculo> vehiculosProp3 = new ArrayList<>(Arrays.asList(vehiculo4, vehiculo6));
+        usuarioProp3.setVehiculos(vehiculosProp3);
 
         //Agregar Usuarios
         fachada.agregar(usuarioProp1);

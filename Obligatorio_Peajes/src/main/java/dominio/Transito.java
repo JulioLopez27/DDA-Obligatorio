@@ -4,6 +4,7 @@
  */
 package dominio;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -76,10 +77,12 @@ public class Transito {
         return (this.bonificacion != null) ? this.bonificacion.getPorcentajeDescuento(this) : 0;
     }
 
-    public double getMontoAPagar() {
-        double montoTransito = this.getMonto();
+    public double getMontoAPagar() { //ToDo PREGUNTAR AL PROFE SI ESTO ES UN CAMINO VALIDO
+        BigDecimal montoTransito = new BigDecimal(this.getMonto());
         double porcentajeDescuento = this.getPorcentajeDescuento();
-        return montoTransito * (1 - porcentajeDescuento / 100);
+        BigDecimal porcentaje = new BigDecimal(1 - porcentajeDescuento / 100);
+        BigDecimal resultado = montoTransito.subtract(montoTransito.multiply(porcentaje));
+        return resultado.doubleValue();
     }
     
 }

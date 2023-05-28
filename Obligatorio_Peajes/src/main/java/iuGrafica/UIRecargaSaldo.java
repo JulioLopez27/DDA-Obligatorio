@@ -141,6 +141,6 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        //ToDo ACTUALIZAR SALDO
+        //ToDo NOTIFICAR SALDO ACTUALIZADO
     }
 }

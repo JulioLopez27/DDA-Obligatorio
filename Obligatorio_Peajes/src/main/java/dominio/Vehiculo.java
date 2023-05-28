@@ -20,10 +20,6 @@ public class Vehiculo {
     private String modelo;
     private String color;
     private List<Transito> transitos = new ArrayList<>();
-
-    public Vehiculo(){ 
-        //ToDo Borrar si no es necesario a Futuro
-    }
     
     public Vehiculo(UsuarioPropietario usuarioPropietario, Categoria categoria, String matricula, String modelo, String color) {
         this.usuarioPropietario = usuarioPropietario;

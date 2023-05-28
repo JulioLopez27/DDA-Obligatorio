@@ -94,7 +94,7 @@ public class ServicioUsuarios {
 
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         for(UsuarioPropietario up : this.usuariosPropietario){
-            if(up.equals(recarga.getUsuarioPropietario())){ //ToDo Validar si es necesario pasar por cuenta
+            if(up.equals(recarga.getUsuarioPropietario())){
                 return up.aprobar(recarga, usuarioAdministrador);
             }
         }

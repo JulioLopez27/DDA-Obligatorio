@@ -15,7 +15,7 @@ import java.util.List;
 public class Bonificacion implements Renderizable {
     private String nombre;
     private TipoBonificacion tipoBonificacion;
-    private Puesto puesto = null; //ToDo PREGUNTAR AL PROFE
+    private Puesto puesto = null; //ToDo PREGUNTAR AL PROFE SI LO CREAMOS CON OBJETO NULO PARA BONIFICACIONES DEL SISTEMA
 
     public Bonificacion(TipoBonificacion tipoBonificacion) {
         this.tipoBonificacion = tipoBonificacion;

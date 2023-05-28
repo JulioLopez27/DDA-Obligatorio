@@ -15,7 +15,7 @@ import dominio.Vehiculo;
 import iuGrafica.celdas.CeldaBonificacion;
 import iuGrafica.celdas.CeldaTransito;
 import iuGrafica.celdas.CeldaVehiculo;
-import iuGrafica.celdas.CeldaRecargasss;
+import iuGrafica.celdas.CeldaRecargaSaldo;
 import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDate;
@@ -519,6 +519,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }
 
     private void cargarListaDeVehiculos() {
+        ------ Pasar Usuario Propietario
         List<Vehiculo> vehiculos = Fachada.getInstancia().getVehiculos();
         jListVehiculos.setListData(vehiculos.toArray());
     }
@@ -534,6 +535,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }
 
     private void cargarListaDeRecargas() {
+        ----- PASAR USUARIO PROPIETARIO
         List<Recarga> recargas = Fachada.getInstancia().getRecargas();
         jListRecargas.setListData(recargas.toArray());
     }
@@ -594,7 +596,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
     @Override
     public Component getListCellRendererComponent(JList<? extends Recarga> list, Recarga recarga, int index, boolean isSelected, boolean cellHasFocus) {
-            CeldaRecargasss celdaRecarga = new CeldaRecargasss(); //ToDo CAMBIAR ESTE NOMBRE
+            CeldaRecargaSaldo celdaRecarga = new CeldaRecargaSaldo();
             celdaRecarga.jFechaRecarga.setText(recarga.getFecha().toString());
             celdaRecarga.jMonto.setText(""+recarga.getMonto());
             celdaRecarga.jEstado.setText(recarga.getEstado());
