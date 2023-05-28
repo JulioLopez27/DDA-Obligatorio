@@ -6,6 +6,7 @@ package Servicios;
 
 import Exceptions.LoginException;
 import Exceptions.RecargaException;
+import dominio.Bonificacion;
 import dominio.Recarga;
 import dominio.Sesion;
 import dominio.Transito;
@@ -139,6 +140,24 @@ public class ServicioUsuarios {
             }
         }
         return null;
+    }
+
+    public UsuarioPropietario buscarUsuario(String cedula) {
+        for (UsuarioPropietario usuarioPropietario : usuariosPropietario) {
+            if(usuarioPropietario.getCedula() == Integer.parseInt(cedula)){ //ToDo Ver de poner en un try catch
+                return usuarioPropietario;
+            }
+        }
+        return null;
+    }
+
+    public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) {
+        for (UsuarioPropietario up : usuariosPropietario) {
+            if(up.equals(usuarioEncontrado)){
+                up.asignarBonificacion(bonificacionSeleccionada);
+                return;
+            }
+        }
     }
     
     

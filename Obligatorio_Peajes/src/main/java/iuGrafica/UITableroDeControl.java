@@ -594,7 +594,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
     @Override
     public Component getListCellRendererComponent(JList<? extends Recarga> list, Recarga recarga, int index, boolean isSelected, boolean cellHasFocus) {
-            CeldaRecargasss celdaRecarga = new CeldaRecargasss();
+            CeldaRecargasss celdaRecarga = new CeldaRecargasss(); //ToDo CAMBIAR ESTE NOMBRE
             celdaRecarga.jFechaRecarga.setText(recarga.getFecha().toString());
             celdaRecarga.jMonto.setText(""+recarga.getMonto());
             celdaRecarga.jEstado.setText(recarga.getEstado());

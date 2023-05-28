@@ -123,5 +123,20 @@ public class UsuarioPropietario extends Usuario {
         return null;
     }
 
+    public void asignarBonificacion(Bonificacion bonificacionSeleccionada) {
+        if(bonificaciones.isEmpty() || !existeBonificacion(bonificacionSeleccionada)){
+            this.bonificaciones.add(bonificacionSeleccionada);
+        }
+    }
+
+    private boolean existeBonificacion(Bonificacion bonificacionSeleccionada) {
+        for (Bonificacion b : bonificaciones) {
+            if(b.getPuesto().equals(bonificacionSeleccionada.getPuesto())){
+                return true;
+            }
+        }
+        return false;
+    }
+
     
 }

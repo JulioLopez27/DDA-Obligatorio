@@ -1,7 +1,4 @@
-iuGrafica/UIMenuAdministrador$3.class
 dominio/Recarga.class
-Servicios/ServicioRecargas.class
-iuGrafica/celdas/CeldaRecargasss.class
 iuGrafica/UIAsignarBonificaciones$1.class
 iuGrafica/InicioAplicacion.class
 iuGrafica/LoginUsuarioPropietario.class
@@ -11,9 +8,7 @@ iuGrafica/UIAsignarBonificaciones.class
 dominio/Modelo.class
 Servicios/ServicioNotificaciones.class
 dominio/Notificacion.class
-main/DatosPrueba.class
 dominio/Tarifa.class
-iuGrafica/celdas/CeldaAsignarBonificacion.class
 Interfaces/Renderizable.class
 iuGrafica/UITableroDeControl$BonificacionesDetallesRenderer.class
 iuGrafica/UITableroDeControl$1.class
@@ -25,7 +20,6 @@ iuGrafica/UITableroDeControl$VehiculoDetalleRenderer.class
 dominio/Sesion.class
 iuGrafica/UIEmularAprobacionRecarga$DetalleRecargaRenderer.class
 iuGrafica/UIRecargaSaldo$1.class
-iuGrafica/celdas/CeldaTransito.class
 iuGrafica/UIEmularTransito$2.class
 dominio/Trabajador.class
 dominio/Usuario.class
@@ -41,11 +35,9 @@ iuGrafica/LoginUsuarioAdministrador.class
 main/SistemaPeajes.class
 iuGrafica/celdas/CeldaEmularTransito.class
 dominio/Categoria.class
-iuGrafica/UIMenuAdministrador$1.class
 dominio/UsuarioPropietario.class
 iuGrafica/UIEmularTransito$1.class
 iuGrafica/UITableroDeControl$RecargasDetalleRenderer.class
-iuGrafica/UIMenuAdministrador.class
 Exceptions/RecargaException.class
 dominio/Exonerado.class
 iuGrafica/LoginAbstracto.class
@@ -56,9 +48,6 @@ dominio/Cuenta.class
 dominio/UsuarioAdministrador.class
 iuGrafica/celdas/CeldaRecarga.class
 iuGrafica/celdas/CeldaBonificacion.class
-iuGrafica/UIMenuAdministrador$4.class
-dominio/Frecuente.class
-iuGrafica/UIMenuAdministrador$2.class
 Observer/Observer.class
 Servicios/Fachada.class
 iuGrafica/LoginAbstracto$1.class

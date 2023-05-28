@@ -8,6 +8,17 @@ package dominio;
  *
  * @author Julio Cesar
  */
-public class Trabajador {
+public class Trabajador extends TipoBonificacion {
+
+    public Trabajador() {
+        super("Trabajador");
+    }
+
+    @Override
+    public double getDescuento() {
+        
+        //ToDo calcular descuento
+        return 0;
+    }
     
 }

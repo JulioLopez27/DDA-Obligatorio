@@ -4,9 +4,20 @@
  */
 package iuGrafica;
 
+import Interfaces.ComboBasicoRenderer;
 import Observer.Observable;
 import Observer.Observer;
+import Servicios.Fachada;
+import dominio.Bonificacion;
+import dominio.Puesto;
+import dominio.UsuarioPropietario;
+import iuGrafica.celdas.CeldaAsignarBonificacion;
+import java.awt.Component;
 import java.awt.Frame;
+import java.util.List;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.ListCellRenderer;
 
 /**
  *
@@ -14,14 +25,17 @@ import java.awt.Frame;
  */
 public class UIAsignarBonificaciones extends javax.swing.JDialog implements Observer {
 
+    private UsuarioPropietario usuarioEncontrado;
     /**
      * Creates new form AsignarBonificaciones
      */
     public UIAsignarBonificaciones(Frame parent, boolean modal) {
         super(parent,modal);
         initComponents();
-//                jListBonificaciones.setCellRenderer(new DetalleBonificacionesRenderer());
-//        cargarListaBonificaciones();
+        jComboBonificaciones.setRenderer(new ComboBasicoRenderer());
+        jComboPuestos.setRenderer(new ComboBasicoRenderer());
+        jListBonificaciones.setCellRenderer(new DetalleBonificacionRenderer());
+        inicializar();
     }
 
     /**
@@ -35,18 +49,18 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBonificaciones = new javax.swing.JComboBox();
+        jComboPuestos = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTextCedula = new javax.swing.JTextField();
+        jButtonBuscar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabelNombrePropietario = new javax.swing.JLabel();
+        jButtonAsignar = new javax.swing.JButton();
+        jButtonCerrar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListBonificaciones = new javax.swing.JList();
         jLabel6 = new javax.swing.JLabel();
@@ -68,10 +82,6 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Asignar bonificaciones");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Bonificaciones:");
 
@@ -81,31 +91,35 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText("Cedula:");
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonBuscarActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Propietario:");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
-        jLabel5.setText("jLabel5");
+        jLabelNombrePropietario.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setText("Asignar");
-        jButton2.setAutoscrolls(true);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAsignar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonAsignar.setText("Asignar");
+        jButtonAsignar.setAutoscrolls(true);
+        jButtonAsignar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonAsignarActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setText("Cerrar");
+        jButtonCerrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonCerrar.setText("Cerrar");
+        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setViewportView(jListBonificaciones);
 
@@ -118,126 +132,121 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextCedula)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonBuscar))
+                            .addComponent(jComboPuestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(40, 40, 40)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(80, 80, 80)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)))
-                .addComponent(jButton1)
+                        .addGap(30, 30, 30)
+                        .addComponent(jComboBonificaciones, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addGap(71, 71, 71)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(145, 145, 145)
+                                .addComponent(jLabel7)
+                                .addGap(71, 71, 71))
+                            .addComponent(jButtonCerrar)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonAsignar)
+                        .addGap(289, 289, 289))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelNombrePropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBonificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jTextCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabelNombrePropietario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addGap(1, 1, 1)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(15, 15, 15))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jButton2)
-                        .addContainerGap(51, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonAsignar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonCerrar)
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        buscarPropietario();
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAsignarActionPerformed
+        asignarBonificacion();
+    }//GEN-LAST:event_jButtonAsignarActionPerformed
+
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCerrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jButtonAsignar;
+    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonCerrar;
+    private javax.swing.JComboBox jComboBonificaciones;
+    private javax.swing.JComboBox jComboPuestos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelNombrePropietario;
     private javax.swing.JList jListBonificaciones;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextCedula;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -245,17 +254,63 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
         //ToDo ACTUALIZAR BONIFICACION PUESTO
     }
     
-    //todo ver como esquematizar
-//          private void cargarListaBonificaciones() {
-//       
-//    }
-//        
-//        public class DetalleTarifasRenderer implements ListCellRenderer<Tarifa> {
-//
-//        @Override
-//        public Component getListCellRendererComponent(JList<? extends Tarifa> list, Tarifa tarifa, int index, boolean isSelected, boolean cellHasFocus) {
-//
-//        }
-//        
-//    }
+     private void inicializar() {
+        cargarBonificaciones();
+        cargarPuestos();
+    }
+
+    private void cargarBonificaciones() {
+        List<Bonificacion> bonificaciones = Fachada.getInstancia().getBonificaciones();
+        for (Bonificacion b : bonificaciones) {
+            jComboBonificaciones.addItem(b);
+        }
+    }
+    
+    public void cargarPuestos(){
+        List<Puesto> puestos = Fachada.getInstancia().getPuestos();
+        for (Puesto p : puestos) {
+            jComboPuestos.addItem(p);
+        }
+    }
+
+    private void buscarPropietario() {
+        String cedula = jTextCedula.getText();
+        UsuarioPropietario usuarioPropietario = Fachada.getInstancia().buscarPropietario(cedula);
+        if(usuarioPropietario != null){
+            this.usuarioEncontrado = usuarioPropietario;
+            List<Bonificacion> bonificacionesUsuario = usuarioPropietario.getBonificaciones();
+            jLabelNombrePropietario.setText(usuarioPropietario.getNombre());
+            if(bonificacionesUsuario.size() > 0){
+                cargarListaBonificaciones(bonificacionesUsuario);
+            } else {
+                //ToDo Mostrar un mensaje
+            }
+        } else {
+            jLabelNombrePropietario.setText("No se encontró el usuario.");
+        }
+    }
+    
+    private void cargarListaBonificaciones(List<Bonificacion> bonificacionesUsuario) {
+        jListBonificaciones.setListData(bonificacionesUsuario.toArray());
+    }
+
+    private void asignarBonificacion() {
+        Bonificacion bonificacionSeleccionada = (Bonificacion) jComboBonificaciones.getSelectedItem();
+        Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
+        bonificacionSeleccionada.setPuesto(puestoSeleccionado);
+        Fachada.getInstancia().asignarBonificacion(this.usuarioEncontrado, bonificacionSeleccionada);
+        buscarPropietario();
+    }
+        
+    public class DetalleBonificacionRenderer implements ListCellRenderer<Bonificacion> {
+
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Bonificacion> list, Bonificacion bonificacion, int index, boolean isSelected, boolean cellHasFocus) {
+            CeldaAsignarBonificacion celdaBonificacion = new CeldaAsignarBonificacion();
+            celdaBonificacion.jBonificacion.setText(bonificacion.getNombre());
+            celdaBonificacion.jPuesto.setText(bonificacion.getPuesto().getNombre());
+            return celdaBonificacion;
+        }
+        
+    }
 }

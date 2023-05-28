@@ -8,6 +8,15 @@ package dominio;
  *
  * @author Julio Cesar
  */
-public class Exonerado {
+public class Exonerado extends TipoBonificacion {
+
+    public Exonerado() {
+        super("Exonerado");
+    }
+
+    @Override
+    public double getDescuento() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

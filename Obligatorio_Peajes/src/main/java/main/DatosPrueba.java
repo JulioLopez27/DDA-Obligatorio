@@ -10,9 +10,13 @@ import Servicios.ServicioUsuarios;
 import dominio.Bonificacion;
 import dominio.Categoria;
 import dominio.Cuenta;
+import dominio.Exonerado;
+import dominio.Frecuente;
 import dominio.Puesto;
 import dominio.Recarga;
 import dominio.Tarifa;
+import dominio.TipoBonificacion;
+import dominio.Trabajador;
 import dominio.Transito;
 import dominio.UsuarioAdministrador;
 import dominio.UsuarioPropietario;
@@ -36,7 +40,7 @@ public class DatosPrueba {
         Cuenta cuenta3 = new Cuenta(2000, null);
 
         //Usuarios Propietarios
-        UsuarioPropietario usuarioProp1 = new UsuarioPropietario(200, cuenta1, 41234567, "pass123", "Juan Perez");
+        UsuarioPropietario usuarioProp1 = new UsuarioPropietario(200, cuenta1, 123, "123", "Juan Perez");
         UsuarioPropietario usuarioProp2 = new UsuarioPropietario(50, cuenta2, 51234567, "pass123", "Ana Lopez");
         UsuarioPropietario usuarioProp3 = new UsuarioPropietario(500, cuenta3, 11234567, "pass123", "Alberto Rodriguez");
 
@@ -46,6 +50,7 @@ public class DatosPrueba {
 
         //Usuarios Admin
         UsuarioAdministrador usuarioAdmin1 = new UsuarioAdministrador(41234567, "pass123", "Carlos Gonzalez");
+        UsuarioAdministrador usuarioAdmin2 = new UsuarioAdministrador(123, "123", "Admin 123");
 
         //Categorias
         Categoria cat1 = new Categoria("Automóvil");
@@ -79,6 +84,7 @@ public class DatosPrueba {
         fachada.agregar(usuarioProp2);
         fachada.agregar(usuarioProp3);
         fachada.agregar(usuarioAdmin1);
+        fachada.agregar(usuarioAdmin2);
 
         //Puestos
         Puesto puesto1 = new Puesto("Peaje Solis", "Rta Interbalnearia KM 48");
@@ -131,9 +137,19 @@ public class DatosPrueba {
         } catch (RecargaException re) {
 
         }
-        Bonificacion b1 = new Bonificacion("Exonerado");
-        Bonificacion b2 = new Bonificacion("Trabajador");
-        usuarioProp1.agregar(b1);
-        usuarioProp1.agregar(b2);
+        
+        //TipoBonificacion
+        TipoBonificacion tipoBonifExonerado = new Exonerado();
+        TipoBonificacion tipoBonifFrecuente = new Frecuente();
+        TipoBonificacion tipoBonifTrabajador = new Trabajador();
+
+        //Bonificaciones
+        Bonificacion bExonerado = new Bonificacion(tipoBonifExonerado);
+        Bonificacion bFrecuente = new Bonificacion(tipoBonifFrecuente);
+        Bonificacion bTrabajador = new Bonificacion(tipoBonifTrabajador);
+        
+        fachada.agregar(bExonerado);
+        fachada.agregar(bFrecuente);
+        fachada.agregar(bTrabajador);
     }
 }

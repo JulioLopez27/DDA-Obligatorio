@@ -14,39 +14,37 @@ import java.util.List;
  *
  * @author sebita
  */
-
 public class ServicioPeajes {
-    
+
     private List<Puesto> puestos = new ArrayList();
     private List<Bonificacion> bonificaiones = new ArrayList();
 
     public ServicioPeajes() {
-        
+
     }
 
     public List<Puesto> getPuestos() {
         return puestos;
     }
-    
-      public List<Bonificacion> getBonificaiones() {
+
+    public List<Bonificacion> getBonificaiones() {
         return bonificaiones;
     }
-      
-      public void agregar (Puesto puesto){
-       this.puestos.add(puesto);
-      }
-      
-          public void agregar (Bonificacion bonificacion){
-       this.bonificaiones.add(bonificacion);
-      }
-          
-          public void agregar (Tarifa tarifa, Puesto puesto){
-              for(Puesto p : puestos){
-                  if(p.equals(puesto)){
-                  p.agregar(tarifa);
-                  }
-              }
-          }
 
-    
+    public void agregar(Puesto puesto) {
+        this.puestos.add(puesto);
+    }
+
+    public void agregar(Bonificacion bonificacion) {
+        this.bonificaiones.add(bonificacion);
+    }
+
+    public void agregar(Tarifa tarifa, Puesto puesto) {
+        for (Puesto p : puestos) {
+            if (p.equals(puesto)) {
+                p.agregar(tarifa);
+            }
+        }
+    }
+
 }

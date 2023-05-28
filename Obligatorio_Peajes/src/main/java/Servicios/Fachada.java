@@ -7,6 +7,7 @@ package Servicios;
 import Exceptions.LoginException;
 import Exceptions.RecargaException;
 import Observer.Observable;
+import dominio.Bonificacion;
 import dominio.Puesto;
 import dominio.Recarga;
 import dominio.Sesion;
@@ -98,6 +99,22 @@ public class Fachada extends Observable {
 
     public Vehiculo buscarVehiculo(String matricula) {
         return servicioUsuarios.buscarVehiculo(matricula);
+    }
+
+    public void agregar(Bonificacion bonificacion) {
+        servicioPeajes.agregar(bonificacion);
+    }
+
+    public List<Bonificacion> getBonificaciones() {
+        return servicioPeajes.getBonificaiones();
+    }
+
+    public UsuarioPropietario buscarPropietario(String cedula) {
+        return servicioUsuarios.buscarUsuario(cedula);
+    }
+
+    public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) {
+        servicioUsuarios.asignarBonificacion(usuarioEncontrado, bonificacionSeleccionada);
     }
 
 }

@@ -162,10 +162,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistrarTransitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarTransitoActionPerformed
-        Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
-        Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
-        Transito transito = new Transito(vehiculoEncontrado, puestoSeleccionado);
-        Fachada.getInstancia().agregar(transito);
+        registrarTransito();
     }//GEN-LAST:event_jButtonRegistrarTransitoActionPerformed
 
     private void jComboPuestosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboPuestosItemStateChanged
@@ -193,7 +190,6 @@ public class UIEmularTransito extends javax.swing.JDialog {
 
     private void inicializar() {
         cargarComboPuestos();
-
     }
 
     private void cargarComboPuestos() {
@@ -206,6 +202,13 @@ public class UIEmularTransito extends javax.swing.JDialog {
     private void cargarTarifasDePuesto() {
         Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
         jListTarifas.setListData(puestoSeleccionado.getTarifas().toArray());
+    }
+
+    private void registrarTransito() {
+        Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
+        Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
+        Transito transito = new Transito(vehiculoEncontrado, puestoSeleccionado);
+        Fachada.getInstancia().agregar(transito);
     }
 
     public class DetalleTarifasRenderer implements ListCellRenderer<Tarifa> {
