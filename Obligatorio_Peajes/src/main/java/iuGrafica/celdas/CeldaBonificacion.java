@@ -44,23 +44,20 @@ public class CeldaBonificacion extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addComponent(jNombreBonificacion)
                 .addGap(233, 233, 233)
                 .addComponent(jPuesto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 353, Short.MAX_VALUE)
                 .addComponent(jFechaAsignada)
-                .addGap(42, 42, 42))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNombreBonificacion)
-                    .addComponent(jPuesto)
-                    .addComponent(jFechaAsignada))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jNombreBonificacion)
+                .addComponent(jPuesto)
+                .addComponent(jFechaAsignada))
         );
     }// </editor-fold>//GEN-END:initComponents
 

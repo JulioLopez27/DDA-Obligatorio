@@ -66,15 +66,12 @@ public class CeldaVehiculo extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jColor)
-                    .addComponent(jMatricula)
-                    .addComponent(jModelo)
-                    .addComponent(jMontoTotal)
-                    .addComponent(jTransitos))
-                .addContainerGap(9, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jColor)
+                .addComponent(jMatricula)
+                .addComponent(jModelo)
+                .addComponent(jMontoTotal)
+                .addComponent(jTransitos))
         );
     }// </editor-fold>//GEN-END:initComponents
 

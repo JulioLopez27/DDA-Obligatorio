@@ -69,6 +69,7 @@ public class Fachada extends Observable {
         return servicioUsuarios.aprobar(recarga, usuarioAdministrador);
     }
 
+    @Deprecated
     public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {
         return servicioUsuarios.getTransitos(usuarioPropietario);
     }

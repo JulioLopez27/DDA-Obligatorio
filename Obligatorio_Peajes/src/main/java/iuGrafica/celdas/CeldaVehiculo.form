@@ -33,16 +33,12 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jColor" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jModelo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jMontoTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTransitos" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="9" max="32767" attributes="0"/>
+          <Group type="103" groupAlignment="3" attributes="0">
+              <Component id="jColor" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="jMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="jModelo" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="jMontoTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="jTransitos" alignment="3" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

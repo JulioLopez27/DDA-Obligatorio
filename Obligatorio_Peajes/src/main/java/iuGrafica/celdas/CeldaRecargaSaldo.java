@@ -60,14 +60,11 @@ public class CeldaRecargaSaldo extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jAdministrador)
-                    .addComponent(jEstado)
-                    .addComponent(jMonto)
-                    .addComponent(jFechaRecarga))
-                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jAdministrador)
+                .addComponent(jEstado)
+                .addComponent(jMonto)
+                .addComponent(jFechaRecarga))
         );
     }// </editor-fold>//GEN-END:initComponents
 

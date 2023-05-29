@@ -62,7 +62,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
         jButtonRecargar = new javax.swing.JButton();
         jButtonBorrarNotificaciones = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonCerrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jCantVehiculos = new javax.swing.JLabel();
         jCantBonificaciones = new javax.swing.JLabel();
@@ -128,10 +128,15 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setText("Cerrar");
-        jButton3.setAutoscrolls(true);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonCerrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonCerrar.setText("Cerrar");
+        jButtonCerrar.setAutoscrolls(true);
+        jButtonCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setAutoscrolls(true);
         jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -357,7 +362,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                 .addGap(115, 115, 115))
             .addGroup(layout.createSequentialGroup()
                 .addGap(405, 405, 405)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -425,7 +430,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jCantNotificaciones)
                                 .addGap(18, 18, 18)
@@ -451,9 +456,13 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBorrarNotificacionesActionPerformed
 
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCerrarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBorrarNotificaciones;
+    private javax.swing.JButton jButtonCerrar;
     private javax.swing.JButton jButtonRecargar;
     private javax.swing.JLabel jCantBonificaciones;
     private javax.swing.JLabel jCantNotificaciones;
@@ -519,8 +528,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }
 
     private void cargarListaDeVehiculos() {
-        ------ Pasar Usuario Propietario
-        List<Vehiculo> vehiculos = Fachada.getInstancia().getVehiculos();
+        List<Vehiculo> vehiculos = usuarioPropietario.getVehiculos();
         jListVehiculos.setListData(vehiculos.toArray());
     }
 
@@ -530,13 +538,12 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }
 
     private void cargarListaDeTransitos() {
-        List<Transito> transitos = Fachada.getInstancia().getTransitos(usuarioPropietario);
+        List<Transito> transitos = usuarioPropietario.getTransitos();
         jListTransitos.setListData(transitos.toArray());
     }
 
     private void cargarListaDeRecargas() {
-        ----- PASAR USUARIO PROPIETARIO
-        List<Recarga> recargas = Fachada.getInstancia().getRecargas();
+        List<Recarga> recargas = usuarioPropietario.getRecargas();
         jListRecargas.setListData(recargas.toArray());
     }
 
@@ -557,7 +564,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaTransito.jLabelMontoBonif.setText(transito.getMonto() - transito.getMontoPagado() +"");
             celdaTransito.jLabelMontoPagado.setText(transito.getMontoPagado()+"");
             celdaTransito.jLabelFecha.setText(transito.getFecha().toString());
-
+            celdaTransito.setBackground((cellHasFocus) ? Color.blue : Color.white);
             return celdaTransito;
         }
 
@@ -573,7 +580,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaVehiculo.jColor.setText(vehiculo.getColor());
             celdaVehiculo.jTransitos.setText("" + vehiculo.getTransitos().size());
             celdaVehiculo.jMontoTotal.setText(vehiculo.getMontoTotal()+"");
-
+            celdaVehiculo.setBackground((cellHasFocus) ? Color.blue : Color.white);
             return celdaVehiculo;
         }
 
@@ -587,6 +594,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaBonificacion.jNombreBonificacion.setText(bonificacion.getNombre());
             celdaBonificacion.jPuesto.setText("Puesto Solis");
             celdaBonificacion.jFechaAsignada.setText(LocalDate.now().toString());
+            celdaBonificacion.setBackground((cellHasFocus) ? Color.blue : Color.white);
             return celdaBonificacion;
         }
 

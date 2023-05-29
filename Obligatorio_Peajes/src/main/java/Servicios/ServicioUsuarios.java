@@ -127,6 +127,7 @@ public class ServicioUsuarios {
         return null;
     }
 
+    @Deprecated
     public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {
         List<Transito> transitosUsuario = new ArrayList();
         for (UsuarioPropietario up : usuariosPropietario) {
