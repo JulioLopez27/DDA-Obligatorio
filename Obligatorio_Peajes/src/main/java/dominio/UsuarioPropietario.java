@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dominio;
+
 import Exceptions.RecargaException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -12,6 +14,7 @@ import java.util.List;
  * @author Julio Cesar
  */
 public class UsuarioPropietario extends Usuario {
+
     private double saldoMinimoAlerta;
     private List<Vehiculo> vehiculos = new ArrayList<>();
     private Cuenta cuenta;
@@ -25,8 +28,9 @@ public class UsuarioPropietario extends Usuario {
     }
 
     public void agregar(Bonificacion bonificacion) {
-    this.bonificaciones.add(bonificacion);
+        this.bonificaciones.add(bonificacion);
     }
+
     public double getSaldoMinimoAlerta() {
         return saldoMinimoAlerta;
     }
@@ -41,8 +45,7 @@ public class UsuarioPropietario extends Usuario {
 
     public void setVehiculos(List<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
-    }    
-    
+    }
 
     public Cuenta getCuenta() {
         return cuenta;
@@ -63,10 +66,10 @@ public class UsuarioPropietario extends Usuario {
     public List<Bonificacion> getBonificaciones() {
         return bonificaciones;
     }
-    
-    public int getCantidadTransitos(){
+
+    public int getCantidadTransitos() {
         int cantidadTransitos = 0;
-        for(Vehiculo v : this.getVehiculos()){
+        for (Vehiculo v : this.getVehiculos()) {
             cantidadTransitos += v.getCantidadTransitos();
         }
         return cantidadTransitos;
@@ -80,9 +83,76 @@ public class UsuarioPropietario extends Usuario {
         return this.cuenta.getRecargasPendientes();
     }
 
+    public List<Recarga> getRecargas() {
+        return this.cuenta.getRecargas();
+    }
+
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         return this.getCuenta().aprobar(recarga, usuarioAdministrador);
     }
 
-    
+    public boolean existe(Vehiculo vehiculo) {
+        for (Vehiculo v : this.vehiculos) {
+            if (v.equals(vehiculo)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Transito agregar(Transito transito) { //ToDo PREGUNTAR AL PROFE: VALIDAR ESTE METODO, ESTA LARGO
+        double montoAPagar = transito.getMontoAPagar();
+        if (this.getCuenta().validarSaldo(montoAPagar)) {
+            for (Vehiculo vehiculo : vehiculos) {
+                transito.setMontoPagado(montoAPagar);
+                if (vehiculo.equals(transito.getVehiculo()) && vehiculo.agregar(transito)) {
+                    this.getCuenta().actualizarSaldo(montoAPagar);
+                    return transito;
+                }
+            }
+        }
+        return null;
+    }
+
+    public List<Transito> getTransitos() {
+        List<Transito> transitosUsuario = new ArrayList();
+        for (Vehiculo v : vehiculos) {
+            transitosUsuario.addAll(v.getTransitos());
+        }
+        return transitosUsuario;
+    }
+
+    public Vehiculo buscarVehiculo(String matricula) {
+        for (Vehiculo vehiculo : vehiculos) {
+            if (vehiculo.getMatricula().equals(matricula)) {
+                return vehiculo;
+            }
+        }
+        return null;
+    }
+
+    public void asignarBonificacion(Bonificacion bonificacionSeleccionada) {
+        if (bonificaciones.isEmpty() || !existeBonificacion(bonificacionSeleccionada)) {
+            this.bonificaciones.add(bonificacionSeleccionada);
+        }
+    }
+
+    private boolean existeBonificacion(Bonificacion bonificacionSeleccionada) {
+        for (Bonificacion b : bonificaciones) {
+            if (b.getPuesto().equals(bonificacionSeleccionada.getPuesto())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Bonificacion getBonificacionPuesto(Puesto puestoSeleccionado) {
+        for (Bonificacion b : bonificaciones) {
+            if (b.getPuesto().equals(puestoSeleccionado)) {
+                return b;
+            }
+        }
+        return null;
+    }
+
 }

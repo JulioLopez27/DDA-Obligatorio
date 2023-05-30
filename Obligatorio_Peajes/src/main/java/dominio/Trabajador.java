@@ -8,6 +8,16 @@ package dominio;
  *
  * @author Julio Cesar
  */
-public class Trabajador {
+public class Trabajador extends TipoBonificacion {
+
+    public Trabajador() {
+        super("Trabajador");
+    }
+
+    @Override
+    public double getPorcentajeDescuento(Transito transito) {
+        int dayOfWeek = 3;//transito.getFecha().getDayOfWeek().getValue();
+        return (dayOfWeek >= 1 && dayOfWeek <= 5) ? 80 : 0;
+    }
     
 }

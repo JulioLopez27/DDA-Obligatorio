@@ -53,6 +53,11 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
         jMenuBar2.add(jMenu3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jMenuAdministrador.setText("Menu Administrador");
 
@@ -115,12 +120,16 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
     }//GEN-LAST:event_jAsignarBonificacionesActionPerformed
 
     private void jSalirAplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirAplicacionActionPerformed
-        //CLOSE APLICATION
+        logOut();
     }//GEN-LAST:event_jSalirAplicacionActionPerformed
 
     private void jEmularTransitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmularTransitoActionPerformed
         new UIEmularTransito(null,false).setVisible(true);
     }//GEN-LAST:event_jEmularTransitoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        logOut();
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -135,4 +144,9 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jSalirAplicacion;
     // End of variables declaration//GEN-END:variables
+
+    private void logOut() {
+        this.usuarioAdministrador.setLogueado(false);
+        dispose();
+    }
 }

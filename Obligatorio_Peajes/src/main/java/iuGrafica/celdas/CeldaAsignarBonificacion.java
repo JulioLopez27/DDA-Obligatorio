@@ -6,14 +6,14 @@ package iuGrafica.celdas;
 
 /**
  *
- * @author Julio Cesar
+ * @author sebita
  */
-public class CeldaBonificacion extends javax.swing.JPanel {
+public class CeldaAsignarBonificacion extends javax.swing.JPanel {
 
     /**
-     * Creates new form CeldaBonificaciones
+     * Creates new form CeldaAsignarBonificacion
      */
-    public CeldaBonificacion() {
+    public CeldaAsignarBonificacion() {
         initComponents();
     }
 
@@ -26,45 +26,40 @@ public class CeldaBonificacion extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jNombreBonificacion = new javax.swing.JLabel();
+        jBonificacion = new javax.swing.JLabel();
         jPuesto = new javax.swing.JLabel();
-        jFechaAsignada = new javax.swing.JLabel();
 
-        jNombreBonificacion.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
-        jNombreBonificacion.setText("Nombre Bonificacion");
+        jBonificacion.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jBonificacion.setText("jLabel1");
 
         jPuesto.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
-        jPuesto.setText("Puesto");
-
-        jFechaAsignada.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
-        jFechaAsignada.setText("Fecha Asignada");
+        jPuesto.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jNombreBonificacion)
-                .addGap(233, 233, 233)
+                .addGap(61, 61, 61)
+                .addComponent(jBonificacion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addComponent(jPuesto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 353, Short.MAX_VALUE)
-                .addComponent(jFechaAsignada)
-                .addGap(43, 43, 43))
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jNombreBonificacion)
-                .addComponent(jPuesto)
-                .addComponent(jFechaAsignada))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBonificacion)
+                    .addComponent(jPuesto))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JLabel jFechaAsignada;
-    public javax.swing.JLabel jNombreBonificacion;
+    public javax.swing.JLabel jBonificacion;
     public javax.swing.JLabel jPuesto;
     // End of variables declaration//GEN-END:variables
 }

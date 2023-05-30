@@ -23,7 +23,7 @@ public class LoginUsuarioPropietario extends LoginAbstracto {
     }
 
     @Override
-    protected Usuario validarUsuario(String cedula, String password) throws LoginException {
+    protected Usuario validarUsuario(int cedula, String password) throws LoginException {
         Sesion sesion = Fachada.getInstancia().loginUsuarioPorpietario(cedula, password);
           return sesion != null
                 ? sesion.getUsuarioPropietario()

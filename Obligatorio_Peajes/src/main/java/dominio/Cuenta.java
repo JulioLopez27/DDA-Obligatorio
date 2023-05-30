@@ -73,4 +73,12 @@ public class Cuenta {
         }
         return false;
     }
+
+    public boolean validarSaldo(double montoAPagar) {
+        return montoAPagar <= this.getSaldo();
+    }
+
+    public void actualizarSaldo(double montoAPagar) {
+        this.saldo -= montoAPagar;
+    }
 }

@@ -4,6 +4,7 @@
  */
 package dominio;
 
+import Interfaces.Renderizable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +12,10 @@ import java.util.List;
  *
  * @author Julio Cesar
  */
-public class Puesto {
+public class Puesto implements Renderizable {
     private String nombre;
     private String direccion;
     private List<Tarifa> tarifas = new ArrayList<>();
-    private List<Bonificacion> bonificaciones = new ArrayList<>(); //ToDo Esta lista debería estar en Puesto?
 
     public Puesto(String nombre, String direccion) {
         this.nombre = nombre;
@@ -46,13 +46,23 @@ public class Puesto {
         this.tarifas = tarifas;
     }
 
-    public List<Bonificacion> getBonificaciones() {
-        return bonificaciones;
+    public void agregar(Tarifa tarifa) {
+        this.tarifas.add(tarifa);
     }
 
-    public void setBonificaciones(List<Bonificacion> bonificaciones) {
-        this.bonificaciones = bonificaciones;
+    @Override
+    public String getDescription() {
+        return this.getNombre();
     }
-    
+
+    public double getMonto(Categoria categoria) {
+        for (Tarifa tarifa : tarifas) {
+            if(tarifa.getCategoria().equals(categoria)){
+                return tarifa.getMonto();
+            }
+        }
+        return 0;
+    }
+
     
 }

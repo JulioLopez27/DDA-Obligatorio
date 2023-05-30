@@ -84,18 +84,15 @@ public class CeldaTransito extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPuesto)
-                    .addComponent(jLabelMatricula)
-                    .addComponent(jLabelTarifa)
-                    .addComponent(jLabelTarifaMonto)
-                    .addComponent(jLabelBonificacion)
-                    .addComponent(jLabelMontoBonif)
-                    .addComponent(jLabelMontoPagado)
-                    .addComponent(jLabelFecha))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabelPuesto)
+                .addComponent(jLabelMatricula)
+                .addComponent(jLabelTarifa)
+                .addComponent(jLabelTarifaMonto)
+                .addComponent(jLabelBonificacion)
+                .addComponent(jLabelMontoBonif)
+                .addComponent(jLabelMontoPagado)
+                .addComponent(jLabelFecha))
         );
     }// </editor-fold>//GEN-END:initComponents
 

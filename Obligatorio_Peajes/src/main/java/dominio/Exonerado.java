@@ -8,6 +8,15 @@ package dominio;
  *
  * @author Julio Cesar
  */
-public class Exonerado {
+public class Exonerado extends TipoBonificacion {
+
+    public Exonerado() {
+        super("Exonerado");
+    }
+
+    @Override
+    public double getPorcentajeDescuento(Transito transito) {
+        return 100;
+    }
     
 }

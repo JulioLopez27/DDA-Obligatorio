@@ -6,8 +6,10 @@ package Servicios;
 
 import Exceptions.LoginException;
 import Exceptions.RecargaException;
+import dominio.Bonificacion;
 import dominio.Recarga;
 import dominio.Sesion;
+import dominio.Transito;
 import dominio.Usuario;
 import dominio.UsuarioAdministrador;
 import dominio.UsuarioPropietario;
@@ -31,7 +33,7 @@ public class ServicioUsuarios {
         sesiones = new ArrayList<>();
     }
 
-    public Sesion loginUsuarioPropietario(String cedula, String password) throws LoginException {
+    public Sesion loginUsuarioPropietario(int cedula, String password) throws LoginException {
        UsuarioPropietario usuarioLogueado=(UsuarioPropietario)this.loginUsuario(cedula, password, (ArrayList)usuariosPropietario);
        if(usuarioLogueado!=null){
            Sesion sesion= new Sesion(usuarioLogueado);
@@ -46,14 +48,19 @@ public class ServicioUsuarios {
         sesiones.add(sesion);
     }
         
-    public UsuarioAdministrador loginUsuarioAdministrador(String cedula, String password) throws LoginException {
-       return (UsuarioAdministrador)this.loginUsuario(cedula, password,(ArrayList)usuariosAdministrador);
+    public UsuarioAdministrador loginUsuarioAdministrador(int cedula, String password) throws LoginException {
+        UsuarioAdministrador usuarioAdministrador = (UsuarioAdministrador)this.loginUsuario(cedula, password,(ArrayList)usuariosAdministrador);
+        if(usuarioAdministrador.isLogueado()){
+            throw new LoginException("Ud ya está logueado.");
+        } else {
+            usuarioAdministrador.setLogueado(true);
+            return usuarioAdministrador;
+        }
     }
 
-    private Usuario loginUsuario(String cedula, String password, List<Usuario> usuarios) throws LoginException {
+    private Usuario loginUsuario(int cedula, String password, List<Usuario> usuarios) throws LoginException {
         for (Usuario u : usuarios) {
-            int cedulaNro = Integer.parseInt(cedula); //ToDo validar que sea numero antes de castear
-            if (u.validarCredenciales(cedulaNro, password)) {
+            if (u.validarCredenciales(cedula, password)) {
                 return u;
             }
         }
@@ -87,7 +94,7 @@ public class ServicioUsuarios {
 
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         for(UsuarioPropietario up : this.usuariosPropietario){
-            if(up.equals(recarga.getUsuarioPropietario())){ //ToDo Validar si es necesario pasar por cuenta
+            if(up.equals(recarga.getUsuarioPropietario())){
                 return up.aprobar(recarga, usuarioAdministrador);
             }
         }
@@ -101,5 +108,65 @@ public class ServicioUsuarios {
         }
         return vehiculos;
     }
+
+    public List<Recarga> getRecargas() {
+        List<Recarga> recargas = new ArrayList(); 
+        for(UsuarioPropietario up : this.usuariosPropietario){
+            recargas.addAll(up.getRecargas());
+        }
+        return recargas;
+    }
+
+    public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) {
+        for(UsuarioPropietario up : this.usuariosPropietario){
+            if(up.existe(transito.getVehiculo())){
+                transito.setBonificacion(bonificacionAsignada);
+                return up.agregar(transito);
+            }
+        }
+        return null;
+    }
+
+    @Deprecated
+    public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {
+        List<Transito> transitosUsuario = new ArrayList();
+        for (UsuarioPropietario up : usuariosPropietario) {
+            if(up.equals(usuarioPropietario)){
+                transitosUsuario.addAll(up.getTransitos());
+                return transitosUsuario;
+            }
+        }
+        return null;
+    }
+
+    public Vehiculo buscarVehiculo(String matricula) {
+        for (UsuarioPropietario usuarioPropietario : usuariosPropietario) {
+            Vehiculo vehiculoEncontrado = usuarioPropietario.buscarVehiculo(matricula);
+            if(vehiculoEncontrado != null){
+                return vehiculoEncontrado;
+            }
+        }
+        return null;
+    }
+
+    public UsuarioPropietario buscarUsuario(String cedula) {
+        for (UsuarioPropietario usuarioPropietario : usuariosPropietario) {
+            if(usuarioPropietario.getCedula() == Integer.parseInt(cedula)){ //ToDo Ver de poner en un try catch
+                return usuarioPropietario;
+            }
+        }
+        return null;
+    }
+
+    public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) {
+        for (UsuarioPropietario up : usuariosPropietario) {
+            if(up.equals(usuarioEncontrado)){
+                up.asignarBonificacion(bonificacionSeleccionada);
+                return;
+            }
+        }
+    }
+    
+    
 
 }

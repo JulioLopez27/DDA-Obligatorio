@@ -13,6 +13,7 @@ import java.util.List;
  *
  * @author Julio Cesar
  */
+@Deprecated
 public class ServicioTransitos {
     
     private List<Transito> transitos;

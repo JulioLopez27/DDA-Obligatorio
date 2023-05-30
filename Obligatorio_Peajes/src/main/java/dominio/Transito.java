@@ -4,6 +4,7 @@
  */
 package dominio;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -14,6 +15,9 @@ public class Transito {
     private Vehiculo vehiculo;
     private Puesto puesto;
     private LocalDate fecha;
+    private double monto;
+    private double montoPagado;
+    private Bonificacion bonificacion = null;
 
     public Transito(Vehiculo vehiculo, Puesto puesto) {
         this.vehiculo = vehiculo;
@@ -37,13 +41,48 @@ public class Transito {
         this.puesto = puesto;
     }
 
+    public Bonificacion getBonificacion() {
+        return bonificacion;
+    }
+
+    public void setBonificacion(Bonificacion bonificacion) {
+        this.bonificacion = bonificacion;
+    }
+
     public LocalDate getFecha() {
         return fecha;
+    }
+
+    public double getMonto() {
+        return this.puesto.getMonto(this.vehiculo.getCategoria());
+    }
+
+    public double getMontoPagado() {
+        return montoPagado;
+    }
+
+    public void setMontoPagado(double montoPagado) {
+        this.montoPagado = montoPagado;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
     }
 
     public UsuarioPropietario getUsuarioPropietario() {
         return this.vehiculo.getUsuarioPropietario();
     }
-    
+
+    public double getPorcentajeDescuento() {
+        return (this.bonificacion != null) ? this.bonificacion.getPorcentajeDescuento(this) : 0;
+    }
+
+    public double getMontoAPagar() { //ToDo PREGUNTAR AL PROFE SI ESTO ES UN CAMINO VALIDO
+        BigDecimal montoTransito = new BigDecimal(this.getMonto());
+        double porcentajeDescuento = this.getPorcentajeDescuento();
+        BigDecimal porcentaje = new BigDecimal(1 - porcentajeDescuento / 100);
+        BigDecimal resultado = montoTransito.subtract(montoTransito.multiply(porcentaje));
+        return resultado.doubleValue();
+    }
     
 }

@@ -4,7 +4,7 @@
  */
 package iuGrafica;
 
-import iuGrafica.celdas.CeldaRecarga;
+import iuGrafica.celdas.CeldaAprobarRecarga;
 import Observer.Observable;
 import Observer.Observer;
 import Servicios.Fachada;
@@ -176,7 +176,7 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
 
         @Override
         public Component getListCellRendererComponent(JList<? extends Recarga> list, Recarga recarga, int index, boolean isSelected, boolean cellHasFocus) {
-            CeldaRecarga celdaRecarga = new CeldaRecarga();
+            CeldaAprobarRecarga celdaRecarga = new CeldaAprobarRecarga();
             celdaRecarga.jFechaRecagra.setText(recarga.getFecha().toString());
             celdaRecarga.jPropietarioRecarga.setText(recarga.getCuenta().getUsuarioPropietario().getNombre());
             celdaRecarga.jMontoRecarga.setText(recarga.getMonto()+"");

@@ -4,6 +4,8 @@
  */
 package dominio;
 
+import Servicios.Fachada;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +20,6 @@ public class Vehiculo {
     private String modelo;
     private String color;
     private List<Transito> transitos = new ArrayList<>();
-
-    public Vehiculo(){ 
-        //ToDo Borrar si no es necesario a Futuro
-    }
     
     public Vehiculo(UsuarioPropietario usuarioPropietario, Categoria categoria, String matricula, String modelo, String color) {
         this.usuarioPropietario = usuarioPropietario;
@@ -72,9 +70,6 @@ public class Vehiculo {
         return transitos;
     }
 
-    public void setTransitos(List<Transito> transitos) {
-        this.transitos = transitos;
-    }
     
     public int getCantidadTransitos(){
         return this.getTransitos().size();
@@ -83,8 +78,22 @@ public class Vehiculo {
     public double getMontoTotal(){
         double montoTotal = 0;
         for(Transito t : this.transitos){
-            //ToDo FALTA CALCULAR EL MONTO
+            montoTotal += t.getMonto();
         }
         return montoTotal;
+    }
+
+    public boolean agregar(Transito transito) {
+        return this.transitos.add(transito);
+    }
+
+    public int getCantidadTransitosHoy(Puesto puesto) {
+        int transitosHoy = 0;
+        for (Transito transito : transitos) {
+            if(transito.getFecha().equals(LocalDate.now()) && transito.getPuesto().equals(puesto)){
+                transitosHoy ++;
+            }
+        }
+        return transitosHoy;
     }
 }
