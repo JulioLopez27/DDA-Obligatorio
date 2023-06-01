@@ -4,7 +4,7 @@
  */
 package dominio;
 
-import Exceptions.RecargaException;
+import Exceptions.PeajesException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -75,8 +75,8 @@ public class UsuarioPropietario extends Usuario {
         return cantidadTransitos;
     }
 
-    public void agregarRecarga(Recarga recarga) throws RecargaException {
-        this.cuenta.agreagar(recarga);
+    public void agregarRecarga(Recarga recarga) throws PeajesException {
+        this.cuenta.agregar(recarga);
     }
 
     public List<Recarga> getRecargasPendientes() {
@@ -100,7 +100,7 @@ public class UsuarioPropietario extends Usuario {
         return false;
     }
 
-    public Transito agregar(Transito transito) { //ToDo PREGUNTAR AL PROFE: VALIDAR ESTE METODO, ESTA LARGO
+    public Transito agregar(Transito transito) throws PeajesException { //ToDo PREGUNTAR AL PROFE: VALIDAR ESTE METODO, ESTA LARGO
         double montoAPagar = transito.getMontoAPagar();
         if (this.getCuenta().validarSaldo(montoAPagar)) {
             for (Vehiculo vehiculo : vehiculos) {
@@ -110,8 +110,10 @@ public class UsuarioPropietario extends Usuario {
                     return transito;
                 }
             }
+        }else{
+             throw new PeajesException("Saldo insuficiente: " + this.cuenta.getSaldoFormateado());
         }
-        return null;
+         throw new PeajesException("No se pudo registrar el tránsito");
     }
 
     public List<Transito> getTransitos() {
@@ -124,16 +126,18 @@ public class UsuarioPropietario extends Usuario {
 
     public Vehiculo buscarVehiculo(String matricula) {
         for (Vehiculo vehiculo : vehiculos) {
-            if (vehiculo.getMatricula().equals(matricula)) {
+            if (vehiculo.getMatricula().toLowerCase().equals(matricula.toLowerCase())) {
                 return vehiculo;
             }
         }
         return null;
     }
 
-    public void asignarBonificacion(Bonificacion bonificacionSeleccionada) {
+    public void asignarBonificacion(Bonificacion bonificacionSeleccionada) throws PeajesException{
         if (bonificaciones.isEmpty() || !existeBonificacion(bonificacionSeleccionada)) {
             this.bonificaciones.add(bonificacionSeleccionada);
+        }else{
+           throw new PeajesException("Ya tiene una bonificacion asignada para este puesto");
         }
     }
 

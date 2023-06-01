@@ -5,7 +5,7 @@
 package Servicios;
 
 import Exceptions.LoginException;
-import Exceptions.RecargaException;
+import Exceptions.PeajesException;
 import Observer.Observable;
 import dominio.Bonificacion;
 import dominio.Puesto;
@@ -57,7 +57,7 @@ public class Fachada extends Observable {
         return servicioUsuarios.agregar(usuarioAdministrador);
     }
 
-    public void agregar(Recarga recarga) throws RecargaException {
+    public void agregar(Recarga recarga) throws PeajesException {
         servicioUsuarios.agregar(recarga);
     }
 
@@ -74,7 +74,7 @@ public class Fachada extends Observable {
         return servicioUsuarios.getTransitos(usuarioPropietario);
     }
 
-    public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) {
+    public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) throws PeajesException {
         return servicioUsuarios.agregar(transito, bonificacionAsignada);
     }
     
@@ -98,7 +98,7 @@ public class Fachada extends Observable {
         servicioPeajes.agregar(tarifa, puesto);
     }
 
-    public Vehiculo buscarVehiculo(String matricula) {
+    public Vehiculo buscarVehiculo(String matricula) throws PeajesException {
         return servicioUsuarios.buscarVehiculo(matricula);
     }
 
@@ -107,14 +107,14 @@ public class Fachada extends Observable {
     }
 
     public List<Bonificacion> getBonificaciones() {
-        return servicioPeajes.getBonificaiones();
+        return servicioPeajes.getBonificaciones();
     }
 
-    public UsuarioPropietario buscarPropietario(String cedula) {
+    public UsuarioPropietario buscarPropietario(String cedula) throws PeajesException {
         return servicioUsuarios.buscarUsuario(cedula);
     }
 
-    public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) {
+    public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) throws PeajesException {
         servicioUsuarios.asignarBonificacion(usuarioEncontrado, bonificacionSeleccionada);
     }
 

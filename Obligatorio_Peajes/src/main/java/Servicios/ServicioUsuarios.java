@@ -5,7 +5,7 @@
 package Servicios;
 
 import Exceptions.LoginException;
-import Exceptions.RecargaException;
+import Exceptions.PeajesException;
 import dominio.Bonificacion;
 import dominio.Recarga;
 import dominio.Sesion;
@@ -75,7 +75,7 @@ public class ServicioUsuarios {
         return usuariosAdministrador.add(usuarioAdministrador);
     } 
     
-    public void agregar(Recarga recarga) throws RecargaException {
+    public void agregar(Recarga recarga) throws PeajesException {
         for(UsuarioPropietario up : this.usuariosPropietario){
             if(up.equals(recarga.getUsuarioPropietario())){
                 up.agregarRecarga(recarga);
@@ -117,7 +117,7 @@ public class ServicioUsuarios {
         return recargas;
     }
 
-    public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) {
+    public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) throws PeajesException {
         for(UsuarioPropietario up : this.usuariosPropietario){
             if(up.existe(transito.getVehiculo())){
                 transito.setBonificacion(bonificacionAsignada);
@@ -139,26 +139,30 @@ public class ServicioUsuarios {
         return null;
     }
 
-    public Vehiculo buscarVehiculo(String matricula) {
+    public Vehiculo buscarVehiculo(String matricula) throws PeajesException{
         for (UsuarioPropietario usuarioPropietario : usuariosPropietario) {
             Vehiculo vehiculoEncontrado = usuarioPropietario.buscarVehiculo(matricula);
             if(vehiculoEncontrado != null){
                 return vehiculoEncontrado;
             }
         }
-        return null;
+        throw new PeajesException("No existe el vehículo");
     }
 
-    public UsuarioPropietario buscarUsuario(String cedula) {
+    public UsuarioPropietario buscarUsuario(String cedula) throws PeajesException {
         for (UsuarioPropietario usuarioPropietario : usuariosPropietario) {
-            if(usuarioPropietario.getCedula() == Integer.parseInt(cedula)){ //ToDo Ver de poner en un try catch
+            if(usuarioPropietario.getCedula() == Integer.parseInt(cedula)){
                 return usuarioPropietario;
             }
         }
-        return null;
+         throw new PeajesException("No existe el propietario");
     }
 
-    public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) {
+    public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) throws PeajesException {
+        if(bonificacionSeleccionada == null)
+            throw new PeajesException("Debe especificar una bonificación");
+        if(bonificacionSeleccionada.getPuesto() == null)
+            throw new PeajesException("Debe expecificar un puesto");
         for (UsuarioPropietario up : usuariosPropietario) {
             if(up.equals(usuarioEncontrado)){
                 up.asignarBonificacion(bonificacionSeleccionada);

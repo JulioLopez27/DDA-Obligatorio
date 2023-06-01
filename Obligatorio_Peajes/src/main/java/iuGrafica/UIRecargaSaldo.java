@@ -4,7 +4,7 @@
  */
 package iuGrafica;
 
-import Exceptions.RecargaException;
+import Exceptions.PeajesException;
 import Observer.Observable;
 import Observer.Observer;
 import Servicios.Fachada;
@@ -121,7 +121,7 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
             Recarga nuevaRecarga = new Recarga(parseDouble(montoARecargar), usuarioPropietario.getCuenta());
             Fachada.getInstancia().agregar(nuevaRecarga);
             this.dispose();
-        } catch (RecargaException e) {
+        } catch (PeajesException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (NumberFormatException nfe){
             JOptionPane.showMessageDialog(this, "El monto debe ser un valor numérico.", "Error", JOptionPane.ERROR_MESSAGE);

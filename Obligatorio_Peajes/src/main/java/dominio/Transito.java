@@ -80,7 +80,7 @@ public class Transito {
     public double getMontoAPagar() { //ToDo PREGUNTAR AL PROFE SI ESTO ES UN CAMINO VALIDO
         BigDecimal montoTransito = new BigDecimal(this.getMonto());
         double porcentajeDescuento = this.getPorcentajeDescuento();
-        BigDecimal porcentaje = new BigDecimal(1 - porcentajeDescuento / 100);
+        BigDecimal porcentaje = new BigDecimal(porcentajeDescuento / 100);
         BigDecimal resultado = montoTransito.subtract(montoTransito.multiply(porcentaje));
         return resultado.doubleValue();
     }

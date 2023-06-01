@@ -4,6 +4,7 @@
  */
 package iuGrafica;
 
+import Exceptions.PeajesException;
 import Interfaces.ComboBasicoRenderer;
 import Observer.Observable;
 import Observer.Observer;
@@ -26,11 +27,12 @@ import javax.swing.ListCellRenderer;
 public class UIAsignarBonificaciones extends javax.swing.JDialog implements Observer {
 
     private UsuarioPropietario usuarioEncontrado;
+
     /**
      * Creates new form AsignarBonificaciones
      */
     public UIAsignarBonificaciones(Frame parent, boolean modal) {
-        super(parent,modal);
+        super(parent, modal);
         initComponents();
         jComboBonificaciones.setRenderer(new ComboBasicoRenderer());
         jComboPuestos.setRenderer(new ComboBasicoRenderer());
@@ -253,8 +255,8 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
     public void notificar(Observable origen, Object evento) {
         //ToDo ACTUALIZAR BONIFICACION PUESTO
     }
-    
-     private void inicializar() {
+
+    private void inicializar() {
         cargarBonificaciones();
         cargarPuestos();
     }
@@ -265,8 +267,8 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
             jComboBonificaciones.addItem(b);
         }
     }
-    
-    public void cargarPuestos(){
+
+    public void cargarPuestos() {
         List<Puesto> puestos = Fachada.getInstancia().getPuestos();
         for (Puesto p : puestos) {
             jComboPuestos.addItem(p);
@@ -275,33 +277,36 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
 
     private void buscarPropietario() {
         String cedula = jTextCedula.getText();
-        UsuarioPropietario usuarioPropietario = Fachada.getInstancia().buscarPropietario(cedula);
-        if(usuarioPropietario != null){
+        try {
+            UsuarioPropietario usuarioPropietario = Fachada.getInstancia().buscarPropietario(cedula);
+
             this.usuarioEncontrado = usuarioPropietario;
             List<Bonificacion> bonificacionesUsuario = usuarioPropietario.getBonificaciones();
             jLabelNombrePropietario.setText(usuarioPropietario.getNombre());
-            if(bonificacionesUsuario.size() > 0){
-                cargarListaBonificaciones(bonificacionesUsuario);
-            } else {
-                //ToDo Mostrar un mensaje
-            }
-        } else {
-            jLabelNombrePropietario.setText("No se encontró el usuario.");
+            cargarListaBonificaciones(bonificacionesUsuario);
+        } catch (PeajesException pe) {
+            JOptionPane.showMessageDialog(this, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     private void cargarListaBonificaciones(List<Bonificacion> bonificacionesUsuario) {
         jListBonificaciones.setListData(bonificacionesUsuario.toArray());
     }
 
+    //todo refactorizar
     private void asignarBonificacion() {
         Bonificacion bonificacionSeleccionada = (Bonificacion) jComboBonificaciones.getSelectedItem();
         Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
-        bonificacionSeleccionada.setPuesto(puestoSeleccionado);
-        Fachada.getInstancia().asignarBonificacion(this.usuarioEncontrado, bonificacionSeleccionada);
-        buscarPropietario();
+        Bonificacion bonificacionAAsignar = new Bonificacion(bonificacionSeleccionada.getTipoBonificacion());
+        bonificacionAAsignar.setPuesto(puestoSeleccionado);
+        try {
+            Fachada.getInstancia().asignarBonificacion(this.usuarioEncontrado, bonificacionAAsignar);
+            buscarPropietario();
+        } catch (PeajesException pe) {
+            JOptionPane.showMessageDialog(this, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
-        
+
     public class DetalleBonificacionRenderer implements ListCellRenderer<Bonificacion> {
 
         @Override
@@ -311,6 +316,6 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
             celdaBonificacion.jPuesto.setText(bonificacion.getPuesto().getNombre());
             return celdaBonificacion;
         }
-        
+
     }
 }

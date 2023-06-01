@@ -17,7 +17,7 @@ import java.util.List;
 public class ServicioPeajes {
 
     private List<Puesto> puestos = new ArrayList();
-    private List<Bonificacion> bonificaiones = new ArrayList();
+    private List<Bonificacion> bonificaciones = new ArrayList();
 
     public ServicioPeajes() {
 
@@ -27,8 +27,8 @@ public class ServicioPeajes {
         return puestos;
     }
 
-    public List<Bonificacion> getBonificaiones() {
-        return bonificaiones;
+    public List<Bonificacion> getBonificaciones() {
+        return bonificaciones;
     }
 
     public void agregar(Puesto puesto) {
@@ -36,7 +36,7 @@ public class ServicioPeajes {
     }
 
     public void agregar(Bonificacion bonificacion) {
-        this.bonificaiones.add(bonificacion);
+        this.bonificaciones.add(bonificacion);
     }
 
     public void agregar(Tarifa tarifa, Puesto puesto) {

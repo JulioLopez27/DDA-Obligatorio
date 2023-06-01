@@ -4,7 +4,7 @@
  */
 package Servicios;
 
-import Exceptions.RecargaException;
+import Exceptions.PeajesException;
 import dominio.Recarga;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +30,11 @@ public class ServicioRecargas {
         this.recargas = recargas;
     }
 
-    public void agregar(Recarga recarga) throws RecargaException {
+    public void agregar(Recarga recarga) throws PeajesException {
         if(recarga != null && recarga.getMonto() > 0){
             this.recargas.add(recarga);
         } else {
-            throw new RecargaException("Monto inválido");
+            throw new PeajesException("Monto inválido");
         }
     }
     

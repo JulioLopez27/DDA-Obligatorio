@@ -4,7 +4,7 @@
  */
 package main;
 
-import Exceptions.RecargaException;
+import Exceptions.PeajesException;
 import Servicios.Fachada;
 import Servicios.ServicioUsuarios;
 import dominio.Bonificacion;
@@ -36,7 +36,7 @@ public class DatosPrueba {
 
         //Cuentas
         Cuenta cuenta1 = new Cuenta(3500, null);
-        Cuenta cuenta2 = new Cuenta(100, null);
+        Cuenta cuenta2 = new Cuenta(50, null);
         Cuenta cuenta3 = new Cuenta(2000, null);
 
         //Usuarios Propietarios
@@ -127,7 +127,7 @@ public class DatosPrueba {
             fachada.agregar(rec4);
             fachada.agregar(rec5);
             fachada.agregar(rec6);
-        } catch (RecargaException re) {
+        } catch (PeajesException re) {
 
         }
         
@@ -146,15 +146,20 @@ public class DatosPrueba {
         fachada.agregar(bTrabajador);
         
         //Transitos
-        Transito transito1 = new Transito(vehiculo1, puesto1);
-        Transito transito2 = new Transito(vehiculo1, puesto2);
+        Transito transito1 = new Transito(vehiculo3, puesto1);
+        Transito transito2 = new Transito(vehiculo3, puesto2);
         Transito transito3 = new Transito(vehiculo1, puesto3);
         Transito transito4 = new Transito(vehiculo1, puesto1);
 
         //Agregar Transitos
-        fachada.agregar(transito1, bFrecuente);
-        fachada.agregar(transito2, null);
-        fachada.agregar(transito3, bExonerado);
-        fachada.agregar(transito4, bFrecuente);
+//        try{
+//        fachada.agregar(transito1, bFrecuente);
+//       fachada.agregar(transito2, bFrecuente);
+////        fachada.agregar(transito3, bExonerado);
+////        fachada.agregar(transito4, bFrecuente);
+//      }catch(PeajesException pe){
+//            
+//        }
+        
     }
 }

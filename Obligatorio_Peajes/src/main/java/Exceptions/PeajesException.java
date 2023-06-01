@@ -8,9 +8,9 @@ package Exceptions;
  *
  * @author gonzalobazzi
  */
-public class RecargaException extends Exception {
+public class PeajesException extends Exception {
 
-    public RecargaException(String message) {
+    public PeajesException(String message) {
         super(message);
     }
     

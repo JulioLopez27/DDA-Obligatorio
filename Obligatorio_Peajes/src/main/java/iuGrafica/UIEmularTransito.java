@@ -4,6 +4,7 @@
  */
 package iuGrafica;
 
+import Exceptions.PeajesException;
 import Interfaces.ComboBasicoRenderer;
 import Servicios.Fachada;
 import dominio.Bonificacion;
@@ -162,10 +163,11 @@ public class UIEmularTransito extends javax.swing.JDialog {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonRegistrarTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonRegistrarTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jTextMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -226,15 +228,15 @@ public class UIEmularTransito extends javax.swing.JDialog {
 
     private void registrarTransito() {
         Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
-        Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
-        UsuarioPropietario usuario = vehiculoEncontrado.getUsuarioPropietario();
-        Bonificacion bonificacionPuesto = usuario.getBonificacionPuesto(puestoSeleccionado);
-        Transito transitoAAgregar = new Transito(vehiculoEncontrado, puestoSeleccionado);
-        Transito transitoAgregado = Fachada.getInstancia().agregar(transitoAAgregar, bonificacionPuesto);
-        if(transitoAgregado != null){
+        try{
+            Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
+            UsuarioPropietario usuario = vehiculoEncontrado.getUsuarioPropietario();
+            Bonificacion bonificacionPuesto = usuario.getBonificacionPuesto(puestoSeleccionado);
+            Transito transitoAAgregar = new Transito(vehiculoEncontrado, puestoSeleccionado);
+            Transito transitoAgregado = Fachada.getInstancia().agregar(transitoAAgregar, bonificacionPuesto);
             mostrarDatosDeTransito(transitoAgregado);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se pudo agregar el tránsito", "Error", JOptionPane.ERROR_MESSAGE);
+        }catch (PeajesException pe){
+            JOptionPane.showMessageDialog(this, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         //ToDo Mandar notificacion
