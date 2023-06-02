@@ -14,6 +14,7 @@
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/dominio/Usuario.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/celdas/CeldaVehiculo.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/Observer/Observable.java
+/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/celdas/CeldaAprobarRecarga.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/Servicios/ServicioTransitos.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/main/SistemaPeajes.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/Servicios/ServicioNotificaciones.java
@@ -24,8 +25,8 @@
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/dominio/Notificacion.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/LoginUsuarioPropietario.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/UITableroDeControl.java
-/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/celdas/CeldaRecarga.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/dominio/Trabajador.java
+/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/celdas/CeldaRecargaSaldo.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/dominio/TipoBonificacion.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/Exceptions/LoginException.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/UIRecargaSaldo.java
@@ -36,7 +37,6 @@
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/dominio/UsuarioPropietario.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/LoginAbstracto.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/dominio/Frecuente.java
-/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/celdas/CeldaRecargasss.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/dominio/Transito.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/iuGrafica/celdas/CeldaAsignarBonificacion.java
 /Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/dominio/Tarifa.java

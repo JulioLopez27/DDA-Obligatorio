@@ -7,6 +7,7 @@ package Servicios;
 import Exceptions.LoginException;
 import Exceptions.PeajesException;
 import Observer.Observable;
+import dominio.Bonificable;
 import dominio.Bonificacion;
 import dominio.Puesto;
 import dominio.Recarga;
@@ -69,11 +70,6 @@ public class Fachada extends Observable {
         return servicioUsuarios.aprobar(recarga, usuarioAdministrador);
     }
 
-    @Deprecated
-    public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {
-        return servicioUsuarios.getTransitos(usuarioPropietario);
-    }
-
     public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) throws PeajesException {
         return servicioUsuarios.agregar(transito, bonificacionAsignada);
     }
@@ -102,12 +98,12 @@ public class Fachada extends Observable {
         return servicioUsuarios.buscarVehiculo(matricula);
     }
 
-    public void agregar(Bonificacion bonificacion) {
-        servicioPeajes.agregar(bonificacion);
+    public void agregar(Bonificable tipoBonificacion) {
+        servicioPeajes.agregar(tipoBonificacion);
     }
 
-    public List<Bonificacion> getBonificaciones() {
-        return servicioPeajes.getBonificaciones();
+    public List<Bonificable> getTiposBonificacion() {
+        return servicioPeajes.getTiposBonificacion();
     }
 
     public UsuarioPropietario buscarPropietario(String cedula) throws PeajesException {

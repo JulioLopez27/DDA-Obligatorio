@@ -4,20 +4,32 @@
  */
 package dominio;
 
+import Interfaces.Renderizable;
+
 /**
  *
  * @author Julio Cesar
  */
-public class Trabajador extends TipoBonificacion {
+public class Trabajador implements Bonificable, Renderizable {
 
     public Trabajador() {
-        super("Trabajador");
+        
     }
 
     @Override
     public double getPorcentajeDescuento(Transito transito) {
-        int dayOfWeek = 3;//transito.getFecha().getDayOfWeek().getValue();
+        int dayOfWeek = transito.getFecha().getDayOfWeek().getValue();
         return (dayOfWeek >= 1 && dayOfWeek <= 5) ? 80 : 0;
+    }
+
+    @Override
+    public String getNombre() {
+        return "Trabajador";
+    }
+
+    @Override
+    public String getDescription() {
+        return this.getNombre();
     }
     
 }

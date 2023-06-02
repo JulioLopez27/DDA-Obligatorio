@@ -4,33 +4,30 @@
  */
 package dominio;
 
-import Interfaces.Renderizable;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Julio Cesar
  */
-public class Bonificacion implements Renderizable {
+public class Bonificacion {
     private String nombre;
-    private TipoBonificacion tipoBonificacion;
-    private Puesto puesto = null; //ToDo PREGUNTAR AL PROFE SI LO CREAMOS CON OBJETO NULO PARA BONIFICACIONES DEL SISTEMA
+    private Bonificable tipoBonificacion;
+    private Puesto puesto;
 
-    public Bonificacion(TipoBonificacion tipoBonificacion) {
+    public Bonificacion(Bonificable tipoBonificacion, Puesto puesto) {
         this.tipoBonificacion = tipoBonificacion;
         this.nombre = tipoBonificacion.getNombre();
+        this.puesto = puesto;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public TipoBonificacion getTipoBonificacion() {
+    public Bonificable getTipoBonificacion() {
         return tipoBonificacion;
     }
 
-    public void setTipoBonificacion(TipoBonificacion tipoBonificacion) {
+    public void setTipoBonificacion(Bonificable tipoBonificacion) {
         this.tipoBonificacion = tipoBonificacion;
     }
 
@@ -40,11 +37,6 @@ public class Bonificacion implements Renderizable {
 
     public void setPuesto(Puesto puesto) {
         this.puesto = puesto;
-    }
-
-    @Override
-    public String getDescription() {
-        return this.getNombre();
     }
 
     public double getPorcentajeDescuento(Transito transito) {

@@ -1,7 +1,6 @@
 iuGrafica/UIMenuAdministrador$3.class
 dominio/Recarga.class
 Servicios/ServicioRecargas.class
-iuGrafica/celdas/CeldaRecargasss.class
 iuGrafica/UIAsignarBonificaciones$1.class
 iuGrafica/InicioAplicacion.class
 iuGrafica/LoginUsuarioPropietario.class
@@ -56,7 +55,6 @@ dominio/Vehiculo.class
 dominio/Puesto.class
 dominio/Cuenta.class
 dominio/UsuarioAdministrador.class
-iuGrafica/celdas/CeldaRecarga.class
 iuGrafica/celdas/CeldaBonificacion.class
 iuGrafica/UIMenuAdministrador$4.class
 dominio/Frecuente.class

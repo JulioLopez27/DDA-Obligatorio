@@ -4,19 +4,31 @@
  */
 package dominio;
 
+import Interfaces.Renderizable;
+
 /**
  *
  * @author Julio Cesar
  */
-public class Exonerado extends TipoBonificacion {
+public class Exonerado implements Bonificable, Renderizable {
 
     public Exonerado() {
-        super("Exonerado");
+        
     }
 
     @Override
     public double getPorcentajeDescuento(Transito transito) {
         return 100;
+    }
+
+    @Override
+    public String getNombre() {
+        return "Exonerado";
+    }
+
+    @Override
+    public String getDescription() {
+        return this.getNombre();
     }
     
 }

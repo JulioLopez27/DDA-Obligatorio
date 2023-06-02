@@ -77,7 +77,7 @@ public class Transito {
         return (this.bonificacion != null) ? this.bonificacion.getPorcentajeDescuento(this) : 0;
     }
 
-    public double getMontoAPagar() { //ToDo PREGUNTAR AL PROFE SI ESTO ES UN CAMINO VALIDO
+    public double getMontoAPagar() { //ToDo SACAR BIG DECIMAL Y REDONDEAR
         BigDecimal montoTransito = new BigDecimal(this.getMonto());
         double porcentajeDescuento = this.getPorcentajeDescuento();
         BigDecimal porcentaje = new BigDecimal(porcentajeDescuento / 100);

@@ -9,6 +9,7 @@ import Interfaces.ComboBasicoRenderer;
 import Observer.Observable;
 import Observer.Observer;
 import Servicios.Fachada;
+import dominio.Bonificable;
 import dominio.Bonificacion;
 import dominio.Puesto;
 import dominio.UsuarioPropietario;
@@ -262,8 +263,8 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
     }
 
     private void cargarBonificaciones() {
-        List<Bonificacion> bonificaciones = Fachada.getInstancia().getBonificaciones();
-        for (Bonificacion b : bonificaciones) {
+        List<Bonificable> tiposBonificacion = Fachada.getInstancia().getTiposBonificacion();
+        for (Bonificable b : tiposBonificacion) {
             jComboBonificaciones.addItem(b);
         }
     }
@@ -295,10 +296,9 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
 
     //todo refactorizar
     private void asignarBonificacion() {
-        Bonificacion bonificacionSeleccionada = (Bonificacion) jComboBonificaciones.getSelectedItem();
+        Bonificable tipoBonificacionSeleccionada = (Bonificable) jComboBonificaciones.getSelectedItem();
         Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
-        Bonificacion bonificacionAAsignar = new Bonificacion(bonificacionSeleccionada.getTipoBonificacion());
-        bonificacionAAsignar.setPuesto(puestoSeleccionado);
+        Bonificacion bonificacionAAsignar = new Bonificacion(tipoBonificacionSeleccionada, puestoSeleccionado);
         try {
             Fachada.getInstancia().asignarBonificacion(this.usuarioEncontrado, bonificacionAAsignar);
             buscarPropietario();

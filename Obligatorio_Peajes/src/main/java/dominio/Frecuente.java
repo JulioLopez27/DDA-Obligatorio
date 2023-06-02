@@ -4,16 +4,16 @@
  */
 package dominio;
 
-import Servicios.Fachada;
+import Interfaces.Renderizable;
 
 /**
  *
  * @author Julio Cesar
  */
-public class Frecuente extends TipoBonificacion {
+public class Frecuente implements Bonificable, Renderizable {
 
     public Frecuente() {
-        super("Frecuente");
+    
     }
 
     @Override
@@ -21,6 +21,15 @@ public class Frecuente extends TipoBonificacion {
         int transitosEnElDia = transito.getVehiculo().getCantidadTransitosHoy(transito.getPuesto());
         return (transitosEnElDia >= 1) ? 50 : 0;
     }
+
+    @Override
+    public String getNombre() {
+        return "Frecuente";
+    }
     
+    @Override
+    public String getDescription() {
+        return this.getNombre();
+    }
     
 }

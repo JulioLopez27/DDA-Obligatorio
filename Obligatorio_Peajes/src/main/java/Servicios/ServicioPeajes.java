@@ -4,6 +4,7 @@
  */
 package Servicios;
 
+import dominio.Bonificable;
 import dominio.Bonificacion;
 import dominio.Puesto;
 import dominio.Tarifa;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ServicioPeajes {
 
     private List<Puesto> puestos = new ArrayList();
-    private List<Bonificacion> bonificaciones = new ArrayList();
+    private List<Bonificable> tiposBonificacion = new ArrayList();
 
     public ServicioPeajes() {
 
@@ -27,16 +28,16 @@ public class ServicioPeajes {
         return puestos;
     }
 
-    public List<Bonificacion> getBonificaciones() {
-        return bonificaciones;
+    public List<Bonificable> getTiposBonificacion() {
+        return tiposBonificacion;
     }
 
     public void agregar(Puesto puesto) {
         this.puestos.add(puesto);
     }
 
-    public void agregar(Bonificacion bonificacion) {
-        this.bonificaciones.add(bonificacion);
+    public void agregar(Bonificable tipoBonificacion) {
+        this.tiposBonificacion.add(tipoBonificacion);
     }
 
     public void agregar(Tarifa tarifa, Puesto puesto) {

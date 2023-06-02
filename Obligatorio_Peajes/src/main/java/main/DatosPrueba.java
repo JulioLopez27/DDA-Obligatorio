@@ -15,7 +15,6 @@ import dominio.Frecuente;
 import dominio.Puesto;
 import dominio.Recarga;
 import dominio.Tarifa;
-import dominio.TipoBonificacion;
 import dominio.Trabajador;
 import dominio.Transito;
 import dominio.UsuarioAdministrador;
@@ -24,6 +23,7 @@ import dominio.Vehiculo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import dominio.Bonificable;
 
 /**
  *
@@ -132,18 +132,13 @@ public class DatosPrueba {
         }
         
         //TipoBonificacion
-        TipoBonificacion tipoBonifExonerado = new Exonerado();
-        TipoBonificacion tipoBonifFrecuente = new Frecuente();
-        TipoBonificacion tipoBonifTrabajador = new Trabajador();
-
-        //Bonificaciones
-        Bonificacion bExonerado = new Bonificacion(tipoBonifExonerado);
-        Bonificacion bFrecuente = new Bonificacion(tipoBonifFrecuente);
-        Bonificacion bTrabajador = new Bonificacion(tipoBonifTrabajador);
-        
-        fachada.agregar(bExonerado);
-        fachada.agregar(bFrecuente);
-        fachada.agregar(bTrabajador);
+        Bonificable tipoBonifExonerado = new Exonerado();
+        Bonificable tipoBonifFrecuente = new Frecuente();
+        Bonificable tipoBonifTrabajador = new Trabajador();
+   
+        fachada.agregar(tipoBonifExonerado);
+        fachada.agregar(tipoBonifFrecuente);
+        fachada.agregar(tipoBonifTrabajador);
         
         //Transitos
         Transito transito1 = new Transito(vehiculo3, puesto1);
