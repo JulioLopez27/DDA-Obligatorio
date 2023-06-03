@@ -6,6 +6,7 @@ package vista;
 
 import Observer.Observable;
 import Observer.Observer;
+import modelo.Notificacion;
 import modelo.Recarga;
 import modelo.UsuarioAdministrador;
 import modelo.fachada.Fachada;
@@ -31,13 +32,7 @@ public class EmularAprobacionRecargaControlador implements Observer {
     public void notificar(Observable origen, Object evento) {
         Observable.Evento e = (Observable.Evento) evento;
         switch (e){
-            case RECARGA_SOLICITADA:
-                vista.mostrarListaRecargas(fachada.getRecargasPendientes());
-                break;
-            case RECARGA_APROBADA:
-                vista.mostrarListaRecargas(fachada.getRecargasPendientes());
-                //TODO Mandar Notificacion
-                break;
+            case RECARGA_SOLICITADA, RECARGA_APROBADA -> vista.mostrarListaRecargas(fachada.getRecargasPendientes());
         }
     }
 

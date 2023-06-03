@@ -16,6 +16,7 @@ import modelo.UsuarioPropietario;
 import modelo.Vehiculo;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Notificacion;
 
 /**
  *
@@ -95,7 +96,10 @@ public class ServicioUsuarios {
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
         for(UsuarioPropietario up : this.usuariosPropietario){
             if(up.equals(recarga.getUsuarioPropietario())){
-                return up.aprobar(recarga, usuarioAdministrador);
+                if(up.aprobar(recarga, usuarioAdministrador)){
+                    up.agregar(new Notificacion("Tu recarga de $" + recarga.getMonto() + "fue aprobada."));
+                    return true;
+                }
             }
         }
         return false;
@@ -121,18 +125,6 @@ public class ServicioUsuarios {
         for(UsuarioPropietario up : this.usuariosPropietario){ 
             if(up.existe(transito.getVehiculo())){
                 return up.agregar(transito);
-            }
-        }
-        return null;
-    }
-
-    @Deprecated
-    public List<Transito> getTransitos(UsuarioPropietario usuarioPropietario) {
-        List<Transito> transitosUsuario = new ArrayList();
-        for (UsuarioPropietario up : usuariosPropietario) {
-            if(up.equals(usuarioPropietario)){
-                transitosUsuario.addAll(up.getTransitos());
-                return transitosUsuario;
             }
         }
         return null;
@@ -170,6 +162,4 @@ public class ServicioUsuarios {
         }
     }
     
-    
-
 }

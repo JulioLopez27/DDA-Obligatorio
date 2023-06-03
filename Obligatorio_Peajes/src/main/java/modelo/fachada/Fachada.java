@@ -7,7 +7,6 @@ package modelo.fachada;
 import Exceptions.LoginException;
 import Exceptions.PeajesException;
 import Observer.Observable;
-import modelo.servicios.ServicioNotificaciones;
 import modelo.servicios.ServicioPeajes;
 import modelo.servicios.ServicioUsuarios;
 import modelo.Bonificable;
@@ -21,6 +20,7 @@ import modelo.UsuarioPropietario;
 import modelo.UsuarioAdministrador;
 import modelo.Vehiculo;
 import java.util.List;
+import modelo.Notificacion;
 
 /**
  *
@@ -31,7 +31,6 @@ public class Fachada extends Observable {
     private static Fachada instancia = null;
 
     private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
-    private ServicioNotificaciones servicioNotificaciones = new ServicioNotificaciones();
     private ServicioPeajes servicioPeajes = new ServicioPeajes();
     
 
@@ -116,5 +115,10 @@ public class Fachada extends Observable {
     public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) throws PeajesException {
         servicioUsuarios.asignarBonificacion(usuarioEncontrado, bonificacionSeleccionada);
     }
+
+    //TODO VER SI SE USA
+//    public void agregar(Notificacion notificacion) {
+//        servicioUsuarios.agregar(notificacion);
+//    }
 
 }

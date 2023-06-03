@@ -20,7 +20,8 @@ public class Observable {
         RECARGA_APROBADA,
         SALDO_ACTUALIZADO,
         BONIFICACION_ASIGNADA,
-        TRANSITO_EFECTUADO
+        TRANSITO_EFECTUADO,
+        NOTIFICACION_RECIBIDA
         
     }
     

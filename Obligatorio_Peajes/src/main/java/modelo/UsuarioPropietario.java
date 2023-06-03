@@ -5,9 +5,11 @@
 package modelo;
 
 import Exceptions.PeajesException;
+import Observer.Observable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import modelo.fachada.Fachada;
 
 /**
  *
@@ -159,6 +161,11 @@ public class UsuarioPropietario extends Usuario {
             }
         }
         return null;
+    }
+
+    public void agregar(Notificacion notificacion) {
+        this.notificaciones.add(notificacion);
+        Fachada.getInstancia().notificar(Observable.Evento.NOTIFICACION_RECIBIDA);
     }
 
 }
