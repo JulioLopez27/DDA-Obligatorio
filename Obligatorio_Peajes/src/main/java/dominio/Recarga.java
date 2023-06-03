@@ -4,7 +4,8 @@
  */
 package dominio;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -12,14 +13,14 @@ import java.time.LocalDate;
  */
 public class Recarga {
     private double monto;
-    private LocalDate fecha;
+    private LocalDateTime fecha;
     private UsuarioAdministrador aprobador;
     private Cuenta cuenta;
 
     public Recarga(double monto, Cuenta cuenta) {
         this.monto = monto;
         this.cuenta = cuenta;
-        this.fecha = LocalDate.now();
+        this.fecha = LocalDateTime.now();
     }
 
     public double getMonto() {
@@ -34,8 +35,13 @@ public class Recarga {
         this.cuenta = cuenta;
     }
     
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
+    }
+    
+    public String getFechaFormateada(){
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        return this.getFecha().format(formato);
     }
 
     public UsuarioAdministrador getAprobador() {

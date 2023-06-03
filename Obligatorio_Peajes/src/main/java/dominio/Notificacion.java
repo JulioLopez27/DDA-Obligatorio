@@ -4,31 +4,37 @@
  */
 package dominio;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author Julio Cesar
  */
 public class Notificacion {
-    private LocalDate fecha;
+    private LocalDateTime fecha;
     private String mensaje;
 
     public Notificacion(String mensaje) {
         this.mensaje = mensaje;
-        this.fecha = LocalDate.now();
+        this.fecha = LocalDateTime.now();
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
     public String getMensaje() {
         return mensaje;
+    }
+    
+    public String getFechaFormateada(){
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        return this.getFecha().format(formato);
     }
 
     public void setMensaje(String mensaje) {

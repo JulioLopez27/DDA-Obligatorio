@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import dominio.Bonificable;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -149,6 +150,17 @@ public class DatosPrueba {
         Transito transito7_prop1 = new Transito(vehiculo1_prop1, puesto2);
         Transito transito8_prop1 = new Transito(vehiculo1_prop1, puesto2);
         Transito transito9_prop1 = new Transito(vehiculo1_prop1, puesto2);
+        
+        
+        //Cambiamos la fecha del tránsito para validar el orden
+        transito1_prop1.setFecha(LocalDateTime.of(2023, 5, 21, 10, 30));
+        transito2_prop1.setFecha(LocalDateTime.of(2023, 1, 10, 11, 30));
+        transito3_prop1.setFecha(LocalDateTime.of(2023, 6, 21, 10, 30));
+        transito4_prop1.setFecha(LocalDateTime.of(2023, 6, 21, 10, 15));
+        transito5_prop1.setFecha(LocalDateTime.of(2023, 3, 2, 21, 30));
+        transito6_prop1.setFecha(LocalDateTime.of(2023, 3, 2, 18, 30));
+        transito7_prop1.setFecha(LocalDateTime.of(2023, 5, 21, 10, 30));
+        transito8_prop1.setFecha(LocalDateTime.of(2023, 6, 20, 10, 30));
         
         
         try{

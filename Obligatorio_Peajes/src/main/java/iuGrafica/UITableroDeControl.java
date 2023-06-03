@@ -20,6 +20,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -205,7 +207,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         jLabelMontoPagadoTransito.setAutoscrolls(true);
         jLabelMontoPagadoTransito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabelFechaTransito.setText("Fecha");
+        jLabelFechaTransito.setText("Fecha y hora");
         jLabelFechaTransito.setAutoscrolls(true);
         jLabelFechaTransito.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -355,9 +357,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                                         .addComponent(jLabelBonificacionTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(27, 27, 27)
                                         .addComponent(jLabelMontoBonifTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabelMontoPagadoTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(31, 31, 31)
+                                        .addGap(37, 37, 37)
                                         .addComponent(jLabelFechaTransito, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
@@ -532,16 +534,19 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
     private void cargarListaDeTransitos() {
         List<Transito> transitos = usuarioPropietario.getTransitos();
+        Collections.sort(transitos, Comparator.comparing(Transito::getFecha).reversed());
         jListTransitos.setListData(transitos.toArray());
     }
 
     private void cargarListaDeRecargas() {
         List<Recarga> recargas = usuarioPropietario.getRecargas();
+        Collections.sort(recargas, Comparator.comparing(Recarga::getFecha).reversed());
         jListRecargas.setListData(recargas.toArray());
     }
 
     private void cargarListaDeNotificaciones() {
 
+        //Collections.sort(recargas, Comparator.comparing(Recarga::getFecha).reversed());
     }
 
     public class TransitoDetalleRenderer implements ListCellRenderer<Transito> {
@@ -556,7 +561,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaTransito.jLabelBonificacion.setText((transito.getBonificacion() != null) ? transito.getBonificacion().getNombre() : "No tiene.");
             celdaTransito.jLabelMontoBonif.setText(transito.getMonto() - transito.getMontoPagado() +"");
             celdaTransito.jLabelMontoPagado.setText(transito.getMontoPagado()+"");
-            celdaTransito.jLabelFecha.setText(transito.getFecha().toString());
+            celdaTransito.jLabelFecha.setText(transito.getFechaFormateada());
             celdaTransito.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
             return celdaTransito;
         }
@@ -598,7 +603,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     @Override
     public Component getListCellRendererComponent(JList<? extends Recarga> list, Recarga recarga, int index, boolean isSelected, boolean cellHasFocus) {
             CeldaRecargaSaldo celdaRecarga = new CeldaRecargaSaldo();
-            celdaRecarga.jFechaRecarga.setText(recarga.getFecha().toString());
+            celdaRecarga.jFechaRecarga.setText(recarga.getFechaFormateada());
             celdaRecarga.jMonto.setText(""+recarga.getMonto());
             celdaRecarga.jEstado.setText(recarga.getEstado());
             celdaRecarga.jAdministrador.setText((recarga.getAprobador() != null) ? recarga.getAprobador().getNombre() : "-");

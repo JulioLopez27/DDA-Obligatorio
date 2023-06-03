@@ -4,8 +4,8 @@
  */
 package dominio;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Transito {
 
     private Vehiculo vehiculo;
     private Puesto puesto;
-    private LocalDate fecha;
+    private LocalDateTime fecha;
     private double monto;
     private double montoPagado;
     private Bonificacion bonificacion = null;
@@ -23,7 +23,7 @@ public class Transito {
     public Transito(Vehiculo vehiculo, Puesto puesto) {
         this.vehiculo = vehiculo;
         this.puesto = puesto;
-        this.fecha = LocalDate.now();
+        this.fecha = LocalDateTime.now();
     }
 
     public Vehiculo getVehiculo() {
@@ -50,8 +50,20 @@ public class Transito {
         this.bonificacion = bonificacion;
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
+    }
+
+    /*
+    * Este método es únicamente usado para datos de prueba
+    */
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+    
+    public String getFechaFormateada(){
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        return this.getFecha().format(formato);
     }
 
     public double getMonto() {
