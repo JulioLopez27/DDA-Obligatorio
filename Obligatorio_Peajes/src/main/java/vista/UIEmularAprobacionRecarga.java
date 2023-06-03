@@ -4,22 +4,17 @@
  */
 package vista;
 
+import vista.controladores.EmularAprobacionRecargaControlador;
 import vista.celdas.CeldaAprobarRecarga;
-import Observer.Observable;
-import Observer.Observer;
 import java.awt.Color;
-import modelo.fachada.Fachada;
 import modelo.Recarga;
 import modelo.UsuarioAdministrador;
 import java.awt.Component;
 import java.awt.Frame;
-import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
-
 
 /**
  *
@@ -28,12 +23,12 @@ import javax.swing.ListCellRenderer;
 public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements EmularAprobacionRecargaVista {
 
     private EmularAprobacionRecargaControlador controlador;
-            
+
     /**
      * Creates new form EmularAprobacionRecarga
      */
-    public UIEmularAprobacionRecarga(Frame parent, boolean modal, UsuarioAdministrador usuarioAdministrador){
-        super(parent,modal);
+    public UIEmularAprobacionRecarga(Frame parent, boolean modal, UsuarioAdministrador usuarioAdministrador) {
+        super(parent, modal);
         initComponents();
         controlador = new EmularAprobacionRecargaControlador(this, usuarioAdministrador);
         setLocationRelativeTo(null);
@@ -140,10 +135,11 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Em
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAprobarActionPerformed
-        controlador.aprobarRecarga((Recarga)jListRecargas.getSelectedValue());
+        controlador.aprobarRecarga((Recarga) jListRecargas.getSelectedValue());
     }//GEN-LAST:event_jButtonAprobarActionPerformed
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        controlador.cerrar();
         this.dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
@@ -159,7 +155,6 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Em
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
-
     @Override
     public void mostrarListaRecargas(List<Recarga> recargasPendientes) {
         jListRecargas.setListData(recargasPendientes.toArray());
@@ -169,7 +164,7 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Em
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     public class DetalleRecargaRenderer implements ListCellRenderer<Recarga> {
 
         @Override
@@ -177,7 +172,7 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Em
             CeldaAprobarRecarga celdaRecarga = new CeldaAprobarRecarga();
             celdaRecarga.jFechaRecagra.setText(recarga.getFechaFormateada());
             celdaRecarga.jPropietarioRecarga.setText(recarga.getCuenta().getUsuarioPropietario().getNombre());
-            celdaRecarga.jMontoRecarga.setText(recarga.getMonto()+"");
+            celdaRecarga.jMontoRecarga.setText(recarga.getMonto() + "");
             celdaRecarga.jSelected.setSelected(isSelected);
             celdaRecarga.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
             return celdaRecarga;
