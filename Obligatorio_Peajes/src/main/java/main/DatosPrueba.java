@@ -4,26 +4,27 @@
  */
 package main;
 
-import Exceptions.RecargaException;
-import Servicios.Fachada;
-import Servicios.ServicioUsuarios;
-import dominio.Bonificacion;
-import dominio.Categoria;
-import dominio.Cuenta;
-import dominio.Exonerado;
-import dominio.Frecuente;
-import dominio.Puesto;
-import dominio.Recarga;
-import dominio.Tarifa;
-import dominio.TipoBonificacion;
-import dominio.Trabajador;
-import dominio.Transito;
-import dominio.UsuarioAdministrador;
-import dominio.UsuarioPropietario;
-import dominio.Vehiculo;
+import Exceptions.PeajesException;
+import modelo.fachada.Fachada;
+import modelo.servicios.ServicioUsuarios;
+import modelo.Bonificacion;
+import modelo.Categoria;
+import modelo.Cuenta;
+import modelo.Exonerado;
+import modelo.Frecuente;
+import modelo.Puesto;
+import modelo.Recarga;
+import modelo.Tarifa;
+import modelo.Trabajador;
+import modelo.Transito;
+import modelo.UsuarioAdministrador;
+import modelo.UsuarioPropietario;
+import modelo.Vehiculo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import modelo.Bonificable;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -36,7 +37,7 @@ public class DatosPrueba {
 
         //Cuentas
         Cuenta cuenta1 = new Cuenta(3500, null);
-        Cuenta cuenta2 = new Cuenta(100, null);
+        Cuenta cuenta2 = new Cuenta(50, null);
         Cuenta cuenta3 = new Cuenta(2000, null);
 
         //Usuarios Propietarios
@@ -67,20 +68,20 @@ public class DatosPrueba {
         Tarifa tarifa6 = new Tarifa(40, cat2);
         Tarifa tarifa7 = new Tarifa(360, cat3);
         Tarifa tarifa8 = new Tarifa(480, cat4);
-        
-        //Vehiculos
-        Vehiculo vehiculo1 = new Vehiculo(usuarioProp1, cat1, "SDX 8547", "Celerio", "Plateado");
-        Vehiculo vehiculo2 = new Vehiculo(usuarioProp1, cat3, "STR 2357", "Scania", "Rojo");
-        Vehiculo vehiculo3 = new Vehiculo(usuarioProp2, cat1, "AXT 4978", "Gol", "Verde");
-        Vehiculo vehiculo4 = new Vehiculo(usuarioProp3, cat4, "STX 1225", "Marcopolo", "Marrón");
-        Vehiculo vehiculo5 = new Vehiculo(usuarioProp1, cat2, "LED 4512", "Jumbo", "Negro");
-        Vehiculo vehiculo6 = new Vehiculo(usuarioProp3, cat1, "BMN 5423", "Lancer", "Blanco");
 
-        List<Vehiculo> vehiculosProp1 = new ArrayList<>(Arrays.asList(vehiculo1, vehiculo2, vehiculo5));
+        //Vehiculos
+        Vehiculo vehiculo1_prop1 = new Vehiculo(usuarioProp1, cat1, "SDX 8547", "Celerio", "Plateado");
+        Vehiculo vehiculo2_prop1 = new Vehiculo(usuarioProp1, cat3, "STR 2357", "Scania", "Rojo");
+        Vehiculo vehiculo3_prop2 = new Vehiculo(usuarioProp2, cat1, "AXT 4978", "Gol", "Verde");
+        Vehiculo vehiculo4_prop3 = new Vehiculo(usuarioProp3, cat4, "STX 1225", "Marcopolo", "Marrón");
+        Vehiculo vehiculo5_prop1 = new Vehiculo(usuarioProp1, cat2, "LED 4512", "Jumbo", "Negro");
+        Vehiculo vehiculo6_prop3 = new Vehiculo(usuarioProp3, cat1, "BMN 5423", "Lancer", "Blanco");
+
+        List<Vehiculo> vehiculosProp1 = new ArrayList<>(Arrays.asList(vehiculo1_prop1, vehiculo2_prop1, vehiculo5_prop1));
         usuarioProp1.setVehiculos(vehiculosProp1);
-        List<Vehiculo> vehiculosProp2 = new ArrayList<>(Arrays.asList(vehiculo3));
+        List<Vehiculo> vehiculosProp2 = new ArrayList<>(Arrays.asList(vehiculo3_prop2));
         usuarioProp2.setVehiculos(vehiculosProp2);
-        List<Vehiculo> vehiculosProp3 = new ArrayList<>(Arrays.asList(vehiculo4, vehiculo6));
+        List<Vehiculo> vehiculosProp3 = new ArrayList<>(Arrays.asList(vehiculo4_prop3, vehiculo6_prop3));
         usuarioProp3.setVehiculos(vehiculosProp3);
 
         //Agregar Usuarios
@@ -94,10 +95,12 @@ public class DatosPrueba {
         Puesto puesto1 = new Puesto("Peaje Solis", "Rta Interbalnearia KM 48");
         Puesto puesto2 = new Puesto("Peaje Pando", "Rta Interbalnearia KM 28");
         Puesto puesto3 = new Puesto("Peaje Garzón", "Rta 9 KM 225");
+        Puesto puesto4 = new Puesto("Peaje Rocha", "Rta 9 KM 330");
 
         fachada.agregar(puesto1);
         fachada.agregar(puesto2);
         fachada.agregar(puesto3);
+        fachada.agregar(puesto4);
 
         fachada.agregar(tarifa1, puesto1);
         fachada.agregar(tarifa2, puesto1);
@@ -111,7 +114,10 @@ public class DatosPrueba {
         fachada.agregar(tarifa6, puesto3);
         fachada.agregar(tarifa7, puesto3);
         fachada.agregar(tarifa8, puesto3);
-        
+        fachada.agregar(tarifa5, puesto4);
+        fachada.agregar(tarifa6, puesto4);
+        fachada.agregar(tarifa7, puesto4);
+        fachada.agregar(tarifa8, puesto4);
 
         //Recargas
         Recarga rec1 = new Recarga(128.8, cuenta1);
@@ -120,41 +126,77 @@ public class DatosPrueba {
         Recarga rec4 = new Recarga(350, cuenta2);
         Recarga rec5 = new Recarga(1000, cuenta3);
         Recarga rec6 = new Recarga(200, cuenta3);
-        try {
+
+        //TipoBonificacion
+        Bonificable tipoBonifExonerado = new Exonerado();
+        Bonificable tipoBonifFrecuente = new Frecuente();
+        Bonificable tipoBonifTrabajador = new Trabajador();
+
+        //Bonificaciones
+        Bonificacion bonificacion1 = new Bonificacion(tipoBonifExonerado, puesto1);
+        Bonificacion bonificacion2 = new Bonificacion(tipoBonifFrecuente, puesto2);
+        Bonificacion bonificacion3 = new Bonificacion(tipoBonifTrabajador, puesto3);
+
+                
+        //Transitos
+        Transito transito1_prop2 = new Transito(vehiculo3_prop2, puesto1);
+        Transito transito2_prop2 = new Transito(vehiculo3_prop2, puesto2);
+        Transito transito1_prop1 = new Transito(vehiculo1_prop1, puesto3);
+        Transito transito2_prop1 = new Transito(vehiculo1_prop1, puesto1);
+        Transito transito3_prop1 = new Transito(vehiculo1_prop1, puesto4);
+        Transito transito4_prop1 = new Transito(vehiculo1_prop1, puesto1);
+        Transito transito5_prop1 = new Transito(vehiculo1_prop1, puesto4);
+        Transito transito6_prop1 = new Transito(vehiculo1_prop1, puesto3);
+        Transito transito7_prop1 = new Transito(vehiculo1_prop1, puesto2);
+        Transito transito8_prop1 = new Transito(vehiculo1_prop1, puesto2);
+        Transito transito9_prop1 = new Transito(vehiculo1_prop1, puesto2);
+        
+        
+        //Cambiamos la fecha del tránsito para validar el orden
+        transito1_prop1.setFecha(LocalDateTime.of(2023, 5, 21, 10, 30));
+        transito2_prop1.setFecha(LocalDateTime.of(2023, 1, 10, 11, 30));
+        transito3_prop1.setFecha(LocalDateTime.of(2023, 6, 21, 10, 30));
+        transito4_prop1.setFecha(LocalDateTime.of(2023, 6, 21, 10, 15));
+        transito5_prop1.setFecha(LocalDateTime.of(2023, 3, 2, 21, 30));
+        transito6_prop1.setFecha(LocalDateTime.of(2023, 3, 2, 18, 30));
+        transito7_prop1.setFecha(LocalDateTime.of(2023, 5, 21, 10, 30));
+        transito8_prop1.setFecha(LocalDateTime.of(2023, 6, 20, 10, 30));
+        
+        
+        try{
+            //Agregamos recargas
             fachada.agregar(rec1);
             fachada.agregar(rec2);
             fachada.agregar(rec3);
             fachada.agregar(rec4);
             fachada.agregar(rec5);
             fachada.agregar(rec6);
-        } catch (RecargaException re) {
-
+            
+            //Agregamos tipos de bonificación
+            fachada.agregar(tipoBonifExonerado);
+            fachada.agregar(tipoBonifFrecuente);
+            fachada.agregar(tipoBonifTrabajador);
+            
+            //Asignamos Bonificación
+            fachada.asignarBonificacion(usuarioProp1, bonificacion1);
+            fachada.asignarBonificacion(usuarioProp1, bonificacion2);
+            fachada.asignarBonificacion(usuarioProp1, bonificacion3);
+            
+            //Agregamos Transitos
+            fachada.agregar(transito1_prop1);
+            fachada.agregar(transito2_prop1);
+            fachada.agregar(transito3_prop1);
+            fachada.agregar(transito4_prop1);
+            fachada.agregar(transito5_prop1);
+            fachada.agregar(transito6_prop1);
+            fachada.agregar(transito7_prop1);
+            fachada.agregar(transito8_prop1);
+            fachada.agregar(transito9_prop1);
+            
+        } catch(PeajesException pe){
+            System.out.println("ERROR: " + pe.getMessage());
         }
-        
-        //TipoBonificacion
-        TipoBonificacion tipoBonifExonerado = new Exonerado();
-        TipoBonificacion tipoBonifFrecuente = new Frecuente();
-        TipoBonificacion tipoBonifTrabajador = new Trabajador();
 
-        //Bonificaciones
-        Bonificacion bExonerado = new Bonificacion(tipoBonifExonerado);
-        Bonificacion bFrecuente = new Bonificacion(tipoBonifFrecuente);
-        Bonificacion bTrabajador = new Bonificacion(tipoBonifTrabajador);
-        
-        fachada.agregar(bExonerado);
-        fachada.agregar(bFrecuente);
-        fachada.agregar(bTrabajador);
-        
-        //Transitos
-        Transito transito1 = new Transito(vehiculo1, puesto1);
-        Transito transito2 = new Transito(vehiculo1, puesto2);
-        Transito transito3 = new Transito(vehiculo1, puesto3);
-        Transito transito4 = new Transito(vehiculo1, puesto1);
 
-        //Agregar Transitos
-        fachada.agregar(transito1, bFrecuente);
-        fachada.agregar(transito2, null);
-        fachada.agregar(transito3, bExonerado);
-        fachada.agregar(transito4, bFrecuente);
     }
 }
