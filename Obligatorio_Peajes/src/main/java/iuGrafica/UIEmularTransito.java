@@ -230,8 +230,7 @@ public class UIEmularTransito extends javax.swing.JDialog {
         Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
         try{
             Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
-            Transito transitoAAgregar = new Transito(vehiculoEncontrado, puestoSeleccionado);
-            Transito transitoAgregado = Fachada.getInstancia().agregar(transitoAAgregar); //TODO REVISAR SI PODEMOS MOSTRAR LA VARIABLE transitoAAgregar
+            Transito transitoAgregado = Fachada.getInstancia().agregar(new Transito(vehiculoEncontrado, puestoSeleccionado));
             mostrarDatosDeTransito(transitoAgregado);
         }catch (PeajesException pe){
             JOptionPane.showMessageDialog(this, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
