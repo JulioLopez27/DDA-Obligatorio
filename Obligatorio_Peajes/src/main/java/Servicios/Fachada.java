@@ -70,8 +70,8 @@ public class Fachada extends Observable {
         return servicioUsuarios.aprobar(recarga, usuarioAdministrador);
     }
 
-    public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) throws PeajesException {
-        return servicioUsuarios.agregar(transito, bonificacionAsignada);
+    public Transito agregar(Transito transito) throws PeajesException {
+        return servicioUsuarios.agregar(transito);
     }
     
     public void agregar(Puesto puesto) {

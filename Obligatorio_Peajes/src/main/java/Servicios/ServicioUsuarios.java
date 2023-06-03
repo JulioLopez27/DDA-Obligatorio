@@ -117,10 +117,9 @@ public class ServicioUsuarios {
         return recargas;
     }
 
-    public Transito agregar(Transito transito, Bonificacion bonificacionAsignada) throws PeajesException {
-        for(UsuarioPropietario up : this.usuariosPropietario){
+    public Transito agregar(Transito transito) throws PeajesException {
+        for(UsuarioPropietario up : this.usuariosPropietario){ 
             if(up.existe(transito.getVehiculo())){
-                transito.setBonificacion(bonificacionAsignada);
                 return up.agregar(transito);
             }
         }

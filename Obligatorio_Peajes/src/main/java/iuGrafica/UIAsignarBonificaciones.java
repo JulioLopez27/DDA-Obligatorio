@@ -280,7 +280,6 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
         String cedula = jTextCedula.getText();
         try {
             UsuarioPropietario usuarioPropietario = Fachada.getInstancia().buscarPropietario(cedula);
-
             this.usuarioEncontrado = usuarioPropietario;
             List<Bonificacion> bonificacionesUsuario = usuarioPropietario.getBonificaciones();
             jLabelNombrePropietario.setText(usuarioPropietario.getNombre());

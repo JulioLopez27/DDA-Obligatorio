@@ -78,7 +78,7 @@ public class Vehiculo {
     public double getMontoTotal(){
         double montoTotal = 0;
         for(Transito t : this.transitos){
-            montoTotal += t.getMonto();
+            montoTotal += t.getMontoPagado();
         }
         return montoTotal;
     }

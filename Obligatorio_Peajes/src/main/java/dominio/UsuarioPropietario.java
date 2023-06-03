@@ -100,7 +100,9 @@ public class UsuarioPropietario extends Usuario {
         return false;
     }
 
-    public Transito agregar(Transito transito) throws PeajesException { //ToDo PREGUNTAR AL PROFE: VALIDAR ESTE METODO, ESTA LARGO
+    public Transito agregar(Transito transito) throws PeajesException {
+        Bonificacion bonificacionPuesto = this.getBonificacionPuesto(transito.getPuesto());
+        transito.setBonificacion(bonificacionPuesto);
         double montoAPagar = transito.getMontoAPagar();
         if (this.getCuenta().validarSaldo(montoAPagar)) {
             for (Vehiculo vehiculo : vehiculos) {
