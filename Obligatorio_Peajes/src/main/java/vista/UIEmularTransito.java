@@ -4,15 +4,9 @@
  */
 package vista;
 
-import Exceptions.PeajesException;
 import Interfaces.ComboBasicoRenderer;
-import modelo.fachada.Fachada;
-import modelo.Bonificacion;
 import modelo.Puesto;
 import modelo.Tarifa;
-import modelo.Transito;
-import modelo.UsuarioPropietario;
-import modelo.Vehiculo;
 import vista.celdas.CeldaEmularTransito;
 import java.awt.Component;
 import java.awt.Frame;
@@ -20,22 +14,24 @@ import java.util.List;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
+import vista.controladores.EmularTransitoControlador;
 
 /**
  *
  * @author Digital
  */
-public class UIEmularTransito extends javax.swing.JDialog {
+public class UIEmularTransito extends javax.swing.JDialog implements EmularTransitoVista {
 
-    /**
-     * Creates new form EmularTransito
-     */
+    private EmularTransitoControlador controlador;
+
     public UIEmularTransito(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.controlador = new EmularTransitoControlador();
+        controlador.setVista(this);
         jListTarifas.setCellRenderer(new DetalleTarifasRenderer());
         jComboPuestos.setRenderer(new ComboBasicoRenderer());
-        inicializar();
+
     }
 
     /**
@@ -181,15 +177,16 @@ public class UIEmularTransito extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistrarTransitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarTransitoActionPerformed
-        registrarTransito();
+        this.controlador.registrarTransito((Puesto) jComboPuestos.getSelectedItem(), jTextMatricula.getText());
     }//GEN-LAST:event_jButtonRegistrarTransitoActionPerformed
 
     private void jComboPuestosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboPuestosItemStateChanged
-        cargarTarifasDePuesto();
+        this.controlador.cargarTarifasDePuesto((Puesto) jComboPuestos.getSelectedItem());
     }//GEN-LAST:event_jComboPuestosItemStateChanged
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
-        dispose();
+        this.controlador.cerrar();
+        this.dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
 
@@ -210,43 +207,26 @@ public class UIEmularTransito extends javax.swing.JDialog {
     private javax.swing.JTextPane jTextPaneDatosTransito;
     // End of variables declaration//GEN-END:variables
 
-    private void inicializar() {
-        cargarComboPuestos();
-    }
-
-    private void cargarComboPuestos() {
-        List<Puesto> puestos = Fachada.getInstancia().getPuestos();
+    @Override
+    public void cargarComboPuestos(List<Puesto> puestos) {
         for (Puesto p : puestos) {
             jComboPuestos.addItem(p);
         }
     }
 
-    private void cargarTarifasDePuesto() {
-        Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
-        jListTarifas.setListData(puestoSeleccionado.getTarifas().toArray());
+    @Override
+    public void mostrarTarifasDePuesto(List<Tarifa> tarifas) {
+        jListTarifas.setListData(tarifas.toArray());
     }
 
-    private void registrarTransito() {
-        Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
-        try{
-            Vehiculo vehiculoEncontrado = Fachada.getInstancia().buscarVehiculo(jTextMatricula.getText());
-            Transito transitoAgregado = Fachada.getInstancia().agregar(new Transito(vehiculoEncontrado, puestoSeleccionado));
-            mostrarDatosDeTransito(transitoAgregado);
-        }catch (PeajesException pe){
-            JOptionPane.showMessageDialog(this, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        //ToDo Mandar notificacion
+    @Override
+    public void mostrarDatosDeTransito(String datosTransitoAgregado) {
+        jTextPaneDatosTransito.setText(datosTransitoAgregado);
     }
 
-    private void mostrarDatosDeTransito(Transito transitoAgregado) {
-        String nombreBonificacion = (transitoAgregado.getBonificacion() != null) ? transitoAgregado.getBonificacion().getNombre() : "No tiene"; 
-        String datosTransito = "Nombre de Propietario: " + transitoAgregado.getUsuarioPropietario().getNombre() + "\r\n" +
-                "Categoría de vehículo: " + transitoAgregado.getVehiculo().getCategoria().getNombre() + "\r\n" +
-                "Bonificación: " + nombreBonificacion + "\r\n" +
-                "Costo del tránsito: " + transitoAgregado.getMontoPagado() + "\r\n" +
-                "Saldo disponible: " + transitoAgregado.getUsuarioPropietario().getCuenta().getSaldo();
-        jTextPaneDatosTransito.setText(datosTransito);
+    @Override
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public class DetalleTarifasRenderer implements ListCellRenderer<Tarifa> {
@@ -260,5 +240,5 @@ public class UIEmularTransito extends javax.swing.JDialog {
         }
 
     }
-    
+
 }
