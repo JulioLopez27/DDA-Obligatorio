@@ -12,6 +12,7 @@ import java.time.LocalDate;
  * @author Julio Cesar
  */
 public class Transito {
+
     private Vehiculo vehiculo;
     private Puesto puesto;
     private LocalDate fecha;
@@ -77,12 +78,11 @@ public class Transito {
         return (this.bonificacion != null) ? this.bonificacion.getPorcentajeDescuento(this) : 0;
     }
 
-    public double getMontoAPagar() { //ToDo SACAR BIG DECIMAL Y REDONDEAR
-        BigDecimal montoTransito = new BigDecimal(this.getMonto());
-        double porcentajeDescuento = this.getPorcentajeDescuento();
-        BigDecimal porcentaje = new BigDecimal(porcentajeDescuento / 100);
-        BigDecimal resultado = montoTransito.subtract(montoTransito.multiply(porcentaje));
-        return resultado.doubleValue();
+    public double getMontoAPagar() {
+        double montoTransito = this.getMonto();
+        double porcentajeDescuento = this.getPorcentajeDescuento() / 100;
+        double resultado = montoTransito - (montoTransito * porcentajeDescuento);
+        return Math.round(resultado);
     }
-    
+
 }
