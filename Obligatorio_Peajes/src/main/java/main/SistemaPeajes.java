@@ -4,7 +4,7 @@
 
 package main;
 
-import iuGrafica.InicioAplicacion;
+import vista.InicioAplicacion;
 
 /**
  *

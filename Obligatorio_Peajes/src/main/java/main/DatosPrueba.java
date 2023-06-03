@@ -5,25 +5,25 @@
 package main;
 
 import Exceptions.PeajesException;
-import Servicios.Fachada;
-import Servicios.ServicioUsuarios;
-import dominio.Bonificacion;
-import dominio.Categoria;
-import dominio.Cuenta;
-import dominio.Exonerado;
-import dominio.Frecuente;
-import dominio.Puesto;
-import dominio.Recarga;
-import dominio.Tarifa;
-import dominio.Trabajador;
-import dominio.Transito;
-import dominio.UsuarioAdministrador;
-import dominio.UsuarioPropietario;
-import dominio.Vehiculo;
+import modelo.fachada.Fachada;
+import modelo.servicios.ServicioUsuarios;
+import modelo.Bonificacion;
+import modelo.Categoria;
+import modelo.Cuenta;
+import modelo.Exonerado;
+import modelo.Frecuente;
+import modelo.Puesto;
+import modelo.Recarga;
+import modelo.Tarifa;
+import modelo.Trabajador;
+import modelo.Transito;
+import modelo.UsuarioAdministrador;
+import modelo.UsuarioPropietario;
+import modelo.Vehiculo;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import dominio.Bonificable;
+import modelo.Bonificable;
 import java.time.LocalDateTime;
 
 /**
