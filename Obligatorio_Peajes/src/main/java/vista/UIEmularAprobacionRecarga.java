@@ -7,6 +7,7 @@ package vista;
 import vista.celdas.CeldaAprobarRecarga;
 import Observer.Observable;
 import Observer.Observer;
+import java.awt.Color;
 import modelo.fachada.Fachada;
 import modelo.Recarga;
 import modelo.UsuarioAdministrador;
@@ -19,24 +20,24 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
 
+
 /**
  *
  * @author Digital
  */
-public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Observer {
+public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements EmularAprobacionRecargaVista {
 
-    private UsuarioAdministrador usuarioAdministrador;
+    private EmularAprobacionRecargaControlador controlador;
             
     /**
      * Creates new form EmularAprobacionRecarga
      */
     public UIEmularAprobacionRecarga(Frame parent, boolean modal, UsuarioAdministrador usuarioAdministrador){
         super(parent,modal);
-        this.usuarioAdministrador = usuarioAdministrador;
-        setLocationRelativeTo(null);
         initComponents();
+        controlador = new EmularAprobacionRecargaControlador(this, usuarioAdministrador);
+        setLocationRelativeTo(null);
         jListRecargas.setCellRenderer(new DetalleRecargaRenderer());
-        cargarListaRecargas();
     }
 
     /**
@@ -109,12 +110,12 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(119, Short.MAX_VALUE))))
+                        .addContainerGap(67, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,11 +140,7 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAprobarActionPerformed
-        if(Fachada.getInstancia().aprobar((Recarga)jListRecargas.getSelectedValue(), usuarioAdministrador)){
-            JOptionPane.showMessageDialog(this, "La recarga se aprobó correctamente.", "OK", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "No se pudo aprobar la recarga", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        controlador.aprobarRecarga((Recarga)jListRecargas.getSelectedValue());
     }//GEN-LAST:event_jButtonAprobarActionPerformed
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
@@ -162,14 +159,15 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
+
     @Override
-    public void notificar(Observable origen, Object evento) {
-        //ToDo ACTUALIZAR RECARGA PENDIENTE
+    public void mostrarListaRecargas(List<Recarga> recargasPendientes) {
+        jListRecargas.setListData(recargasPendientes.toArray());
     }
 
-    private void cargarListaRecargas() {
-        List<Recarga> recargasPendientes = Fachada.getInstancia().getRecargasPendientes();
-        jListRecargas.setListData(recargasPendientes.toArray());
+    @Override
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
     }
     
     public class DetalleRecargaRenderer implements ListCellRenderer<Recarga> {
@@ -177,12 +175,12 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Ob
         @Override
         public Component getListCellRendererComponent(JList<? extends Recarga> list, Recarga recarga, int index, boolean isSelected, boolean cellHasFocus) {
             CeldaAprobarRecarga celdaRecarga = new CeldaAprobarRecarga();
-            celdaRecarga.jFechaRecagra.setText(recarga.getFecha().toString());
+            celdaRecarga.jFechaRecagra.setText(recarga.getFechaFormateada());
             celdaRecarga.jPropietarioRecarga.setText(recarga.getCuenta().getUsuarioPropietario().getNombre());
             celdaRecarga.jMontoRecarga.setText(recarga.getMonto()+"");
             celdaRecarga.jSelected.setSelected(isSelected);
+            celdaRecarga.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
             return celdaRecarga;
         }
-        
     }
 }

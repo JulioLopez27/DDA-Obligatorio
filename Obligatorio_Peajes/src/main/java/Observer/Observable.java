@@ -17,6 +17,7 @@ public class Observable {
     
     public enum Evento {
         RECARGA_SOLICITADA,
+        RECARGA_APROBADA,
         SALDO_ACTUALIZADO,
         BONIFICACION_ASIGNADA,
         TRANSITO_EFECTUADO

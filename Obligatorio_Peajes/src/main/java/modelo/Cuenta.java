@@ -4,8 +4,10 @@
  */
 package modelo;
 import Exceptions.PeajesException;
+import Observer.Observable;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.fachada.Fachada;
 
 /**
  *
@@ -47,7 +49,8 @@ public class Cuenta {
 
     public void agregar(Recarga recarga) throws PeajesException {
         if(recarga != null && recarga.getMonto() > 0){
-            this.recargas.add(recarga);
+            if(this.recargas.add(recarga))
+                Fachada.getInstancia().notificar(Observable.Evento.RECARGA_SOLICITADA);
         } else {
             throw new PeajesException("Monto inválido");
         }
@@ -68,6 +71,7 @@ public class Cuenta {
             if(r.equals(recarga)){
                 r.setAprobador(usuarioAdministrador);
                 this.saldo += r.getMonto();
+                Fachada.getInstancia().notificar(Observable.Evento.RECARGA_APROBADA);
                 return true;
             }
         }
