@@ -52,6 +52,7 @@ public class DatosPrueba {
         //Usuarios Admin
         UsuarioAdministrador usuarioAdmin1 = new UsuarioAdministrador(41234567, "123", "Carlos Gonzalez");
         UsuarioAdministrador usuarioAdmin2 = new UsuarioAdministrador(123, "123", "Admin 123");
+        UsuarioAdministrador usuarioAdmin3 = new UsuarioAdministrador(456, "456", "Admin 456");
 
         //Categorias
         Categoria cat1 = new Categoria("Automóvil");
@@ -90,6 +91,7 @@ public class DatosPrueba {
         fachada.agregar(usuarioProp3);
         fachada.agregar(usuarioAdmin1);
         fachada.agregar(usuarioAdmin2);
+        fachada.agregar(usuarioAdmin3);
 
         //Puestos
         Puesto puesto1 = new Puesto("Peaje Solis", "Rta Interbalnearia KM 48");
@@ -137,7 +139,6 @@ public class DatosPrueba {
         Bonificacion bonificacion2 = new Bonificacion(tipoBonifFrecuente, puesto2);
         Bonificacion bonificacion3 = new Bonificacion(tipoBonifTrabajador, puesto3);
 
-                
         //Transitos
         Transito transito1_prop2 = new Transito(vehiculo3_prop2, puesto1);
         Transito transito2_prop2 = new Transito(vehiculo3_prop2, puesto2);
@@ -150,8 +151,7 @@ public class DatosPrueba {
         Transito transito7_prop1 = new Transito(vehiculo1_prop1, puesto2);
         Transito transito8_prop1 = new Transito(vehiculo1_prop1, puesto2);
         Transito transito9_prop1 = new Transito(vehiculo1_prop1, puesto2);
-        
-        
+
         //Cambiamos la fecha del tránsito para validar el orden
         transito1_prop1.setFecha(LocalDateTime.of(2023, 5, 21, 10, 30));
         transito2_prop1.setFecha(LocalDateTime.of(2023, 1, 10, 11, 30));
@@ -161,9 +161,8 @@ public class DatosPrueba {
         transito6_prop1.setFecha(LocalDateTime.of(2023, 3, 2, 18, 30));
         transito7_prop1.setFecha(LocalDateTime.of(2023, 5, 21, 10, 30));
         transito8_prop1.setFecha(LocalDateTime.of(2023, 6, 20, 10, 30));
-        
-        
-        try{
+
+        try {
             //Agregamos recargas
             fachada.agregar(rec1);
             fachada.agregar(rec2);
@@ -171,17 +170,17 @@ public class DatosPrueba {
             fachada.agregar(rec4);
             fachada.agregar(rec5);
             fachada.agregar(rec6);
-            
+
             //Agregamos tipos de bonificación
             fachada.agregar(tipoBonifExonerado);
             fachada.agregar(tipoBonifFrecuente);
             fachada.agregar(tipoBonifTrabajador);
-            
+
             //Asignamos Bonificación
             fachada.asignarBonificacion(usuarioProp1, bonificacion1);
             fachada.asignarBonificacion(usuarioProp1, bonificacion2);
             fachada.asignarBonificacion(usuarioProp1, bonificacion3);
-            
+
             //Agregamos Transitos
             fachada.agregar(transito1_prop1);
             fachada.agregar(transito2_prop1);
@@ -192,11 +191,10 @@ public class DatosPrueba {
             fachada.agregar(transito7_prop1);
             fachada.agregar(transito8_prop1);
             fachada.agregar(transito9_prop1);
-            
-        } catch(PeajesException pe){
+
+        } catch (PeajesException pe) {
             System.out.println("ERROR: " + pe.getMessage());
         }
-
 
     }
 }
