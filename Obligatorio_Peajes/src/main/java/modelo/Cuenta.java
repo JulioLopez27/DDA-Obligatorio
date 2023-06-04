@@ -82,7 +82,11 @@ public class Cuenta {
         return montoAPagar <= this.getSaldo();
     }
 
-    public void actualizarSaldo(double montoAPagar) {
+    public void pagarTransito(double montoAPagar) {
         this.saldo -= montoAPagar;
+        Fachada.getInstancia().notificar(Observable.Evento.TRANSITO_PAGADO);
+        if(this.getSaldo() < this.usuarioPropietario.getSaldoMinimoAlerta()){
+            this.usuarioPropietario.agregar(new Notificacion("Tu saldo actual es de $" + this.getSaldo() + ". Te recomendamos hacer una recarga."));
+        }
     }
 }

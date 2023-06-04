@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import Observer.Observable;
 import modelo.fachada.Fachada;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -84,7 +85,12 @@ public class Vehiculo {
     }
 
     public boolean agregar(Transito transito) {
-        return this.transitos.add(transito);
+        if(this.transitos.add(transito)){
+            Fachada.getInstancia().notificar(Observable.Evento.TRANSITO_EFECTUADO);
+            this.usuarioPropietario.agregar(new Notificacion("Pasaste por el puesto " + transito.getPuesto().getNombre() + " con el vehículo " + this.getMatricula()));
+            return true;
+        }
+        return false;
     }
 
     public int getCantidadTransitosHoy(Puesto puesto) {

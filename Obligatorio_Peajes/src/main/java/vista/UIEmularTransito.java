@@ -5,6 +5,7 @@
 package vista;
 
 import Interfaces.ComboBasicoRenderer;
+import java.awt.Color;
 import modelo.Puesto;
 import modelo.Tarifa;
 import vista.celdas.CeldaEmularTransito;
@@ -26,11 +27,11 @@ public class UIEmularTransito extends javax.swing.JDialog implements EmularTrans
 
     public UIEmularTransito(Frame parent, boolean modal) {
         super(parent, modal);
+        this.controlador = new EmularTransitoControlador(this);
         initComponents();
-        this.controlador = new EmularTransitoControlador();
-        controlador.setVista(this);
         jListTarifas.setCellRenderer(new DetalleTarifasRenderer());
         jComboPuestos.setRenderer(new ComboBasicoRenderer());
+        this.controlador.cargarComboPuestos();
 
     }
 
@@ -115,18 +116,18 @@ public class UIEmularTransito extends javax.swing.JDialog implements EmularTrans
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 18, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
                         .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboPuestos, 0, 375, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
-                                .addGap(134, 134, 134))
+                                .addGap(107, 107, 107))
                             .addComponent(jScrollPane2)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -141,7 +142,7 @@ public class UIEmularTransito extends javax.swing.JDialog implements EmularTrans
                                     .addComponent(jLabel6)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +152,7 @@ public class UIEmularTransito extends javax.swing.JDialog implements EmularTrans
                     .addComponent(jComboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -236,6 +237,7 @@ public class UIEmularTransito extends javax.swing.JDialog implements EmularTrans
             CeldaEmularTransito celdaEmularTransito = new CeldaEmularTransito();
             celdaEmularTransito.jCategoria.setText(tarifa.getCategoria().getNombre());
             celdaEmularTransito.jMonto.setText("" + tarifa.getMonto());
+            celdaEmularTransito.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
             return celdaEmularTransito;
         }
 

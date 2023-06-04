@@ -17,17 +17,9 @@ public class EmularTransitoControlador implements Observer {
 
     private EmularTransitoVista vista;
 
-    public EmularTransitoControlador() {
-    }
-
     public EmularTransitoControlador(EmularTransitoVista vista) {
         this.vista = vista;
-        vista.cargarComboPuestos(Fachada.getInstancia().getPuestos());
         Fachada.getInstancia().subscribir(this);
-    }
-
-    public void setVista(EmularTransitoVista vista) {
-        this.vista = vista;
     }
 
     @Override
@@ -35,6 +27,10 @@ public class EmularTransitoControlador implements Observer {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public void cargarComboPuestos(){
+        vista.cargarComboPuestos(Fachada.getInstancia().getPuestos());
+    }
+    
     public void cargarTarifasDePuesto(Puesto puesto) {
         vista.mostrarTarifasDePuesto(puesto.getTarifas());
     }

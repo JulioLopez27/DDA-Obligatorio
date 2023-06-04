@@ -110,7 +110,7 @@ public class UsuarioPropietario extends Usuario {
             for (Vehiculo vehiculo : vehiculos) {
                 transito.setMontoPagado(montoAPagar);
                 if (vehiculo.equals(transito.getVehiculo()) && vehiculo.agregar(transito)) {
-                    this.getCuenta().actualizarSaldo(montoAPagar);
+                    this.getCuenta().pagarTransito(montoAPagar);
                     return transito;
                 }
             }

@@ -6,7 +6,6 @@ package vista.controladores;
 
 import Observer.Observable;
 import Observer.Observer;
-import modelo.Notificacion;
 import modelo.Recarga;
 import modelo.UsuarioAdministrador;
 import modelo.fachada.Fachada;
