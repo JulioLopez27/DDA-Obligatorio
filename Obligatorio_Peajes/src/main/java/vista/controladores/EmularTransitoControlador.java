@@ -24,7 +24,7 @@ public class EmularTransitoControlador implements Observer {
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //
     }
 
     public void cargarComboPuestos(){

@@ -168,4 +168,8 @@ public class UsuarioPropietario extends Usuario {
         Fachada.getInstancia().notificar(Observable.Evento.NOTIFICACION_RECIBIDA);
     }
 
+    public void borrarNotificaciones() {
+        this.notificaciones.clear();
+    }
+
 }

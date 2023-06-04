@@ -41,7 +41,7 @@ public class DatosPrueba {
         Cuenta cuenta3 = new Cuenta(2000, null);
 
         //Usuarios Propietarios
-        UsuarioPropietario usuarioProp1 = new UsuarioPropietario(200, cuenta1, 123, "123", "Juan Perez");
+        UsuarioPropietario usuarioProp1 = new UsuarioPropietario(2500, cuenta1, 123, "123", "Juan Perez");
         UsuarioPropietario usuarioProp2 = new UsuarioPropietario(50, cuenta2, 456, "456", "Ana Lopez");
         UsuarioPropietario usuarioProp3 = new UsuarioPropietario(500, cuenta3, 789, "789", "Alberto Rodriguez");
 

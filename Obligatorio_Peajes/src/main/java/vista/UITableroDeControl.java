@@ -23,6 +23,8 @@ import java.util.Comparator;
 import java.util.List;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
+import modelo.Notificacion;
+import vista.celdas.CeldaNotificacion;
 
 /**
  *
@@ -43,6 +45,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         jListTransitos.setCellRenderer(new TransitoDetalleRenderer());
         jListBonificaciones.setCellRenderer(new BonificacionesDetallesRenderer());
         jListRecargas.setCellRenderer(new RecargasDetalleRenderer());
+        jListNotificaciones.setCellRenderer(new NotificacionDetalleRenderer());
         //ToDo hay que suscribir a la fachada y desuscribir cuando cierra la pantalla
 
         inicializar();
@@ -97,7 +100,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jListNotificaciones = new javax.swing.JList();
         jLabelFechaNotificacion = new javax.swing.JLabel();
         jLabelMensajeNotificacion1 = new javax.swing.JLabel();
 
@@ -257,7 +260,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
         jLabel18.setText("Administrador");
 
-        jScrollPane4.setViewportView(jList1);
+        jScrollPane4.setViewportView(jListNotificaciones);
 
         jLabelFechaNotificacion.setText("Fecha");
 
@@ -268,12 +271,6 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(jLabelFechaNotificacion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelMensajeNotificacion1)
-                .addGap(324, 324, 324))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel15)
@@ -284,10 +281,6 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                 .addGap(129, 129, 129)
                 .addComponent(jLabel18)
                 .addGap(66, 66, 66))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(389, 389, 389)
-                .addComponent(jButtonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addComponent(jTextSaldo)
@@ -359,6 +352,17 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(jLabelFechaNotificacion)
+                        .addGap(222, 222, 222)
+                        .addComponent(jLabelMensajeNotificacion1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(389, 389, 389)
+                        .addComponent(jButtonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,9 +424,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
                                 .addComponent(jButtonRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelMensajeNotificacion1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelFechaNotificacion))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFechaNotificacion)
+                    .addComponent(jLabelMensajeNotificacion1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -444,7 +448,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }//GEN-LAST:event_jButtonRecargarActionPerformed
 
     private void jButtonBorrarNotificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarNotificacionesActionPerformed
-        // TODO add your handling code here:
+        usuarioPropietario.borrarNotificaciones();
     }//GEN-LAST:event_jButtonBorrarNotificacionesActionPerformed
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
@@ -482,8 +486,8 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     private javax.swing.JLabel jLabelPuestoTransito;
     private javax.swing.JLabel jLabelTarifa;
     private javax.swing.JLabel jLabelTarifaMonto;
-    private javax.swing.JList jList1;
     private javax.swing.JList jListBonificaciones;
+    private javax.swing.JList jListNotificaciones;
     private javax.swing.JList jListRecargas;
     private javax.swing.JList jListTransitos;
     private javax.swing.JList jListVehiculos;
@@ -541,8 +545,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }
 
     private void cargarListaDeNotificaciones() {
-
-        //Collections.sort(recargas, Comparator.comparing(Recarga::getFecha).reversed());
+        List<Notificacion> notificaciones = usuarioPropietario.getNotificaciones();
+        Collections.sort(notificaciones, Comparator.comparing(Notificacion::getFecha).reversed());
+        jListNotificaciones.setListData(notificaciones.toArray());
     }
 
     public class TransitoDetalleRenderer implements ListCellRenderer<Transito> {
@@ -605,6 +610,19 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
             celdaRecarga.jAdministrador.setText((recarga.getAprobador() != null) ? recarga.getAprobador().getNombre() : "-");
             celdaRecarga.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
             return celdaRecarga;
+        }
+
+    }
+    
+    public class NotificacionDetalleRenderer implements ListCellRenderer<Notificacion> {
+
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Notificacion> list, Notificacion notificacion, int index, boolean isSelected, boolean cellHasFocus) {
+            CeldaNotificacion celdaNotificacion = new CeldaNotificacion();
+            celdaNotificacion.jFecha.setText(notificacion.getFechaFormateada());
+            celdaNotificacion.jMensaje.setText(notificacion.getMensaje());
+            celdaNotificacion.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
+            return celdaNotificacion;
         }
 
     }
