@@ -186,7 +186,6 @@ public class UIEmularTransito extends javax.swing.JDialog implements EmularTrans
     }//GEN-LAST:event_jComboPuestosItemStateChanged
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
-        this.controlador.cerrar();
         this.dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 

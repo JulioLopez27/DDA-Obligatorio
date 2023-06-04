@@ -13,19 +13,16 @@ import vista.EmularTransitoVista;
  *
  * @author Julio Cesar
  */
-public class EmularTransitoControlador implements Observer {
+public class EmularTransitoControlador {
 
     private EmularTransitoVista vista;
 
     public EmularTransitoControlador(EmularTransitoVista vista) {
         this.vista = vista;
-        Fachada.getInstancia().subscribir(this);
+        
     }
 
-    @Override
-    public void notificar(Observable origen, Object evento) {
-        //
-    }
+   
 
     public void cargarComboPuestos(){
         vista.cargarComboPuestos(Fachada.getInstancia().getPuestos());
@@ -55,8 +52,6 @@ public class EmularTransitoControlador implements Observer {
         return datosTransito;
     }
 
-    public void cerrar() {
-        Fachada.getInstancia().desubscribir(this);
-    }
+   
 
 }
