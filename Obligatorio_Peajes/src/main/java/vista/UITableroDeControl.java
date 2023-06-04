@@ -500,7 +500,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
 
 
     @Override
-    public void inicializarDatos(UsuarioPropietario usuarioPropietario) {
+    public void inicializarDatos(UsuarioPropietario usuarioPropietario) { //TODO VER SI PODEMOS NO DUPLICAR CÓDIGO
         jTextNombreUsuario.setText(usuarioPropietario.getNombre());
         jTextSaldo.setText(usuarioPropietario.getCuenta().getSaldoFormateado());
         jCantVehiculos.setText(usuarioPropietario.getVehiculos().size() + "");
