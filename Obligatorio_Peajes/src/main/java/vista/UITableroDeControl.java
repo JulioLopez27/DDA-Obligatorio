@@ -25,30 +25,28 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import modelo.Notificacion;
 import vista.celdas.CeldaNotificacion;
+import vista.controladores.TableroControlControlador;
 
 /**
  *
  * @author Digital
  */
-public class UITableroDeControl extends javax.swing.JDialog implements Observer {
+public class UITableroDeControl extends javax.swing.JDialog implements TableroControlVista {
 
-    private UsuarioPropietario usuarioPropietario;
+    private TableroControlControlador controlador;
 
     /**
      * Creates new form TablerDeControl
      */
-    public UITableroDeControl(UsuarioPropietario usuario) {
+    public UITableroDeControl(UsuarioPropietario usuarioPropietario) {
         initComponents();
-        this.usuarioPropietario = usuario;
-
+        this.controlador = new TableroControlControlador(this, usuarioPropietario);
         jListVehiculos.setCellRenderer(new VehiculoDetalleRenderer());
         jListTransitos.setCellRenderer(new TransitoDetalleRenderer());
         jListBonificaciones.setCellRenderer(new BonificacionesDetallesRenderer());
         jListRecargas.setCellRenderer(new RecargasDetalleRenderer());
         jListNotificaciones.setCellRenderer(new NotificacionDetalleRenderer());
-        //ToDo hay que suscribir a la fachada y desuscribir cuando cierra la pantalla
-
-        inicializar();
+        controlador.cargarListas();
     }
 
     /**
@@ -444,14 +442,15 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRecargarActionPerformed
-        new UIRecargaSaldo(usuarioPropietario).setVisible(true);
+        controlador.abrirRecargarSaldo();
     }//GEN-LAST:event_jButtonRecargarActionPerformed
 
     private void jButtonBorrarNotificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarNotificacionesActionPerformed
-        usuarioPropietario.borrarNotificaciones();
+        controlador.borrarNotificaciones();
     }//GEN-LAST:event_jButtonBorrarNotificacionesActionPerformed
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        controlador.cerrar();
         dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
@@ -501,13 +500,9 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
     private javax.swing.JLabel jTextSaldo;
     // End of variables declaration//GEN-END:variables
 
+
     @Override
-    public void notificar(Observable origen, Object evento) {
-        //ToDo MANDAR EVENTO ACTUALIZAR PANTALLA
-
-    }
-
-    private void inicializar() {
+    public void inicializarDatos(UsuarioPropietario usuarioPropietario) {
         jTextNombreUsuario.setText(usuarioPropietario.getNombre());
         jTextSaldo.setText(usuarioPropietario.getCuenta().getSaldoFormateado());
         jCantVehiculos.setText(usuarioPropietario.getVehiculos().size() + "");
@@ -515,58 +510,39 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
         jCantTransitos.setText(usuarioPropietario.getCantidadTransitos() + "");
         jCantRecargas.setText(usuarioPropietario.getCuenta().getRecargas().size() + "");
         jCantNotificaciones.setText(usuarioPropietario.getNotificaciones().size() + "");
-        cargarListaDeVehiculos();
-        cargarListaDeBonificaciones();
-        cargarListaDeTransitos();
-        cargarListaDeRecargas();
-        cargarListaDeNotificaciones();
     }
 
-    private void cargarListaDeVehiculos() {
-        List<Vehiculo> vehiculos = usuarioPropietario.getVehiculos();
+    @Override
+    public void cargarListaDeVehiculos(List<Vehiculo> vehiculos) {
         jListVehiculos.setListData(vehiculos.toArray());
     }
 
-    private void cargarListaDeBonificaciones() {
-        List<Bonificacion> bonificaciones = usuarioPropietario.getBonificaciones();
+    @Override
+    public void cargarListaDeBonificaciones(List<Bonificacion> bonificaciones) {
         jListBonificaciones.setListData(bonificaciones.toArray());
     }
 
-    private void cargarListaDeTransitos() {
-        List<Transito> transitos = usuarioPropietario.getTransitos();
+    @Override
+    public void cargarListaDeTransitos(List<Transito> transitos) {
         Collections.sort(transitos, Comparator.comparing(Transito::getFecha).reversed());
         jListTransitos.setListData(transitos.toArray());
     }
 
-    private void cargarListaDeRecargas() {
-        List<Recarga> recargas = usuarioPropietario.getRecargas();
+    @Override
+    public void cargarListaDeRecargas(List<Recarga> recargas) {
         Collections.sort(recargas, Comparator.comparing(Recarga::getFecha).reversed());
         jListRecargas.setListData(recargas.toArray());
     }
 
-    private void cargarListaDeNotificaciones() {
-        List<Notificacion> notificaciones = usuarioPropietario.getNotificaciones();
+    @Override
+    public void cargarListaDeNotificaciones(List<Notificacion> notificaciones) {
         Collections.sort(notificaciones, Comparator.comparing(Notificacion::getFecha).reversed());
         jListNotificaciones.setListData(notificaciones.toArray());
     }
 
-    public class TransitoDetalleRenderer implements ListCellRenderer<Transito> {
-
-        @Override
-        public Component getListCellRendererComponent(JList<? extends Transito> list, Transito transito, int index, boolean isSelected, boolean cellHasFocus) {
-            CeldaTransito celdaTransito = new CeldaTransito();
-            celdaTransito.jLabelPuesto.setText(transito.getPuesto().getNombre());
-            celdaTransito.jLabelMatricula.setText(transito.getVehiculo().getMatricula());
-            celdaTransito.jLabelTarifa.setText(transito.getVehiculo().getCategoria().getNombre());
-            celdaTransito.jLabelTarifaMonto.setText(transito.getMonto()+"");
-            celdaTransito.jLabelBonificacion.setText((transito.getBonificacion() != null) ? transito.getBonificacion().getNombre() : "No tiene.");
-            celdaTransito.jLabelMontoBonif.setText(transito.getMonto() - transito.getMontoPagado() +"");
-            celdaTransito.jLabelMontoPagado.setText(transito.getMontoPagado()+"");
-            celdaTransito.jLabelFecha.setText(transito.getFechaFormateada());
-            celdaTransito.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
-            return celdaTransito;
-        }
-
+    @Override
+    public void ejecutarRecargaSaldo(UsuarioPropietario usuarioPropietario) {
+        new UIRecargaSaldo(usuarioPropietario).setVisible(true);
     }
 
     public class VehiculoDetalleRenderer implements ListCellRenderer<Vehiculo> {
@@ -599,6 +575,25 @@ public class UITableroDeControl extends javax.swing.JDialog implements Observer 
 
     }
     
+    public class TransitoDetalleRenderer implements ListCellRenderer<Transito> {
+
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Transito> list, Transito transito, int index, boolean isSelected, boolean cellHasFocus) {
+            CeldaTransito celdaTransito = new CeldaTransito();
+            celdaTransito.jLabelPuesto.setText(transito.getPuesto().getNombre());
+            celdaTransito.jLabelMatricula.setText(transito.getVehiculo().getMatricula());
+            celdaTransito.jLabelTarifa.setText(transito.getVehiculo().getCategoria().getNombre());
+            celdaTransito.jLabelTarifaMonto.setText(transito.getMonto()+"");
+            celdaTransito.jLabelBonificacion.setText((transito.getBonificacion() != null) ? transito.getBonificacion().getNombre() : "No tiene.");
+            celdaTransito.jLabelMontoBonif.setText(transito.getMonto() - transito.getMontoPagado() +"");
+            celdaTransito.jLabelMontoPagado.setText(transito.getMontoPagado()+"");
+            celdaTransito.jLabelFecha.setText(transito.getFechaFormateada());
+            celdaTransito.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
+            return celdaTransito;
+        }
+
+    }
+
     public class RecargasDetalleRenderer implements ListCellRenderer<Recarga> {
 
     @Override

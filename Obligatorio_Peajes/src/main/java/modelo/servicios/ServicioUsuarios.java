@@ -97,7 +97,7 @@ public class ServicioUsuarios {
         for(UsuarioPropietario up : this.usuariosPropietario){
             if(up.equals(recarga.getUsuarioPropietario())){
                 if(up.aprobar(recarga, usuarioAdministrador)){
-                    up.agregar(new Notificacion("Tu recarga de $" + recarga.getMonto() + "fue aprobada."));
+                    up.agregar(new Notificacion("Tu recarga de $" + recarga.getMonto() + " fue aprobada."));
                     return true;
                 }
             }
