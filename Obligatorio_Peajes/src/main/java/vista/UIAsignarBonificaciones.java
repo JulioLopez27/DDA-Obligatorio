@@ -20,14 +20,15 @@ import java.util.List;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
+import vista.controladores.AsignarBonificacionesControlador;
 
 /**
  *
  * @author Digital
  */
-public class UIAsignarBonificaciones extends javax.swing.JDialog implements Observer {
+public class UIAsignarBonificaciones extends javax.swing.JDialog implements AsignarBonificacionesVista {
 
-    private UsuarioPropietario usuarioEncontrado;
+    private AsignarBonificacionesControlador controlador;
 
     /**
      * Creates new form AsignarBonificaciones
@@ -35,10 +36,11 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
     public UIAsignarBonificaciones(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        controlador = new AsignarBonificacionesControlador(this);
         jComboBonificaciones.setRenderer(new ComboBasicoRenderer());
         jComboPuestos.setRenderer(new ComboBasicoRenderer());
         jListBonificaciones.setCellRenderer(new DetalleBonificacionRenderer());
-        inicializar();
+        controlador.inicializar();
     }
 
     /**
@@ -227,6 +229,7 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
     }//GEN-LAST:event_jButtonAsignarActionPerformed
 
     private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+        this.controlador.cerrar();
         dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
@@ -252,58 +255,42 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Obse
     private javax.swing.JTextField jTextCedula;
     // End of variables declaration//GEN-END:variables
 
+    //carga bonificaciones del sistema
     @Override
-    public void notificar(Observable origen, Object evento) {
-        //ToDo ACTUALIZAR BONIFICACION PUESTO
-    }
-
-    private void inicializar() {
-        cargarBonificaciones();
-        cargarPuestos();
-    }
-
-    private void cargarBonificaciones() {
-        List<Bonificable> tiposBonificacion = Fachada.getInstancia().getTiposBonificacion();
+    public void cargarBonificaciones(List<Bonificable> tiposBonificacion) {
         for (Bonificable b : tiposBonificacion) {
             jComboBonificaciones.addItem(b);
         }
     }
 
-    public void cargarPuestos() {
-        List<Puesto> puestos = Fachada.getInstancia().getPuestos();
+    @Override
+    public void cargarPuestos(List<Puesto> puestos) {
         for (Puesto p : puestos) {
             jComboPuestos.addItem(p);
         }
     }
 
-    private void buscarPropietario() {
-        String cedula = jTextCedula.getText();
-        try {
-            UsuarioPropietario usuarioPropietario = Fachada.getInstancia().buscarPropietario(cedula);
-            this.usuarioEncontrado = usuarioPropietario;
-            List<Bonificacion> bonificacionesUsuario = usuarioPropietario.getBonificaciones();
-            jLabelNombrePropietario.setText(usuarioPropietario.getNombre());
-            cargarListaBonificaciones(bonificacionesUsuario);
-        } catch (PeajesException pe) {
-            JOptionPane.showMessageDialog(this, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void cargarListaBonificaciones(List<Bonificacion> bonificacionesUsuario) {
+    @Override
+    public void cargarListaBonificaciones(List<Bonificacion> bonificacionesUsuario) {
         jListBonificaciones.setListData(bonificacionesUsuario.toArray());
     }
 
-    //todo refactorizar
+    @Override
+    public void mostrarNombrePropietario(String nombre) {
+        jLabelNombrePropietario.setText(nombre);
+    }
+
+    @Override
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void buscarPropietario() {
+        this.controlador.buscarPropietario(jTextCedula.getText());
+    }
+
     private void asignarBonificacion() {
-        Bonificable tipoBonificacionSeleccionada = (Bonificable) jComboBonificaciones.getSelectedItem();
-        Puesto puestoSeleccionado = (Puesto) jComboPuestos.getSelectedItem();
-        Bonificacion bonificacionAAsignar = new Bonificacion(tipoBonificacionSeleccionada, puestoSeleccionado);
-        try {
-            Fachada.getInstancia().asignarBonificacion(this.usuarioEncontrado, bonificacionAAsignar);
-            buscarPropietario();
-        } catch (PeajesException pe) {
-            JOptionPane.showMessageDialog(this, pe.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        this.controlador.asignarBonificacion((Bonificable) jComboBonificaciones.getSelectedItem(), (Puesto) jComboPuestos.getSelectedItem());
     }
 
     public class DetalleBonificacionRenderer implements ListCellRenderer<Bonificacion> {
