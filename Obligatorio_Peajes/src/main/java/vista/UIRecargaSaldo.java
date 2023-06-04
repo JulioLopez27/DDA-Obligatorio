@@ -4,33 +4,22 @@
  */
 package vista;
 
-import Exceptions.PeajesException;
-import Observer.Observable;
-import Observer.Observer;
-import modelo.fachada.Fachada;
-import modelo.Recarga;
 import modelo.UsuarioPropietario;
-import static java.lang.Double.parseDouble;
 import javax.swing.JOptionPane;
+import vista.controladores.RecargarSaldoControlador;
 
 /**
  *
  * @author Digital
  */
-public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
+public class UIRecargaSaldo extends javax.swing.JDialog implements RecargaSaldoVista {
 
-    private UsuarioPropietario usuarioPropietario;
-    
-    /**
-     * Creates new form RecargaSaldo
-     */
-    public UIRecargaSaldo(UsuarioPropietario usuario) {
+    private RecargarSaldoControlador controlador;
+
+    public UIRecargaSaldo(UsuarioPropietario usuarioPropietario) {
         initComponents();
-        this.usuarioPropietario = usuario;
-        
-        jTextNombreUsuario.setText(usuarioPropietario.getNombre());
-        jTextSaldo.setText(usuarioPropietario.getCuenta().getSaldoFormateado());
-        
+        this.controlador = new RecargarSaldoControlador(this, usuarioPropietario);
+        this.controlador.mostrarInformacionDelUsuario();
     }
 
     /**
@@ -51,6 +40,11 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Recarga de saldo");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Monto a recargar: ");
@@ -85,7 +79,7 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
                         .addComponent(jTextFieldMontoRecarga, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextSaldo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextNombreUsuario)))
@@ -116,19 +110,12 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        String montoARecargar = jTextFieldMontoRecarga.getText();
-        try{
-            Recarga nuevaRecarga = new Recarga(parseDouble(montoARecargar), usuarioPropietario.getCuenta());
-            Fachada.getInstancia().agregar(nuevaRecarga);
-            this.dispose();
-        } catch (PeajesException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "El monto debe ser un valor numérico.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        
+        aceptarRecarga();
     }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.cerrar();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
@@ -140,7 +127,26 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements Observer {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void notificar(Observable origen, Object evento) {
-        //ToDo NOTIFICAR SALDO ACTUALIZADO
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void mostrarNombreUsuario(String nombre) {
+        jTextNombreUsuario.setText(nombre);
+    }
+
+    @Override
+    public void mostrarSaldoDelUsuario(String saldoFormateado) {
+        jTextSaldo.setText(saldoFormateado);
+    }
+
+    private void aceptarRecarga() {
+        this.controlador.aceptarRecarga(jTextFieldMontoRecarga.getText());
+    }
+
+    private void cerrar() {
+        this.controlador.cerrar();
+        this.dispose();
     }
 }
