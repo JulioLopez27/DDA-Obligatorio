@@ -21,7 +21,7 @@ public class Observable {
         BONIFICACION_ASIGNADA,
         TRANSITO_EFECTUADO,
         TRANSITO_PAGADO,
-        NOTIFICACION_RECIBIDA
+        NOTIFICACIONES_ACTUALIZADAS,
         
     }
     

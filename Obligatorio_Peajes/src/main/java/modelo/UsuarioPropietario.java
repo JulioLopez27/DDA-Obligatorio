@@ -140,6 +140,7 @@ public class UsuarioPropietario extends Usuario {
     public void asignarBonificacion(Bonificacion bonificacionSeleccionada) throws PeajesException{
         if (bonificaciones.isEmpty() || !existeBonificacion(bonificacionSeleccionada)) {
             this.bonificaciones.add(bonificacionSeleccionada);
+            Fachada.getInstancia().notificar(Observable.Evento.BONIFICACION_ASIGNADA);
         }else{
            throw new PeajesException("Ya tiene una bonificacion asignada para este puesto");
         }
@@ -165,11 +166,12 @@ public class UsuarioPropietario extends Usuario {
 
     public void agregar(Notificacion notificacion) {
         this.notificaciones.add(notificacion);
-        Fachada.getInstancia().notificar(Observable.Evento.NOTIFICACION_RECIBIDA);
+        Fachada.getInstancia().notificar(Observable.Evento.NOTIFICACIONES_ACTUALIZADAS);
     }
 
     public void borrarNotificaciones() {
         this.notificaciones.clear();
+        Fachada.getInstancia().notificar(Observable.Evento.NOTIFICACIONES_ACTUALIZADAS);
     }
 
 }

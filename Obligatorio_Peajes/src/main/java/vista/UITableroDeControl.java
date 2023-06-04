@@ -4,8 +4,6 @@
  */
 package vista;
 
-import Observer.Observable;
-import Observer.Observer;
 import modelo.Bonificacion;
 import modelo.Recarga;
 import modelo.Transito;
@@ -543,6 +541,31 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
     @Override
     public void ejecutarRecargaSaldo(UsuarioPropietario usuarioPropietario) {
         new UIRecargaSaldo(usuarioPropietario).setVisible(true);
+    }
+
+    @Override
+    public void actualizarSaldo(String saldo) {
+        jTextSaldo.setText(saldo);
+    }
+
+    @Override
+    public void actualizarCantBonificaciones(String cantBonificaciones) {
+        jCantBonificaciones.setText(cantBonificaciones);
+    }
+
+    @Override
+    public void actualizarCantTransitos(String cantTransitos) {
+        jCantTransitos.setText(cantTransitos);
+    }
+
+    @Override
+    public void actualizarCantRecargas(String cantRecargas) {
+        jCantRecargas.setText(cantRecargas);
+    }
+
+    @Override
+    public void actualizarCantNotificaciones(String cantNotificaciones) {
+        jCantNotificaciones.setText(cantNotificaciones);
     }
 
     public class VehiculoDetalleRenderer implements ListCellRenderer<Vehiculo> {

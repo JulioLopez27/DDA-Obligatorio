@@ -29,7 +29,34 @@ public class TableroControlControlador implements Observer {
 
     @Override
     public void notificar(Observable origen, Object evento) {
-        
+        Observable.Evento e = (Observable.Evento) evento;
+        switch (e) {
+            case TRANSITO_PAGADO:
+                vista.actualizarSaldo(usuarioPropietario.getCuenta().getSaldoFormateado());
+                vista.cargarListaDeVehiculos(usuarioPropietario.getVehiculos());
+                break;
+            case BONIFICACION_ASIGNADA:
+                vista.cargarListaDeBonificaciones(usuarioPropietario.getBonificaciones());
+                vista.actualizarCantBonificaciones(usuarioPropietario.getBonificaciones().size()+"");
+                break;
+            case TRANSITO_EFECTUADO:
+                vista.cargarListaDeTransitos(usuarioPropietario.getTransitos());
+                vista.actualizarCantTransitos(usuarioPropietario.getTransitos().size()+"");
+                break;
+            case RECARGA_APROBADA:
+                vista.cargarListaDeRecargas(usuarioPropietario.getRecargas());
+                vista.actualizarSaldo(usuarioPropietario.getCuenta().getSaldoFormateado());
+                break;
+            case RECARGA_SOLICITADA:
+                vista.cargarListaDeRecargas(usuarioPropietario.getRecargas());
+                vista.actualizarCantRecargas(usuarioPropietario.getRecargas().size()+"");
+                break;
+            case NOTIFICACIONES_ACTUALIZADAS:
+                vista.cargarListaDeNotificaciones(usuarioPropietario.getNotificaciones());
+                vista.actualizarCantNotificaciones(usuarioPropietario.getNotificaciones().size()+"");
+                break;
+                
+        }
     }
 
     public void cargarListas() {

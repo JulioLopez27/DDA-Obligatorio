@@ -24,4 +24,9 @@ public interface TableroControlVista {
     public void cargarListaDeRecargas(List<Recarga> recargas);
     public void cargarListaDeNotificaciones(List<Notificacion> notificaciones);
     public void ejecutarRecargaSaldo(UsuarioPropietario usuarioPropietario);
+    public void actualizarSaldo(String saldo);
+    public void actualizarCantBonificaciones(String cantBonificaciones);
+    public void actualizarCantTransitos(String cantTransitos);
+    public void actualizarCantRecargas(String cantRecargas);
+    public void actualizarCantNotificaciones(String cantNotificaciones);
 }
