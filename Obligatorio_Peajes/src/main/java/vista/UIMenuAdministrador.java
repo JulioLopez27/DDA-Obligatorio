@@ -69,7 +69,7 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
         });
         jMenuAdministrador.add(jEmularTransito);
 
-        jEmularAprobacionRecargas.setText("Emular aprobación de recargas");
+        jEmularAprobacionRecargas.setText("Aprobar recargas");
         jEmularAprobacionRecargas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jEmularAprobacionRecargasActionPerformed(evt);
@@ -85,7 +85,7 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
         });
         jMenuAdministrador.add(jAsignarBonificaciones);
 
-        jSalirAplicacion.setText("Salir de la aplicación");
+        jSalirAplicacion.setText("Salir");
         jSalirAplicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSalirAplicacionActionPerformed(evt);
@@ -101,7 +101,7 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
+            .addGap(0, 252, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

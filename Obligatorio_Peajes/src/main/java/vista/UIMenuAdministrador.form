@@ -42,7 +42,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jEmularAprobacionRecargas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Emular aprobaci&#xf3;n de recargas"/>
+                <Property name="text" type="java.lang.String" value="Aprobar recargas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jEmularAprobacionRecargasActionPerformed"/>
@@ -58,7 +58,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jSalirAplicacion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Salir de la aplicaci&#xf3;n"/>
+                <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jSalirAplicacionActionPerformed"/>
@@ -95,7 +95,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="364" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="252" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
