@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
  * @author Julio Cesar
  */
 public class Notificacion {
+
     private LocalDateTime fecha;
     private String mensaje;
 
@@ -31,8 +32,8 @@ public class Notificacion {
     public String getMensaje() {
         return mensaje;
     }
-    
-    public String getFechaFormateada(){
+
+    public String getFechaFormateada() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return this.getFecha().format(formato);
     }
@@ -40,6 +41,5 @@ public class Notificacion {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
-    
+
 }
