@@ -4,11 +4,10 @@
  */
 package vista;
 
-import Exceptions.LoginException;
-import modelo.fachada.Fachada;
 import modelo.Usuario;
 import modelo.UsuarioAdministrador;
 import java.awt.Frame;
+import vista.controladores.LoginUsuarioAdministradorControlador;
 
 /**
  *
@@ -17,17 +16,24 @@ import java.awt.Frame;
 public class LoginUsuarioAdministrador extends LoginAbstracto {
 
     public LoginUsuarioAdministrador(Frame parent, boolean modal) {
-        super(parent, modal, "Aplicación para administradores");
+        super(parent, modal);
+        super.setControlador(new LoginUsuarioAdministradorControlador(this, "Aplicación para administradores"));
     }
 
     @Override
-    protected Usuario validarUsuario(int cedula, String password) throws LoginException {
-        return Fachada.getInstancia().loginUsuarioAdministrador(cedula, password);
+    public void mostrarTitulo(String titulo) {
+        setTitle(titulo);
     }
 
     @Override
-    protected void ejecutarProximoCasoDeUso(Usuario usuario) {
+    public void cerrar() {
+        dispose();
+    }
+
+    @Override
+    public void mostrarPantalla(Usuario usuario) {
         new UIMenuAdministrador(null, false, (UsuarioAdministrador) usuario).setVisible(true);
     }
 
+    
 }

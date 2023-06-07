@@ -4,12 +4,10 @@
  */
 package vista;
 
-import Exceptions.LoginException;
-import modelo.fachada.Fachada;
-import modelo.Sesion;
 import modelo.Usuario;
 import modelo.UsuarioPropietario;
 import java.awt.Frame;
+import vista.controladores.LoginUsuarioPropietarioControlador;
 
 /**
  *
@@ -18,21 +16,22 @@ import java.awt.Frame;
 public class LoginUsuarioPropietario extends LoginAbstracto {
     
     public LoginUsuarioPropietario(Frame parent, boolean modal){
-        super(parent,modal, "Aplicación para propietarios");
-        
+        super(parent,modal);
+        super.setControlador(new LoginUsuarioPropietarioControlador(this, "Aplicación para propietarios"));
     }
 
     @Override
-    protected Usuario validarUsuario(int cedula, String password) throws LoginException {
-        Sesion sesion = Fachada.getInstancia().loginUsuarioPorpietario(cedula, password);
-          return sesion != null
-                ? sesion.getUsuarioPropietario()
-                : null;
-       
+    public void mostrarTitulo(String titulo) {
+        setTitle(titulo);
+    }
+    
+    @Override
+    public void cerrar() {
+        dispose();
     }
 
     @Override
-    protected void ejecutarProximoCasoDeUso(Usuario usuario) {
+    public void mostrarPantalla(Usuario usuario) {
         new UITableroDeControl((UsuarioPropietario) usuario).setVisible(true);
     }
     

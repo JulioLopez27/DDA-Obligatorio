@@ -34,7 +34,7 @@ public class ServicioUsuarios {
         sesiones = new ArrayList<>();
     }
 
-    public Sesion loginUsuarioPropietario(int cedula, String password) throws LoginException {
+    public Sesion loginUsuarioPropietario(int cedula, String password) throws LoginException { //TODO QUITAR LA SESION 
        UsuarioPropietario usuarioLogueado=(UsuarioPropietario)this.loginUsuario(cedula, password, (ArrayList)usuariosPropietario);
        if(usuarioLogueado!=null){
            Sesion sesion= new Sesion(usuarioLogueado);

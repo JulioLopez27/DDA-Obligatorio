@@ -4,26 +4,34 @@
  */
 package vista;
 
-import Exceptions.LoginException;
-import modelo.Usuario;
 import javax.swing.JOptionPane;
+import vista.controladores.LoginAbstractoControlador;
 
 /**
  *
  * @author sebita
  */
-public abstract class LoginAbstracto extends javax.swing.JDialog {
+public abstract class LoginAbstracto extends javax.swing.JDialog implements LoginAbstractoVista{
 
+    private LoginAbstractoControlador controlador;
+    
     /**
      * Creates new form LoginUsuarioPropietario
      */
-    public LoginAbstracto(java.awt.Frame parent, boolean modal, String titulo) {
+    public LoginAbstracto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setLocationRelativeTo(parent);
         initComponents();
-        setTitle(titulo);
     }
 
+    public LoginAbstractoControlador getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(LoginAbstractoControlador controlador) {
+        this.controlador = controlador;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,7 +98,7 @@ public abstract class LoginAbstracto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIngresarActionPerformed
-        login();
+        controlador.login(jCedula.getText(), new String(jPassword.getPassword()));
     }//GEN-LAST:event_jBtnIngresarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -101,22 +109,8 @@ public abstract class LoginAbstracto extends javax.swing.JDialog {
     private javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
 
-    private void login() {
-        try {
-            int cedula = Integer.parseInt(jCedula.getText());
-            Usuario usuario = this.validarUsuario(cedula, new String(jPassword.getPassword()));
-            this.ejecutarProximoCasoDeUso(usuario);
-            this.dispose();
-        } catch (LoginException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Login incorrecto", JOptionPane.ERROR_MESSAGE);
-        } catch (NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "La cédula debe ser numérica.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.ERROR_MESSAGE);
     }
-
-    protected abstract Usuario validarUsuario(int cedula, String password) throws LoginException;
-
-    protected abstract void ejecutarProximoCasoDeUso(Usuario usuario);
 
 }

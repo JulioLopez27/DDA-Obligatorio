@@ -16,7 +16,6 @@ public class Transito {
     private Vehiculo vehiculo;
     private Puesto puesto;
     private LocalDateTime fecha;
-    private double monto;
     private double montoPagado;
     private Bonificacion bonificacion = null;
 
@@ -76,10 +75,6 @@ public class Transito {
 
     public void setMontoPagado(double montoPagado) {
         this.montoPagado = montoPagado;
-    }
-
-    public void setMonto(double monto) {
-        this.monto = monto;
     }
 
     public UsuarioPropietario getUsuarioPropietario() {
