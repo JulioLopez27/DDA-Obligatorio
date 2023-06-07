@@ -75,7 +75,6 @@ public class CeldaVehiculo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jColor;
     public javax.swing.JLabel jMatricula;

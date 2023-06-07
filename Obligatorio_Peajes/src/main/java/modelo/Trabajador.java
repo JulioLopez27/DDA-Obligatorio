@@ -13,7 +13,7 @@ import Interfaces.Renderizable;
 public class Trabajador implements Bonificable, Renderizable {
 
     public Trabajador() {
-        
+
     }
 
     @Override
@@ -31,5 +31,5 @@ public class Trabajador implements Bonificable, Renderizable {
     public String getDescription() {
         return this.getNombre();
     }
-    
+
 }

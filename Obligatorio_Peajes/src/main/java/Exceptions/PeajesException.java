@@ -13,5 +13,5 @@ public class PeajesException extends Exception {
     public PeajesException(String message) {
         super(message);
     }
-    
+
 }

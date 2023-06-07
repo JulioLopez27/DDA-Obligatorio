@@ -9,6 +9,7 @@ package modelo;
  * @author Julio Cesar
  */
 public class Bonificacion {
+
     private String nombre;
     private Bonificable tipoBonificacion;
     private Puesto puesto;
@@ -42,6 +43,5 @@ public class Bonificacion {
     public double getPorcentajeDescuento(Transito transito) {
         return this.tipoBonificacion.getPorcentajeDescuento(transito);
     }
-    
-    
+
 }

@@ -9,5 +9,6 @@ package Interfaces;
  * @author gonzalobazzi
  */
 public interface Renderizable {
+
     public String getDescription();
 }

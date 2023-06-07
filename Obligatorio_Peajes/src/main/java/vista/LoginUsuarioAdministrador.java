@@ -35,5 +35,4 @@ public class LoginUsuarioAdministrador extends LoginAbstracto {
         new UIMenuAdministrador(null, false, (UsuarioAdministrador) usuario).setVisible(true);
     }
 
-    
 }

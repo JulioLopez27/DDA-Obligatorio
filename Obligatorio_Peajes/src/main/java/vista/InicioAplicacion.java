@@ -71,14 +71,13 @@ public class InicioAplicacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuLoginPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLoginPropietarioActionPerformed
-            new LoginUsuarioPropietario(null,false).setVisible(true);
+        new LoginUsuarioPropietario(null, false).setVisible(true);
     }//GEN-LAST:event_jMenuLoginPropietarioActionPerformed
 
     private void jMenuLoginAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLoginAdministradorActionPerformed
-       new LoginUsuarioAdministrador(null,false).setVisible(true);
+        new LoginUsuarioAdministrador(null, false).setVisible(true);
     }//GEN-LAST:event_jMenuLoginAdministradorActionPerformed
 
-   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

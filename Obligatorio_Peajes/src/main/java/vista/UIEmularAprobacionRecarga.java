@@ -143,7 +143,6 @@ public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements Em
         this.dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAprobar;
     private javax.swing.JButton jButtonCerrar;

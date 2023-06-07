@@ -498,7 +498,6 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
     private javax.swing.JLabel jTextSaldo;
     // End of variables declaration//GEN-END:variables
 
-
     @Override
     public void inicializarDatos(UsuarioPropietario usuarioPropietario) { //TODO VER SI PODEMOS NO DUPLICAR CÓDIGO
         jTextNombreUsuario.setText(usuarioPropietario.getNombre());
@@ -577,7 +576,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
             celdaVehiculo.jModelo.setText(vehiculo.getModelo());
             celdaVehiculo.jColor.setText(vehiculo.getColor());
             celdaVehiculo.jTransitos.setText("" + vehiculo.getTransitos().size());
-            celdaVehiculo.jMontoTotal.setText(vehiculo.getMontoTotal()+"");
+            celdaVehiculo.jMontoTotal.setText(vehiculo.getMontoTotal() + "");
             celdaVehiculo.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
             return celdaVehiculo;
         }
@@ -597,7 +596,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
         }
 
     }
-    
+
     public class TransitoDetalleRenderer implements ListCellRenderer<Transito> {
 
         @Override
@@ -606,10 +605,10 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
             celdaTransito.jLabelPuesto.setText(transito.getPuesto().getNombre());
             celdaTransito.jLabelMatricula.setText(transito.getVehiculo().getMatricula());
             celdaTransito.jLabelTarifa.setText(transito.getVehiculo().getCategoria().getNombre());
-            celdaTransito.jLabelTarifaMonto.setText(transito.getMonto()+"");
+            celdaTransito.jLabelTarifaMonto.setText(transito.getMonto() + "");
             celdaTransito.jLabelBonificacion.setText((transito.getBonificacion() != null) ? transito.getBonificacion().getNombre() : "No tiene.");
-            celdaTransito.jLabelMontoBonif.setText(transito.getMonto() - transito.getMontoPagado() +"");
-            celdaTransito.jLabelMontoPagado.setText(transito.getMontoPagado()+"");
+            celdaTransito.jLabelMontoBonif.setText(transito.getMonto() - transito.getMontoPagado() + "");
+            celdaTransito.jLabelMontoPagado.setText(transito.getMontoPagado() + "");
             celdaTransito.jLabelFecha.setText(transito.getFechaFormateada());
             celdaTransito.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
             return celdaTransito;
@@ -619,11 +618,11 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
 
     public class RecargasDetalleRenderer implements ListCellRenderer<Recarga> {
 
-    @Override
-    public Component getListCellRendererComponent(JList<? extends Recarga> list, Recarga recarga, int index, boolean isSelected, boolean cellHasFocus) {
+        @Override
+        public Component getListCellRendererComponent(JList<? extends Recarga> list, Recarga recarga, int index, boolean isSelected, boolean cellHasFocus) {
             CeldaRecargaSaldo celdaRecarga = new CeldaRecargaSaldo();
             celdaRecarga.jFechaRecarga.setText(recarga.getFechaFormateada());
-            celdaRecarga.jMonto.setText(""+recarga.getMonto());
+            celdaRecarga.jMonto.setText("" + recarga.getMonto());
             celdaRecarga.jEstado.setText(recarga.getEstado());
             celdaRecarga.jAdministrador.setText((recarga.getAprobador() != null) ? recarga.getAprobador().getNombre() : "-");
             celdaRecarga.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
@@ -631,7 +630,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
         }
 
     }
-    
+
     public class NotificacionDetalleRenderer implements ListCellRenderer<Notificacion> {
 
         @Override

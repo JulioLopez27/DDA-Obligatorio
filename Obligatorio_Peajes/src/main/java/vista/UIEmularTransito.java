@@ -189,7 +189,6 @@ public class UIEmularTransito extends javax.swing.JDialog implements EmularTrans
         this.dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCerrar;
     private javax.swing.JButton jButtonRegistrarTransito;

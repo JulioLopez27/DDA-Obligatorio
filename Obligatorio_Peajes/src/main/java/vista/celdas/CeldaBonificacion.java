@@ -61,7 +61,6 @@ public class CeldaBonificacion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jFechaAsignada;
     public javax.swing.JLabel jNombreBonificacion;

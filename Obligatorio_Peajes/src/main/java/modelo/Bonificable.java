@@ -9,6 +9,8 @@ package modelo;
  * @author Julio Cesar
  */
 public interface Bonificable {
+
     public String getNombre();
+
     public double getPorcentajeDescuento(Transito transito);
 }

@@ -13,7 +13,7 @@ import Interfaces.Renderizable;
 public class Frecuente implements Bonificable, Renderizable {
 
     public Frecuente() {
-    
+
     }
 
     @Override
@@ -26,10 +26,10 @@ public class Frecuente implements Bonificable, Renderizable {
     public String getNombre() {
         return "Frecuente";
     }
-    
+
     @Override
     public String getDescription() {
         return this.getNombre();
     }
-    
+
 }

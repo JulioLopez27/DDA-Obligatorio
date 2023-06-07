@@ -6,7 +6,6 @@ package main;
 
 import Exceptions.PeajesException;
 import modelo.fachada.Fachada;
-import modelo.servicios.ServicioUsuarios;
 import modelo.Bonificacion;
 import modelo.Categoria;
 import modelo.Cuenta;

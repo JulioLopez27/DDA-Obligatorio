@@ -17,16 +17,28 @@ import modelo.Vehiculo;
  * @author gonzalobazzi
  */
 public interface TableroControlVista {
+
     public void inicializarDatos(UsuarioPropietario usuarioPropietario);
+
     public void cargarListaDeVehiculos(List<Vehiculo> vehiculos);
+
     public void cargarListaDeBonificaciones(List<Bonificacion> bonificaciones);
+
     public void cargarListaDeTransitos(List<Transito> transitos);
+
     public void cargarListaDeRecargas(List<Recarga> recargas);
+
     public void cargarListaDeNotificaciones(List<Notificacion> notificaciones);
+
     public void ejecutarRecargaSaldo(UsuarioPropietario usuarioPropietario);
+
     public void actualizarSaldo(String saldo);
+
     public void actualizarCantBonificaciones(String cantBonificaciones);
+
     public void actualizarCantTransitos(String cantTransitos);
+
     public void actualizarCantRecargas(String cantRecargas);
+
     public void actualizarCantNotificaciones(String cantNotificaciones);
 }

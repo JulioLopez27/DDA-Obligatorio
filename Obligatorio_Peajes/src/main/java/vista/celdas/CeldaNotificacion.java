@@ -56,7 +56,6 @@ public class CeldaNotificacion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jFecha;
     public javax.swing.JLabel jMensaje;

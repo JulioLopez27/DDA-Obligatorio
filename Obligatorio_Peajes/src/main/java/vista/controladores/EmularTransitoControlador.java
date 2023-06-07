@@ -19,15 +19,13 @@ public class EmularTransitoControlador {
 
     public EmularTransitoControlador(EmularTransitoVista vista) {
         this.vista = vista;
-        
+
     }
 
-   
-
-    public void cargarComboPuestos(){
+    public void cargarComboPuestos() {
         vista.cargarComboPuestos(Fachada.getInstancia().getPuestos());
     }
-    
+
     public void cargarTarifasDePuesto(Puesto puesto) {
         vista.mostrarTarifasDePuesto(puesto.getTarifas());
     }
@@ -51,7 +49,5 @@ public class EmularTransitoControlador {
                 + "Saldo disponible: " + transitoAgregado.getUsuarioPropietario().getCuenta().getSaldo();
         return datosTransito;
     }
-
-   
 
 }

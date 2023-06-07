@@ -114,10 +114,10 @@ public class UsuarioPropietario extends Usuario {
                     return transito;
                 }
             }
-        }else{
-             throw new PeajesException("Saldo insuficiente: " + this.cuenta.getSaldoFormateado());
+        } else {
+            throw new PeajesException("Saldo insuficiente: " + this.cuenta.getSaldoFormateado());
         }
-         throw new PeajesException("No se pudo registrar el tránsito");
+        throw new PeajesException("No se pudo registrar el tránsito");
     }
 
     public List<Transito> getTransitos() {
@@ -137,12 +137,12 @@ public class UsuarioPropietario extends Usuario {
         return null;
     }
 
-    public void asignarBonificacion(Bonificacion bonificacionSeleccionada) throws PeajesException{
+    public void asignarBonificacion(Bonificacion bonificacionSeleccionada) throws PeajesException {
         if (bonificaciones.isEmpty() || !existeBonificacion(bonificacionSeleccionada)) {
             this.bonificaciones.add(bonificacionSeleccionada);
             Fachada.getInstancia().notificar(Observable.Evento.BONIFICACION_ASIGNADA);
-        }else{
-           throw new PeajesException("Ya tiene una bonificacion asignada para este puesto");
+        } else {
+            throw new PeajesException("Ya tiene una bonificacion asignada para este puesto");
         }
     }
 

@@ -96,7 +96,6 @@ public class CeldaTransito extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jLabelBonificacion;
     public javax.swing.JLabel jLabelFecha;

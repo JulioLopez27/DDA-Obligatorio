@@ -67,7 +67,6 @@ public class CeldaAprobarRecarga extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jFechaRecagra;
     public javax.swing.JLabel jMontoRecarga;

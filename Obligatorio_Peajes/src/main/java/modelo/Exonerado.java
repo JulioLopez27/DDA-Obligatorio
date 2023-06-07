@@ -13,7 +13,7 @@ import Interfaces.Renderizable;
 public class Exonerado implements Bonificable, Renderizable {
 
     public Exonerado() {
-        
+
     }
 
     @Override
@@ -30,5 +30,5 @@ public class Exonerado implements Bonificable, Renderizable {
     public String getDescription() {
         return this.getNombre();
     }
-    
+
 }

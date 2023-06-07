@@ -55,12 +55,12 @@ public class Transito {
 
     /*
     * Este método es únicamente usado para datos de prueba
-    */
+     */
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
-    
-    public String getFechaFormateada(){
+
+    public String getFechaFormateada() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return this.getFecha().format(formato);
     }

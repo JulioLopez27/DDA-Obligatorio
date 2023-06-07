@@ -11,5 +11,5 @@ package Observer;
 public interface Observer {
 
     public void notificar(Observable origen, Object evento);
-    
+
 }

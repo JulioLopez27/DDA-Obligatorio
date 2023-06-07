@@ -9,16 +9,17 @@ package modelo;
  * @author Julio Cesar
  */
 public abstract class Usuario {
+
     private int cedula;
     private String password;
     private String nombre;
 
-    public Usuario(int cedula, String password, String nombre){
+    public Usuario(int cedula, String password, String nombre) {
         this.cedula = cedula;
         this.password = password;
         this.nombre = nombre;
     }
-    
+
     public int getCedula() {
         return cedula;
     }
@@ -42,8 +43,8 @@ public abstract class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    public boolean validarCredenciales(int cedula, String password){
+
+    public boolean validarCredenciales(int cedula, String password) {
         return this.getCedula() == cedula && this.getPassword().equals(password);
     }
 }

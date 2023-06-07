@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
+
 import Exceptions.PeajesException;
 import Observer.Observable;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import modelo.fachada.Fachada;
  * @author Julio Cesar
  */
 public class Cuenta {
+
     private double saldo;
     private UsuarioPropietario usuarioPropietario;
     private List<Recarga> recargas = new ArrayList();
@@ -38,19 +40,20 @@ public class Cuenta {
     public UsuarioPropietario getUsuarioPropietario() {
         return usuarioPropietario;
     }
-    
+
     public List<Recarga> getRecargas() {
         return recargas;
     }
-    
-    public String getSaldoFormateado(){
+
+    public String getSaldoFormateado() {
         return "$ " + this.saldo;
     }
 
     public void agregar(Recarga recarga) throws PeajesException {
-        if(recarga != null && recarga.getMonto() > 0){
-            if(this.recargas.add(recarga))
+        if (recarga != null && recarga.getMonto() > 0) {
+            if (this.recargas.add(recarga)) {
                 Fachada.getInstancia().notificar(Observable.Evento.RECARGA_SOLICITADA);
+            }
         } else {
             throw new PeajesException("Monto inválido");
         }
@@ -58,8 +61,8 @@ public class Cuenta {
 
     public List<Recarga> getRecargasPendientes() {
         List<Recarga> recargasPendientes = new ArrayList();
-        for(Recarga r :this.recargas){
-            if(r.getAprobador() == null){
+        for (Recarga r : this.recargas) {
+            if (r.getAprobador() == null) {
                 recargasPendientes.add(r);
             }
         }
@@ -67,8 +70,8 @@ public class Cuenta {
     }
 
     public boolean aprobar(Recarga recarga, UsuarioAdministrador usuarioAdministrador) {
-        for(Recarga r : this.recargas){
-            if(r.equals(recarga)){
+        for (Recarga r : this.recargas) {
+            if (r.equals(recarga)) {
                 r.setAprobador(usuarioAdministrador);
                 this.saldo += r.getMonto();
                 Fachada.getInstancia().notificar(Observable.Evento.RECARGA_APROBADA);
@@ -85,7 +88,7 @@ public class Cuenta {
     public void pagarTransito(double montoAPagar) {
         this.saldo -= montoAPagar;
         Fachada.getInstancia().notificar(Observable.Evento.TRANSITO_PAGADO);
-        if(this.getSaldo() < this.usuarioPropietario.getSaldoMinimoAlerta()){
+        if (this.getSaldo() < this.usuarioPropietario.getSaldoMinimoAlerta()) {
             this.usuarioPropietario.agregar(new Notificacion("Tu saldo actual es de $" + this.getSaldo() + ". Te recomendamos hacer una recarga."));
         }
     }

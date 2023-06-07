@@ -237,7 +237,6 @@ public class UIAsignarBonificaciones extends javax.swing.JDialog implements Asig
         dispose();
     }//GEN-LAST:event_jButtonCerrarActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAsignar;
     private javax.swing.JButton jButtonBuscar;

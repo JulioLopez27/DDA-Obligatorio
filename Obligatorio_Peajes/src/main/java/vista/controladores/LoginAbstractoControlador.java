@@ -34,7 +34,7 @@ public abstract class LoginAbstractoControlador {
             vista.mostrarMensaje("La cédula debe ser numérica.");
         }
     }
-    
+
     protected abstract Usuario validarUsuario(int cedula, String password) throws LoginException;
 
     protected void ejecutarProximoCasoDeUso(Usuario usuario) {

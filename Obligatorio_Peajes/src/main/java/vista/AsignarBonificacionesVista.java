@@ -22,6 +22,6 @@ public interface AsignarBonificacionesVista {
     public void cargarListaBonificaciones(List<Bonificacion> bonificacionesUsuario);
 
     public void mostrarNombrePropietario(String nombre);
-    
+
     public void mostrarMensaje(String mensaje);
 }

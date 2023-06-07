@@ -13,14 +13,12 @@ import modelo.Bonificable;
 import modelo.Bonificacion;
 import modelo.Puesto;
 import modelo.Recarga;
-import modelo.Sesion;
 import modelo.Tarifa;
 import modelo.Transito;
 import modelo.UsuarioPropietario;
 import modelo.UsuarioAdministrador;
 import modelo.Vehiculo;
 import java.util.List;
-import modelo.Notificacion;
 
 /**
  *
@@ -32,7 +30,6 @@ public class Fachada extends Observable {
 
     private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
     private ServicioPeajes servicioPeajes = new ServicioPeajes();
-    
 
     private Fachada() {
     }
@@ -44,7 +41,7 @@ public class Fachada extends Observable {
         return instancia;
     }
 
-    public Sesion loginUsuarioPorpietario(int cedula, String password) throws LoginException {
+    public UsuarioPropietario loginUsuarioPorpietario(int cedula, String password) throws LoginException {
         return servicioUsuarios.loginUsuarioPropietario(cedula, password);
     }
 
@@ -52,11 +49,11 @@ public class Fachada extends Observable {
         return servicioUsuarios.loginUsuarioAdministrador(cedula, password);
     }
 
-    public boolean agregar(UsuarioPropietario usuarioPropietario){
+    public boolean agregar(UsuarioPropietario usuarioPropietario) {
         return servicioUsuarios.agregar(usuarioPropietario);
     }
-    
-    public boolean agregar(UsuarioAdministrador usuarioAdministrador){
+
+    public boolean agregar(UsuarioAdministrador usuarioAdministrador) {
         return servicioUsuarios.agregar(usuarioAdministrador);
     }
 
@@ -75,15 +72,15 @@ public class Fachada extends Observable {
     public Transito agregar(Transito transito) throws PeajesException {
         return servicioUsuarios.agregar(transito);
     }
-    
+
     public void agregar(Puesto puesto) {
         servicioPeajes.agregar(puesto);
     }
-    
+
     public List<Vehiculo> getVehiculos() {
         return servicioUsuarios.getVehiculos();
     }
-    
+
     public List<Recarga> getRecargas() {
         return servicioUsuarios.getRecargas();
     }
@@ -120,5 +117,4 @@ public class Fachada extends Observable {
 //    public void agregar(Notificacion notificacion) {
 //        servicioUsuarios.agregar(notificacion);
 //    }
-
 }

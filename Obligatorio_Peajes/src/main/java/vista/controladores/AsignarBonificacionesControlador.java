@@ -41,7 +41,7 @@ public class AsignarBonificacionesControlador implements Observer {
             mostrarDatosUsuarios();
         } catch (PeajesException pe) {
             vista.mostrarMensaje(pe.getMessage());
-        } catch(NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             vista.mostrarMensaje("Ingrese un formato válido de cédula");
         }
     }

@@ -15,13 +15,14 @@ import java.util.List;
  * @author Julio Cesar
  */
 public class Vehiculo {
+
     private UsuarioPropietario usuarioPropietario;
     private Categoria categoria;
     private String matricula;
     private String modelo;
     private String color;
     private List<Transito> transitos = new ArrayList<>();
-    
+
     public Vehiculo(UsuarioPropietario usuarioPropietario, Categoria categoria, String matricula, String modelo, String color) {
         this.usuarioPropietario = usuarioPropietario;
         this.categoria = categoria;
@@ -33,7 +34,6 @@ public class Vehiculo {
     public UsuarioPropietario getUsuarioPropietario() {
         return usuarioPropietario;
     }
-
 
     public Categoria getCategoria() {
         return categoria;
@@ -71,21 +71,20 @@ public class Vehiculo {
         return transitos;
     }
 
-    
-    public int getCantidadTransitos(){
+    public int getCantidadTransitos() {
         return this.getTransitos().size();
     }
-    
-    public double getMontoTotal(){
+
+    public double getMontoTotal() {
         double montoTotal = 0;
-        for(Transito t : this.transitos){
+        for (Transito t : this.transitos) {
             montoTotal += t.getMontoPagado();
         }
         return montoTotal;
     }
 
     public boolean agregar(Transito transito) {
-        if(this.transitos.add(transito)){
+        if (this.transitos.add(transito)) {
             Fachada.getInstancia().notificar(Observable.Evento.TRANSITO_EFECTUADO);
             this.usuarioPropietario.agregar(new Notificacion("Pasaste por el puesto " + transito.getPuesto().getNombre() + " con el vehículo " + this.getMatricula()));
             return true;
@@ -96,8 +95,8 @@ public class Vehiculo {
     public int getCantidadTransitosHoy(Puesto puesto) {
         int transitosHoy = 0;
         for (Transito transito : transitos) {
-            if(transito.getFecha().equals(LocalDate.now()) && transito.getPuesto().equals(puesto)){
-                transitosHoy ++;
+            if (transito.getFecha().equals(LocalDate.now()) && transito.getPuesto().equals(puesto)) {
+                transitosHoy++;
             }
         }
         return transitosHoy;

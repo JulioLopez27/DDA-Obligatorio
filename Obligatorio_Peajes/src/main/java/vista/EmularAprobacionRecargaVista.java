@@ -12,6 +12,8 @@ import modelo.Recarga;
  * @author gonzalobazzi
  */
 public interface EmularAprobacionRecargaVista {
+
     public void mostrarListaRecargas(List<Recarga> recargasPendientes);
+
     public void mostrarMensaje(String mensaje);
 }

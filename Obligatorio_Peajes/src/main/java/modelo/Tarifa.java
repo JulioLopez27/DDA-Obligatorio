@@ -9,6 +9,7 @@ package modelo;
  * @author Julio Cesar
  */
 public class Tarifa {
+
     private double monto;
     private Categoria categoria;
 
@@ -32,6 +33,5 @@ public class Tarifa {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
-    
+
 }

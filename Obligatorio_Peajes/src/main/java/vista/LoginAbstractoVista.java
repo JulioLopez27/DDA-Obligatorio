@@ -11,8 +11,12 @@ import modelo.Usuario;
  * @author gonzalobazzi
  */
 public interface LoginAbstractoVista {
+
     public void mostrarTitulo(String titulo);
+
     public void mostrarMensaje(String mensaje);
+
     public void mostrarPantalla(Usuario usuario);
+
     public void cerrar();
 }

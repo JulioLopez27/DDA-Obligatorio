@@ -56,7 +56,6 @@ public class CeldaEmularTransito extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jCategoria;
     public javax.swing.JLabel jMonto;

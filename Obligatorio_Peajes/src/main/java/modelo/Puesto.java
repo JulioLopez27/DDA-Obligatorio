@@ -13,6 +13,7 @@ import java.util.List;
  * @author Julio Cesar
  */
 public class Puesto implements Renderizable {
+
     private String nombre;
     private String direccion;
     private List<Tarifa> tarifas = new ArrayList<>();
@@ -57,12 +58,11 @@ public class Puesto implements Renderizable {
 
     public double getMonto(Categoria categoria) {
         for (Tarifa tarifa : tarifas) {
-            if(tarifa.getCategoria().equals(categoria)){
+            if (tarifa.getCategoria().equals(categoria)) {
                 return tarifa.getMonto();
             }
         }
         return 0;
     }
 
-    
 }

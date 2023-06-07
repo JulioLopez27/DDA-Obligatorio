@@ -13,7 +13,7 @@ import Exceptions.LoginException;
 public class UsuarioAdministrador extends Usuario {
 
     private boolean logueado;
-    
+
     public UsuarioAdministrador(int cedula, String password, String nombre) {
         super(cedula, password, nombre);
     }

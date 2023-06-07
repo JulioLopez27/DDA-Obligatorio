@@ -11,7 +11,7 @@ import modelo.UsuarioAdministrador;
  * @author gonzalobazzi
  */
 public class UIMenuAdministrador extends javax.swing.JDialog {
-    
+
     private UsuarioAdministrador usuarioAdministrador;
 
     /**
@@ -112,11 +112,11 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jEmularAprobacionRecargasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmularAprobacionRecargasActionPerformed
-        new UIEmularAprobacionRecarga(null,false, usuarioAdministrador).setVisible(true);
+        new UIEmularAprobacionRecarga(null, false, usuarioAdministrador).setVisible(true);
     }//GEN-LAST:event_jEmularAprobacionRecargasActionPerformed
 
     private void jAsignarBonificacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAsignarBonificacionesActionPerformed
-        new UIAsignarBonificaciones(null,false).setVisible(true);
+        new UIAsignarBonificaciones(null, false).setVisible(true);
     }//GEN-LAST:event_jAsignarBonificacionesActionPerformed
 
     private void jSalirAplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirAplicacionActionPerformed
@@ -124,13 +124,12 @@ public class UIMenuAdministrador extends javax.swing.JDialog {
     }//GEN-LAST:event_jSalirAplicacionActionPerformed
 
     private void jEmularTransitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmularTransitoActionPerformed
-        new UIEmularTransito(null,false).setVisible(true);
+        new UIEmularTransito(null, false).setVisible(true);
     }//GEN-LAST:event_jEmularTransitoActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         logOut();
     }//GEN-LAST:event_formWindowClosing
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jAsignarBonificaciones;

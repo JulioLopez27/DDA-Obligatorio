@@ -5,7 +5,6 @@
 package vista.controladores;
 
 import Exceptions.LoginException;
-import modelo.Sesion;
 import modelo.Usuario;
 import modelo.fachada.Fachada;
 import vista.LoginAbstractoVista;
@@ -19,12 +18,9 @@ public class LoginUsuarioPropietarioControlador extends LoginAbstractoControlado
     public LoginUsuarioPropietarioControlador(LoginAbstractoVista vista, String titulo) {
         super(vista, titulo);
     }
-    
+
     @Override
     protected Usuario validarUsuario(int cedula, String password) throws LoginException {
-        Sesion sesion = Fachada.getInstancia().loginUsuarioPorpietario(cedula, password);
-          return sesion != null
-                ? sesion.getUsuarioPropietario()
-                : null;
+        return Fachada.getInstancia().loginUsuarioPorpietario(cedula, password);
     }
 }

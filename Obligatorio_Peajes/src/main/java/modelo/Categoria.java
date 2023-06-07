@@ -9,6 +9,7 @@ package modelo;
  * @author Julio Cesar
  */
 public class Categoria {
+
     private String nombre;
 
     public Categoria(String nombre) {
@@ -22,6 +23,5 @@ public class Categoria {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
 }

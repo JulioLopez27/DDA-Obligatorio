@@ -19,7 +19,7 @@ public class TableroControlControlador implements Observer {
     private Fachada fachada = Fachada.getInstancia();
     private TableroControlVista vista;
     private UsuarioPropietario usuarioPropietario;
-    
+
     public TableroControlControlador(TableroControlVista vista, UsuarioPropietario usuarioPropietario) {
         this.vista = vista;
         this.usuarioPropietario = usuarioPropietario;
@@ -37,11 +37,11 @@ public class TableroControlControlador implements Observer {
                 break;
             case BONIFICACION_ASIGNADA:
                 vista.cargarListaDeBonificaciones(usuarioPropietario.getBonificaciones());
-                vista.actualizarCantBonificaciones(usuarioPropietario.getBonificaciones().size()+"");
+                vista.actualizarCantBonificaciones(usuarioPropietario.getBonificaciones().size() + "");
                 break;
             case TRANSITO_EFECTUADO:
                 vista.cargarListaDeTransitos(usuarioPropietario.getTransitos());
-                vista.actualizarCantTransitos(usuarioPropietario.getTransitos().size()+"");
+                vista.actualizarCantTransitos(usuarioPropietario.getTransitos().size() + "");
                 break;
             case RECARGA_APROBADA:
                 vista.cargarListaDeRecargas(usuarioPropietario.getRecargas());
@@ -49,13 +49,13 @@ public class TableroControlControlador implements Observer {
                 break;
             case RECARGA_SOLICITADA:
                 vista.cargarListaDeRecargas(usuarioPropietario.getRecargas());
-                vista.actualizarCantRecargas(usuarioPropietario.getRecargas().size()+"");
+                vista.actualizarCantRecargas(usuarioPropietario.getRecargas().size() + "");
                 break;
             case NOTIFICACIONES_ACTUALIZADAS:
                 vista.cargarListaDeNotificaciones(usuarioPropietario.getNotificaciones());
-                vista.actualizarCantNotificaciones(usuarioPropietario.getNotificaciones().size()+"");
+                vista.actualizarCantNotificaciones(usuarioPropietario.getNotificaciones().size() + "");
                 break;
-                
+
         }
     }
 
@@ -78,5 +78,5 @@ public class TableroControlControlador implements Observer {
     public void abrirRecargarSaldo() {
         vista.ejecutarRecargaSaldo(usuarioPropietario);
     }
-    
+
 }

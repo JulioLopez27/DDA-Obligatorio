@@ -11,12 +11,13 @@ import vista.controladores.LoginAbstractoControlador;
  *
  * @author sebita
  */
-public abstract class LoginAbstracto extends javax.swing.JDialog implements LoginAbstractoVista{
+public abstract class LoginAbstracto extends javax.swing.JDialog implements LoginAbstractoVista {
 
     private LoginAbstractoControlador controlador;
-    
+
     /**
      * Creates new form LoginUsuarioPropietario
+     *
      * @param parent
      * @param modal
      */
@@ -33,7 +34,7 @@ public abstract class LoginAbstracto extends javax.swing.JDialog implements Logi
     public void setControlador(LoginAbstractoControlador controlador) {
         this.controlador = controlador;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

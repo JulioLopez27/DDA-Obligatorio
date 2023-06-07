@@ -12,9 +12,9 @@ import java.util.List;
  * @author gonzalobazzi
  */
 public class Observable {
-    
+
     private List<Observer> observadores;
-    
+
     public enum Evento {
         RECARGA_SOLICITADA,
         RECARGA_APROBADA,
@@ -22,24 +22,25 @@ public class Observable {
         TRANSITO_EFECTUADO,
         TRANSITO_PAGADO,
         NOTIFICACIONES_ACTUALIZADAS,
-        
+
     }
-    
+
     public Observable() {
         observadores = new ArrayList();
     }
-    
+
     public void subscribir(Observer o) {
         this.observadores.add(o);
     }
-    
+
     public void desubscribir(Observer o) {
         this.observadores.remove(o);
     }
-    
+
     public void notificar(Observable.Evento e) {
-        for(Observer o : observadores)
+        for (Observer o : observadores) {
             o.notificar(this, e);
+        }
     }
-    
+
 }

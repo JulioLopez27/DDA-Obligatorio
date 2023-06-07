@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
  * @author Julio Cesar
  */
 public class Recarga {
+
     private double monto;
     private LocalDateTime fecha;
     private UsuarioAdministrador aprobador;
@@ -34,12 +35,12 @@ public class Recarga {
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
-    
+
     public LocalDateTime getFecha() {
         return fecha;
     }
-    
-    public String getFechaFormateada(){
+
+    public String getFechaFormateada() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return this.getFecha().format(formato);
     }
@@ -51,13 +52,13 @@ public class Recarga {
     public void setAprobador(UsuarioAdministrador aprobador) {
         this.aprobador = aprobador;
     }
-    
-    public UsuarioPropietario getUsuarioPropietario(){
+
+    public UsuarioPropietario getUsuarioPropietario() {
         return this.cuenta.getUsuarioPropietario();
-    } 
-    
-    public String getEstado(){
+    }
+
+    public String getEstado() {
         return (this.aprobador != null) ? "Aprobada" : "Pendiente";
     }
-    
+
 }

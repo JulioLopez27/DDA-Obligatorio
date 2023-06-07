@@ -14,9 +14,9 @@ import vista.controladores.LoginUsuarioPropietarioControlador;
  * @author sebita
  */
 public class LoginUsuarioPropietario extends LoginAbstracto {
-    
-    public LoginUsuarioPropietario(Frame parent, boolean modal){
-        super(parent,modal);
+
+    public LoginUsuarioPropietario(Frame parent, boolean modal) {
+        super(parent, modal);
         super.setControlador(new LoginUsuarioPropietarioControlador(this, "Aplicación para propietarios"));
     }
 
@@ -24,7 +24,7 @@ public class LoginUsuarioPropietario extends LoginAbstracto {
     public void mostrarTitulo(String titulo) {
         setTitle(titulo);
     }
-    
+
     @Override
     public void cerrar() {
         dispose();
@@ -34,5 +34,5 @@ public class LoginUsuarioPropietario extends LoginAbstracto {
     public void mostrarPantalla(Usuario usuario) {
         new UITableroDeControl((UsuarioPropietario) usuario).setVisible(true);
     }
-    
+
 }
