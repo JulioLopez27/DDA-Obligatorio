@@ -17,6 +17,8 @@ public abstract class LoginAbstracto extends javax.swing.JDialog implements Logi
     
     /**
      * Creates new form LoginUsuarioPropietario
+     * @param parent
+     * @param modal
      */
     public LoginAbstracto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -109,6 +111,7 @@ public abstract class LoginAbstracto extends javax.swing.JDialog implements Logi
     private javax.swing.JPasswordField jPassword;
     // End of variables declaration//GEN-END:variables
 
+    @Override
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.ERROR_MESSAGE);
     }
