@@ -589,7 +589,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
         public Component getListCellRendererComponent(JList<? extends Bonificacion> list, Bonificacion bonificacion, int index, boolean isSelected, boolean cellHasFocus) {
             CeldaBonificacion celdaBonificacion = new CeldaBonificacion();
             celdaBonificacion.jNombreBonificacion.setText(bonificacion.getNombre());
-            celdaBonificacion.jPuesto.setText("Puesto Solis");
+            celdaBonificacion.jPuesto.setText(bonificacion.getPuesto().getNombre());
             celdaBonificacion.jFechaAsignada.setText(LocalDate.now().toString());
             celdaBonificacion.setBackground((cellHasFocus) ? Color.lightGray : Color.white);
             return celdaBonificacion;

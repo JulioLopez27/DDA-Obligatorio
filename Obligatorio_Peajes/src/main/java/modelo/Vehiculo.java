@@ -6,7 +6,7 @@ package modelo;
 
 import Observer.Observable;
 import modelo.fachada.Fachada;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,7 +95,7 @@ public class Vehiculo {
     public int getCantidadTransitosHoy(Puesto puesto) {
         int transitosHoy = 0;
         for (Transito transito : transitos) {
-            if (transito.getFecha().equals(LocalDate.now()) && transito.getPuesto().equals(puesto)) {
+            if (transito.getFecha().toLocalDate().equals(LocalDateTime.now().toLocalDate()) && transito.getPuesto().equals(puesto)) {
                 transitosHoy++;
             }
         }
