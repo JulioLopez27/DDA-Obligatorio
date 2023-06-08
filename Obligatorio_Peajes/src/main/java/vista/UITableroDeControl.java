@@ -499,7 +499,7 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void inicializarDatos(UsuarioPropietario usuarioPropietario) { //TODO VER SI PODEMOS NO DUPLICAR CÓDIGO
+    public void inicializarDatos(UsuarioPropietario usuarioPropietario) {
         jTextNombreUsuario.setText(usuarioPropietario.getNombre());
         jTextSaldo.setText(usuarioPropietario.getCuenta().getSaldoFormateado());
         jCantVehiculos.setText(usuarioPropietario.getVehiculos().size() + "");

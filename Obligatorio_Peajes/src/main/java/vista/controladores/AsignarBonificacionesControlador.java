@@ -64,7 +64,6 @@ public class AsignarBonificacionesControlador implements Observer {
         fachada.desubscribir(this);
     }
 
-    //TODO
     @Override
     public void notificar(Observable origen, Object evento) {
         Observable.Evento e = (Observable.Evento) evento;

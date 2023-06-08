@@ -112,9 +112,4 @@ public class Fachada extends Observable {
     public void asignarBonificacion(UsuarioPropietario usuarioEncontrado, Bonificacion bonificacionSeleccionada) throws PeajesException {
         servicioUsuarios.asignarBonificacion(usuarioEncontrado, bonificacionSeleccionada);
     }
-
-    //TODO VER SI SE USA
-//    public void agregar(Notificacion notificacion) {
-//        servicioUsuarios.agregar(notificacion);
-//    }
 }
