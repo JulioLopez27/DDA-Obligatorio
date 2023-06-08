@@ -50,7 +50,6 @@ public class AsignarBonificacionesControlador implements Observer {
         Bonificacion bonificacionAAsignar = new Bonificacion(tipoBonificacion, puesto);
         try {
             fachada.asignarBonificacion(this.usuarioEncontrado, bonificacionAAsignar);
-            mostrarDatosUsuarios();
         } catch (PeajesException pe) {
             vista.mostrarMensaje(pe.getMessage());
         }

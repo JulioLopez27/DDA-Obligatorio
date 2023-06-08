@@ -24,7 +24,7 @@ public class TableroControlControlador implements Observer {
         this.vista = vista;
         this.usuarioPropietario = usuarioPropietario;
         fachada.subscribir(this);
-        vista.inicializarDatos(usuarioPropietario); //TODO PREGUNTAR SI ESTO ES EFICIENTE
+        vista.inicializarDatos(usuarioPropietario);
     }
 
     @Override
