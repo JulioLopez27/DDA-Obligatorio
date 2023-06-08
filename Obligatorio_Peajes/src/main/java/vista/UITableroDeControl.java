@@ -138,37 +138,44 @@ public class UITableroDeControl extends javax.swing.JDialog implements TableroCo
         jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantVehiculos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jCantVehiculos.setIcon(new javax.swing.ImageIcon("/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/coche.png")); // NOI18N
         jCantVehiculos.setText("jLabel4");
         jCantVehiculos.setAutoscrolls(true);
         jCantVehiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantBonificaciones.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jCantBonificaciones.setIcon(new javax.swing.ImageIcon("/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/etiqueta-de-precio.png")); // NOI18N
         jCantBonificaciones.setText("jLabel5");
         jCantBonificaciones.setAutoscrolls(true);
         jCantBonificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantTransitos.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jCantTransitos.setIcon(new javax.swing.ImageIcon("/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/carretera-de-peaje.png")); // NOI18N
         jCantTransitos.setText("jLabel6");
         jCantTransitos.setAutoscrolls(true);
         jCantTransitos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantRecargas.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jCantRecargas.setIcon(new javax.swing.ImageIcon("/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/money-management.png")); // NOI18N
         jCantRecargas.setText("jLabel8");
         jCantRecargas.setAutoscrolls(true);
         jCantRecargas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jCantNotificaciones.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jCantNotificaciones.setIcon(new javax.swing.ImageIcon("/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/notificacion.png")); // NOI18N
         jCantNotificaciones.setText("jLabel10");
         jCantNotificaciones.setAutoscrolls(true);
         jCantNotificaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTextSaldo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextSaldo.setForeground(new java.awt.Color(0, 153, 0));
+        jTextSaldo.setIcon(new javax.swing.ImageIcon("/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/aplicacion-wallet-pass.png")); // NOI18N
         jTextSaldo.setText("jLabel12");
         jTextSaldo.setAutoscrolls(true);
         jTextSaldo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTextNombreUsuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextNombreUsuario.setIcon(new javax.swing.ImageIcon("/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/usuario.png")); // NOI18N
         jTextNombreUsuario.setText("jLabel14");
         jTextNombreUsuario.setAutoscrolls(true);
         jTextNombreUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

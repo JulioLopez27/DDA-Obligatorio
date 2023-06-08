@@ -294,6 +294,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/coche.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="jLabel4"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -305,6 +308,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/etiqueta-de-precio.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel5"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
@@ -318,6 +324,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/carretera-de-peaje.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="jLabel6"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -330,6 +339,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/money-management.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="jLabel8"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -341,6 +353,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/notificacion.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel10"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
@@ -357,6 +372,9 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="99" red="0" type="rgb"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/aplicacion-wallet-pass.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="jLabel12"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -368,6 +386,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="14" style="0"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="/Users/gonzalobazzi/NetBeansProjects/DDA-Obligatorio/Obligatorio_Peajes/src/main/java/img/usuario.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel14"/>
         <Property name="autoscrolls" type="boolean" value="true"/>
