@@ -6,7 +6,7 @@ package modelo;
 
 /**
  *
- * @author Julio Cesar
+ * @author sebaPaulos
  */
 public class Tarifa {
 

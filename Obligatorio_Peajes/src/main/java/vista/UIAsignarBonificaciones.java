@@ -24,7 +24,7 @@ import vista.controladores.AsignarBonificacionesControlador;
 
 /**
  *
- * @author Digital
+ * @author sebaPaulos
  */
 public class UIAsignarBonificaciones extends javax.swing.JDialog implements AsignarBonificacionesVista {
 

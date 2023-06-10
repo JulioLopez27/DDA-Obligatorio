@@ -6,7 +6,7 @@ package Interfaces;
 
 /**
  *
- * @author gonzalobazzi
+ * @author sebaPaulos
  */
 public interface Renderizable {
 

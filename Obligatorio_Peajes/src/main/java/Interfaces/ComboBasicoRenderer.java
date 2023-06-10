@@ -12,7 +12,7 @@ import javax.swing.ListCellRenderer;
 
 /**
  *
- * @author gonzalobazzi
+ * @author sebaPaulos
  */
 public class ComboBasicoRenderer implements ListCellRenderer<Renderizable> {
 

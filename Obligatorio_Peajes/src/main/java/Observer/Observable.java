@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author gonzalobazzi
+ * @author sebaPaulos
  */
 public class Observable {
 

@@ -12,7 +12,7 @@ import modelo.fachada.Fachada;
 
 /**
  *
- * @author Julio Cesar
+ * @author sebaPaulos
  */
 public class Cuenta {
 

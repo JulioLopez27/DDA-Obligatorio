@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author Julio Cesar
+ * @author sebaPaulos
  */
 public class Notificacion {
 

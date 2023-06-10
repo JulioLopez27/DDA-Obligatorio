@@ -7,7 +7,7 @@ import vista.InicioAplicacion;
 
 /**
  *
- * @author Digital
+ * @author sebaPaulos
  */
 public class SistemaPeajes {
 

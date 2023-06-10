@@ -10,7 +10,7 @@ import vista.controladores.RecargarSaldoControlador;
 
 /**
  *
- * @author Digital
+ * @author sebaPaulos
  */
 public class UIRecargaSaldo extends javax.swing.JDialog implements RecargaSaldoVista {
 
@@ -31,12 +31,16 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements RecargaSaldoV
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButtonAceptar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextSaldo = new javax.swing.JLabel();
         jTextNombreUsuario = new javax.swing.JLabel();
         jTextFieldMontoRecarga = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+
+        jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Recarga de saldo");
@@ -57,13 +61,17 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements RecargaSaldoV
             }
         });
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        jLabel2.setText("Saldo:");
 
         jTextSaldo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jTextSaldo.setForeground(new java.awt.Color(0, 153, 0));
         jTextSaldo.setText("jLabel3");
 
         jTextNombreUsuario.setText("jLabel4");
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 13)); // NOI18N
+        jLabel4.setText("Usuario:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,18 +80,21 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements RecargaSaldoV
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextFieldMontoRecarga, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+                        .addComponent(jTextFieldMontoRecarga, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                        .addGap(87, 87, 87))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextSaldo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextNombreUsuario)))
-                .addGap(87, 87, 87))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextNombreUsuario)
+                        .addGap(28, 28, 28))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -96,7 +107,8 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements RecargaSaldoV
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextSaldo)
-                    .addComponent(jTextNombreUsuario))
+                    .addComponent(jTextNombreUsuario)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -121,6 +133,8 @@ public class UIRecargaSaldo extends javax.swing.JDialog implements RecargaSaldoV
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextFieldMontoRecarga;
     private javax.swing.JLabel jTextNombreUsuario;
     private javax.swing.JLabel jTextSaldo;

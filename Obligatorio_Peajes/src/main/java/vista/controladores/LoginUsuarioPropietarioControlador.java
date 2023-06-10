@@ -11,7 +11,7 @@ import vista.LoginAbstractoVista;
 
 /**
  *
- * @author gonzalobazzi
+ * @author sebaPaulos
  */
 public class LoginUsuarioPropietarioControlador extends LoginAbstractoControlador {
 

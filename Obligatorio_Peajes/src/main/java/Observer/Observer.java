@@ -6,7 +6,7 @@ package Observer;
 
 /**
  *
- * @author gonzalobazzi
+ * @author sebaPaulos
  */
 public interface Observer {
 

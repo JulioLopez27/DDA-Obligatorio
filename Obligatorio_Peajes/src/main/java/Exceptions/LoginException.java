@@ -6,7 +6,7 @@ package Exceptions;
 
 /**
  *
- * @author gonzalobazzi
+ * @author sebaPaulos
  */
 public class LoginException extends Exception {
 

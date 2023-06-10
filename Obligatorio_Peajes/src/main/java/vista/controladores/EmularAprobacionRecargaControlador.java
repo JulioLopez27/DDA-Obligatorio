@@ -13,7 +13,7 @@ import vista.EmularAprobacionRecargaVista;
 
 /**
  *
- * @author gonzalobazzi
+ * @author sebaPaulos
  */
 public class EmularAprobacionRecargaControlador implements Observer {
 

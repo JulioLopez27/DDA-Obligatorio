@@ -19,7 +19,7 @@ import vista.controladores.EmularTransitoControlador;
 
 /**
  *
- * @author Digital
+ * @author sebaPaulos
  */
 public class UIEmularTransito extends javax.swing.JDialog implements EmularTransitoVista {
 
