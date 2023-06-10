@@ -10,7 +10,7 @@ import vista.controladores.RecargarSaldoControlador;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class UIRecargaSaldo extends javax.swing.JDialog implements RecargaSaldoVista {
 

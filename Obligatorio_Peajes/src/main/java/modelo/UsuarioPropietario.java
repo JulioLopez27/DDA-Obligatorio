@@ -13,7 +13,7 @@ import modelo.fachada.Fachada;
 
 /**
  *
- * @author Julio Cesar
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian 
  */
 public class UsuarioPropietario extends Usuario {
 

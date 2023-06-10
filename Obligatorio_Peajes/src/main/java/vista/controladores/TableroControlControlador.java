@@ -12,7 +12,7 @@ import vista.TableroControlVista;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class TableroControlControlador implements Observer {
 

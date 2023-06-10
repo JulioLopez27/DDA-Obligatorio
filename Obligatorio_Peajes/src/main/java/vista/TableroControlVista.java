@@ -14,7 +14,7 @@ import modelo.Vehiculo;
 
 /**
  *
- * @author gonzalobazzi
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public interface TableroControlVista {
 

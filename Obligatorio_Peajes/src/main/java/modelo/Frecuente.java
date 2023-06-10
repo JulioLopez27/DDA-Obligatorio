@@ -8,7 +8,7 @@ import Interfaces.Renderizable;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class Frecuente implements Bonificable, Renderizable {
 

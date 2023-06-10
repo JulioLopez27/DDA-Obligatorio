@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class Notificacion {
 

@@ -6,7 +6,7 @@ package vista;
 
 /**
  *
- * @author sebita
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class InicioAplicacion extends javax.swing.JFrame {
 

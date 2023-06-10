@@ -6,7 +6,7 @@ package vista;
 
 /**
  *
- * @author Julio Cesar
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian 
  */
 public interface RecargaSaldoVista {
 

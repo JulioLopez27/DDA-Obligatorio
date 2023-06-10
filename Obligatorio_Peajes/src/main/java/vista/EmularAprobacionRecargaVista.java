@@ -9,7 +9,7 @@ import modelo.Recarga;
 
 /**
  *
- * @author gonzalobazzi
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public interface EmularAprobacionRecargaVista {
 

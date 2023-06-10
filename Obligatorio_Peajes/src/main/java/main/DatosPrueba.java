@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @author gonzalobazzi
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class DatosPrueba {
 

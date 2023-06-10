@@ -8,7 +8,7 @@ import Interfaces.Renderizable;
 
 /**
  *
- * @author Julio Cesar
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian 
  */
 public class Exonerado implements Bonificable, Renderizable {
 

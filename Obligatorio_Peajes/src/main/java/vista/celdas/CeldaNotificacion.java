@@ -6,7 +6,7 @@ package vista.celdas;
 
 /**
  *
- * @author Digital
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class CeldaNotificacion extends javax.swing.JPanel {
 

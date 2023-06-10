@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Julio Cesar
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian 
  */
 public class Vehiculo {
 

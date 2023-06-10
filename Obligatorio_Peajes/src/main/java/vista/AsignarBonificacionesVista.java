@@ -11,7 +11,7 @@ import modelo.Puesto;
 
 /**
  *
- * @author Julio Cesar
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian 
  */
 public interface AsignarBonificacionesVista {
 

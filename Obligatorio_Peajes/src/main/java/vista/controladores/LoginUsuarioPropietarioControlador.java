@@ -11,7 +11,7 @@ import vista.LoginAbstractoVista;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class LoginUsuarioPropietarioControlador extends LoginAbstractoControlador {
 

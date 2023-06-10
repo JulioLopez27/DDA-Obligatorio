@@ -6,7 +6,7 @@ package vista.celdas;
 
 /**
  *
- * @author sebita
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class CeldaAsignarBonificacion extends javax.swing.JPanel {
 

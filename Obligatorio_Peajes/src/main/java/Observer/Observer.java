@@ -6,7 +6,7 @@ package Observer;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public interface Observer {
 

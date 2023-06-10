@@ -6,7 +6,7 @@ package Interfaces;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public interface Renderizable {
 

@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author sebita
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class ServicioPeajes {
 

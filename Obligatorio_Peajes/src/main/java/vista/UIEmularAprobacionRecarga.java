@@ -18,7 +18,7 @@ import javax.swing.ListCellRenderer;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class UIEmularAprobacionRecarga extends javax.swing.JDialog implements EmularAprobacionRecargaVista {
 

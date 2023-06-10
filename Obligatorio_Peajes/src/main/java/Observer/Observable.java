@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class Observable {
 

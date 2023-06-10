@@ -9,7 +9,7 @@ import vista.controladores.LoginAbstractoControlador;
 
 /**
  *
- * @author sebita
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public abstract class LoginAbstracto extends javax.swing.JDialog implements LoginAbstractoVista {
 

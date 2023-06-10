@@ -8,7 +8,7 @@ import modelo.Usuario;
 
 /**
  *
- * @author gonzalobazzi
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public interface LoginAbstractoVista {
 

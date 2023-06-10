@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 @Deprecated
 public class ServicioTransitos {

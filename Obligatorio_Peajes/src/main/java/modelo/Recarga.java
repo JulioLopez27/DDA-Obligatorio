@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author Julio Cesar
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian 
  */
 public class Recarga {
 

@@ -6,7 +6,7 @@ package vista.celdas;
 
 /**
  *
- * @author gonzalobazzi
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class CeldaTransito extends javax.swing.JPanel {
 

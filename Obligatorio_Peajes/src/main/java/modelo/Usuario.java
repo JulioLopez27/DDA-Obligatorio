@@ -6,7 +6,7 @@ package modelo;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public abstract class Usuario {
 

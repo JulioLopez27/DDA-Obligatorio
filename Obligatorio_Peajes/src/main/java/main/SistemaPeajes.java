@@ -7,7 +7,7 @@ import vista.InicioAplicacion;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class SistemaPeajes {
 

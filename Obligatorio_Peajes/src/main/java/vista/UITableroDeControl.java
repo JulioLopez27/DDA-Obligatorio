@@ -27,7 +27,7 @@ import vista.controladores.TableroControlControlador;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class UITableroDeControl extends javax.swing.JDialog implements TableroControlVista {
 

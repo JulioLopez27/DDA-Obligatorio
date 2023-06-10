@@ -12,7 +12,7 @@ import modelo.fachada.Fachada;
 
 /**
  *
- * @author sebaPaulos
+ * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
 public class Cuenta {
 
