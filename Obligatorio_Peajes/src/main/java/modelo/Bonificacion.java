@@ -28,16 +28,8 @@ public class Bonificacion {
         return tipoBonificacion;
     }
 
-    public void setTipoBonificacion(Bonificable tipoBonificacion) {
-        this.tipoBonificacion = tipoBonificacion;
-    }
-
     public Puesto getPuesto() {
         return puesto;
-    }
-
-    public void setPuesto(Puesto puesto) {
-        this.puesto = puesto;
     }
 
     public double getPorcentajeDescuento(Transito transito) {

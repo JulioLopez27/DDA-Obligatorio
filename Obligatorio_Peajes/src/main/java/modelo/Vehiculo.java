@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import Observer.Observable;
+import observer.Observable;
 import modelo.fachada.Fachada;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -39,32 +39,16 @@ public class Vehiculo {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
     public String getMatricula() {
         return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
     }
 
     public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
     public String getColor() {
         return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
     public List<Transito> getTransitos() {

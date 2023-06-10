@@ -4,8 +4,8 @@
  */
 package vista.controladores;
 
-import Observer.Observable;
-import Observer.Observer;
+import observer.Observable;
+import observer.Observer;
 import modelo.UsuarioPropietario;
 import modelo.fachada.Fachada;
 import vista.TableroControlVista;

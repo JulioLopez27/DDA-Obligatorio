@@ -4,9 +4,9 @@
  */
 package vista.controladores;
 
-import Exceptions.PeajesException;
-import Observer.Observable;
-import Observer.Observer;
+import exceptions.PeajesException;
+import observer.Observable;
+import observer.Observer;
 import static java.lang.Double.parseDouble;
 import modelo.Recarga;
 import modelo.UsuarioPropietario;

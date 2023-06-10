@@ -4,7 +4,7 @@
  */
 package vista.controladores;
 
-import Exceptions.LoginException;
+import exceptions.LoginException;
 import modelo.Usuario;
 import modelo.fachada.Fachada;
 import vista.LoginAbstractoVista;

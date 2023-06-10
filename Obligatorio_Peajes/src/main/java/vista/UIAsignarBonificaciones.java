@@ -4,10 +4,10 @@
  */
 package vista;
 
-import Exceptions.PeajesException;
-import Interfaces.ComboBasicoRenderer;
-import Observer.Observable;
-import Observer.Observer;
+import exceptions.PeajesException;
+import interfaces.ComboBasicoRenderer;
+import observer.Observable;
+import observer.Observer;
 import modelo.fachada.Fachada;
 import modelo.Bonificable;
 import modelo.Bonificacion;

@@ -4,8 +4,8 @@
  */
 package modelo;
 
-import Exceptions.PeajesException;
-import Observer.Observable;
+import exceptions.PeajesException;
+import observer.Observable;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.fachada.Fachada;
@@ -29,10 +29,7 @@ public class Cuenta {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
+    //Código para poder aplicar casos de prueba
     public void setUsuarioPropietario(UsuarioPropietario usuarioPropietario) {
         this.usuarioPropietario = usuarioPropietario;
     }

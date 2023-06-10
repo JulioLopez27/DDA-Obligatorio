@@ -4,7 +4,7 @@
  */
 package vista;
 
-import Interfaces.ComboBasicoRenderer;
+import interfaces.ComboBasicoRenderer;
 import java.awt.Color;
 import modelo.Puesto;
 import modelo.Tarifa;

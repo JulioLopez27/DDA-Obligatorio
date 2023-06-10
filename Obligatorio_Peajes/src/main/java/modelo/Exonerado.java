@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import Interfaces.Renderizable;
+import interfaces.Renderizable;
 
 /**
  *

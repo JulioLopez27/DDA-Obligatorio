@@ -4,7 +4,7 @@
  */
 package vista.controladores;
 
-import Exceptions.LoginException;
+import exceptions.LoginException;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import vista.LoginAbstractoVista;

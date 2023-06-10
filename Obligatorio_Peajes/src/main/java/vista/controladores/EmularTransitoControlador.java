@@ -1,8 +1,8 @@
 package vista.controladores;
 
-import Exceptions.PeajesException;
-import Observer.Observable;
-import Observer.Observer;
+import exceptions.PeajesException;
+import observer.Observable;
+import observer.Observer;
 import modelo.Puesto;
 import modelo.Transito;
 import modelo.Vehiculo;

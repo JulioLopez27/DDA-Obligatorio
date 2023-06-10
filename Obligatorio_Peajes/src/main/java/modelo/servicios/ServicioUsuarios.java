@@ -4,8 +4,8 @@
  */
 package modelo.servicios;
 
-import Exceptions.LoginException;
-import Exceptions.PeajesException;
+import exceptions.LoginException;
+import exceptions.PeajesException;
 import modelo.Bonificacion;
 import modelo.Recarga;
 import modelo.Transito;

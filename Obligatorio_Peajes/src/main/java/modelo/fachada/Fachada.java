@@ -4,9 +4,9 @@
  */
 package modelo.fachada;
 
-import Exceptions.LoginException;
-import Exceptions.PeajesException;
-import Observer.Observable;
+import exceptions.LoginException;
+import exceptions.PeajesException;
+import observer.Observable;
 import modelo.servicios.ServicioPeajes;
 import modelo.servicios.ServicioUsuarios;
 import modelo.Bonificable;

@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import Interfaces.Renderizable;
+import interfaces.Renderizable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,24 +27,12 @@ public class Puesto implements Renderizable {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     public List<Tarifa> getTarifas() {
         return tarifas;
-    }
-
-    public void setTarifas(List<Tarifa> tarifas) {
-        this.tarifas = tarifas;
     }
 
     public void agregar(Tarifa tarifa) {

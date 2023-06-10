@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Observer;
+package observer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,6 @@ public class Observable {
         TRANSITO_EFECTUADO,
         TRANSITO_PAGADO,
         NOTIFICACIONES_ACTUALIZADAS,
-
     }
 
     public Observable() {

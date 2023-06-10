@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Interfaces;
+package observer;
 
 /**
  *
  * @author Bazzi Gonzalo / Cesar Julio / Paulos Sebastian
  */
-public interface Renderizable {
+public interface Observer {
 
-    public String getDescription();
+    public void notificar(Observable origen, Object evento);
+
 }

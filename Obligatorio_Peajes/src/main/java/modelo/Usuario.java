@@ -24,24 +24,12 @@ public abstract class Usuario {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
-    }
-
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public boolean validarCredenciales(int cedula, String password) {

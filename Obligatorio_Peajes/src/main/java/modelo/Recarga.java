@@ -32,10 +32,6 @@ public class Recarga {
         return cuenta;
     }
 
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
-    }
-
     public LocalDateTime getFecha() {
         return fecha;
     }

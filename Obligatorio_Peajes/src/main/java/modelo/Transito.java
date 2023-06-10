@@ -29,16 +29,8 @@ public class Transito {
         return vehiculo;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
-    }
-
     public Puesto getPuesto() {
         return puesto;
-    }
-
-    public void setPuesto(Puesto puesto) {
-        this.puesto = puesto;
     }
 
     public Bonificacion getBonificacion() {

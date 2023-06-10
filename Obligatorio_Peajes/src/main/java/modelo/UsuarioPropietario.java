@@ -4,8 +4,8 @@
  */
 package modelo;
 
-import Exceptions.PeajesException;
-import Observer.Observable;
+import exceptions.PeajesException;
+import observer.Observable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -37,14 +37,11 @@ public class UsuarioPropietario extends Usuario {
         return saldoMinimoAlerta;
     }
 
-    public void setSaldoMinimoAlerta(double saldoMinimoAlerta) {
-        this.saldoMinimoAlerta = saldoMinimoAlerta;
-    }
-
     public List<Vehiculo> getVehiculos() {
         return vehiculos;
     }
 
+    //Este método es únicamente usado para datos de prueba
     public void setVehiculos(List<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
     }
@@ -53,16 +50,8 @@ public class UsuarioPropietario extends Usuario {
         return cuenta;
     }
 
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
-    }
-
     public List<Notificacion> getNotificaciones() {
         return notificaciones;
-    }
-
-    public void setNotificaciones(List<Notificacion> notificaciones) {
-        this.notificaciones = notificaciones;
     }
 
     public List<Bonificacion> getBonificaciones() {

@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import Exceptions.LoginException;
+import exceptions.LoginException;
 
 /**
  *

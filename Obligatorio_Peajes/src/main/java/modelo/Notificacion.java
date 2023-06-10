@@ -25,10 +25,6 @@ public class Notificacion {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
-
     public String getMensaje() {
         return mensaje;
     }
@@ -36,10 +32,6 @@ public class Notificacion {
     public String getFechaFormateada() {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return this.getFecha().format(formato);
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
     }
 
 }
