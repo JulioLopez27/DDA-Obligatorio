@@ -4,7 +4,7 @@
  */
 package main;
 
-import Exceptions.PeajesException;
+import exceptions.PeajesException;
 import modelo.fachada.Fachada;
 import modelo.Bonificacion;
 import modelo.Categoria;
